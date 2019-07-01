@@ -1,0 +1,1 @@
+{"Nodes":[{"Url":"http://127.00.2:8080","Database":"TorunClientDb","ClusterTag":"B","ServerRole":"Member"},{"Url":"http://127.0.0.1:8080","Database":"TorunClientDb","ClusterTag":"A","ServerRole":"Member"},{"Url":"http://127.0.0.3:8080","Database":"TorunClientDb","ClusterTag":"C","ServerRole":"Member"}],"Etag":207,"PersistedAt":"2019-06-30T16:12:58.1194195+00:00"}

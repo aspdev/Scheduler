@@ -1,0 +1,17 @@
+C:\Users\Łukasz\Desktop\Scheduler\Client.Torun.RavenDataService\bin\Debug\netcoreapp2.2\Client.Torun.RavenDataService.deps.json
+C:\Users\Łukasz\Desktop\Scheduler\Client.Torun.RavenDataService\bin\Debug\netcoreapp2.2\Client.Torun.RavenDataService.runtimeconfig.json
+C:\Users\Łukasz\Desktop\Scheduler\Client.Torun.RavenDataService\bin\Debug\netcoreapp2.2\Client.Torun.RavenDataService.runtimeconfig.dev.json
+C:\Users\Łukasz\Desktop\Scheduler\Client.Torun.RavenDataService\bin\Debug\netcoreapp2.2\Client.Torun.RavenDataService.dll
+C:\Users\Łukasz\Desktop\Scheduler\Client.Torun.RavenDataService\obj\Debug\netcoreapp2.2\Client.Torun.RavenDataService.csprojAssemblyReference.cache
+C:\Users\Łukasz\Desktop\Scheduler\Client.Torun.RavenDataService\obj\Debug\netcoreapp2.2\Client.Torun.RavenDataService.csproj.CoreCompileInputs.cache
+C:\Users\Łukasz\Desktop\Scheduler\Client.Torun.RavenDataService\obj\Debug\netcoreapp2.2\Client.Torun.RavenDataService.RazorAssemblyInfo.cache
+C:\Users\Łukasz\Desktop\Scheduler\Client.Torun.RavenDataService\obj\Debug\netcoreapp2.2\Client.Torun.RavenDataService.RazorAssemblyInfo.cs
+C:\Users\Łukasz\Desktop\Scheduler\Client.Torun.RavenDataService\obj\Debug\netcoreapp2.2\Client.Torun.RavenDataService.AssemblyInfoInputs.cache
+C:\Users\Łukasz\Desktop\Scheduler\Client.Torun.RavenDataService\obj\Debug\netcoreapp2.2\Client.Torun.RavenDataService.AssemblyInfo.cs
+C:\Users\Łukasz\Desktop\Scheduler\Client.Torun.RavenDataService\obj\Debug\netcoreapp2.2\Client.Torun.RavenDataService.RazorTargetAssemblyInfo.cache
+C:\Users\Łukasz\Desktop\Scheduler\Client.Torun.RavenDataService\bin\Debug\netcoreapp2.2\Client.Torun.RavenDataService.pdb
+C:\Users\Łukasz\Desktop\Scheduler\Client.Torun.RavenDataService\bin\Debug\netcoreapp2.2\Client.Torun.Shared.dll
+C:\Users\Łukasz\Desktop\Scheduler\Client.Torun.RavenDataService\bin\Debug\netcoreapp2.2\Client.Torun.Shared.pdb
+C:\Users\Łukasz\Desktop\Scheduler\Client.Torun.RavenDataService\obj\Debug\netcoreapp2.2\Client.Torun.RavenDataService.csproj.CopyComplete
+C:\Users\Łukasz\Desktop\Scheduler\Client.Torun.RavenDataService\obj\Debug\netcoreapp2.2\Client.Torun.RavenDataService.dll
+C:\Users\Łukasz\Desktop\Scheduler\Client.Torun.RavenDataService\obj\Debug\netcoreapp2.2\Client.Torun.RavenDataService.pdb

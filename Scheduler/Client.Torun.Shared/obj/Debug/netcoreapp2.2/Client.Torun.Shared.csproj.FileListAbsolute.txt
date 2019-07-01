@@ -1,0 +1,9 @@
+C:\Users\Łukasz\Desktop\Scheduler\Client.Torun.Shared\bin\Debug\netcoreapp2.2\Client.Torun.Shared.deps.json
+C:\Users\Łukasz\Desktop\Scheduler\Client.Torun.Shared\bin\Debug\netcoreapp2.2\Client.Torun.Shared.dll
+C:\Users\Łukasz\Desktop\Scheduler\Client.Torun.Shared\bin\Debug\netcoreapp2.2\Client.Torun.Shared.pdb
+C:\Users\Łukasz\Desktop\Scheduler\Client.Torun.Shared\obj\Debug\netcoreapp2.2\Client.Torun.Shared.csproj.CoreCompileInputs.cache
+C:\Users\Łukasz\Desktop\Scheduler\Client.Torun.Shared\obj\Debug\netcoreapp2.2\Client.Torun.Shared.AssemblyInfoInputs.cache
+C:\Users\Łukasz\Desktop\Scheduler\Client.Torun.Shared\obj\Debug\netcoreapp2.2\Client.Torun.Shared.AssemblyInfo.cs
+C:\Users\Łukasz\Desktop\Scheduler\Client.Torun.Shared\obj\Debug\netcoreapp2.2\Client.Torun.Shared.dll
+C:\Users\Łukasz\Desktop\Scheduler\Client.Torun.Shared\obj\Debug\netcoreapp2.2\Client.Torun.Shared.pdb
+C:\Users\Łukasz\Desktop\Scheduler\Client.Torun.Shared\obj\Debug\netcoreapp2.2\Client.Torun.Shared.csprojAssemblyReference.cache
