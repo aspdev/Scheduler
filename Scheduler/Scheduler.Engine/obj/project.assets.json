@@ -744,23 +744,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Łukasz\\.nuget\\packages\\": {},
+    "C:\\Users\\Dell\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Łukasz\\Desktop\\Scheduler\\Scheduler.Engine\\Scheduler.Engine.csproj",
+      "projectUniqueName": "C:\\Projects\\Scheduler\\Scheduler\\Scheduler.Engine\\Scheduler.Engine.csproj",
       "projectName": "Scheduler.Engine",
-      "projectPath": "C:\\Users\\Łukasz\\Desktop\\Scheduler\\Scheduler.Engine\\Scheduler.Engine.csproj",
-      "packagesPath": "C:\\Users\\Łukasz\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Łukasz\\Desktop\\Scheduler\\Scheduler.Engine\\obj\\",
+      "projectPath": "C:\\Projects\\Scheduler\\Scheduler\\Scheduler.Engine\\Scheduler.Engine.csproj",
+      "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
+      "outputPath": "C:\\Projects\\Scheduler\\Scheduler\\Scheduler.Engine\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Łukasz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -773,8 +773,8 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "C:\\Users\\Łukasz\\Desktop\\Scheduler\\Scheduler.Shared\\Scheduler.Shared.csproj": {
-              "projectPath": "C:\\Users\\Łukasz\\Desktop\\Scheduler\\Scheduler.Shared\\Scheduler.Shared.csproj"
+            "C:\\Projects\\Scheduler\\Scheduler\\Scheduler.Shared\\Scheduler.Shared.csproj": {
+              "projectPath": "C:\\Projects\\Scheduler\\Scheduler\\Scheduler.Shared\\Scheduler.Shared.csproj"
             }
           }
         }

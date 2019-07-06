@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Client.Torun.RavenDataService.Controllers
 {
@@ -46,7 +47,7 @@ namespace Client.Torun.RavenDataService.Controllers
 
                 if (user != null)
                 {
-                    return BadRequest("The email is already in use.");
+                    return BadRequest(new { error = "The email is already in use." });
                 }
 
                 var dbUser = _mapper.Map<User>(userToCreteDto);

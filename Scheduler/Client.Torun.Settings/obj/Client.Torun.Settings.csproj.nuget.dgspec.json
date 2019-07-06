@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Łukasz\\Desktop\\Scheduler\\Client.Torun.Settings\\Client.Torun.Settings.csproj": {}
+    "C:\\Projects\\Scheduler\\Scheduler\\Client.Torun.Settings\\Client.Torun.Settings.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Łukasz\\Desktop\\Scheduler\\Client.Torun.Settings\\Client.Torun.Settings.csproj": {
+    "C:\\Projects\\Scheduler\\Scheduler\\Client.Torun.Settings\\Client.Torun.Settings.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Łukasz\\Desktop\\Scheduler\\Client.Torun.Settings\\Client.Torun.Settings.csproj",
+        "projectUniqueName": "C:\\Projects\\Scheduler\\Scheduler\\Client.Torun.Settings\\Client.Torun.Settings.csproj",
         "projectName": "Client.Torun.Settings",
-        "projectPath": "C:\\Users\\Łukasz\\Desktop\\Scheduler\\Client.Torun.Settings\\Client.Torun.Settings.csproj",
-        "packagesPath": "C:\\Users\\Łukasz\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Łukasz\\Desktop\\Scheduler\\Client.Torun.Settings\\obj\\",
+        "projectPath": "C:\\Projects\\Scheduler\\Scheduler\\Client.Torun.Settings\\Client.Torun.Settings.csproj",
+        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\Scheduler\\Scheduler\\Client.Torun.Settings\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Łukasz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -30,11 +30,11 @@
         "frameworks": {
           "netcoreapp2.2": {
             "projectReferences": {
-              "C:\\Users\\Łukasz\\Desktop\\Scheduler\\Client.Torun.Shared\\Client.Torun.Shared.csproj": {
-                "projectPath": "C:\\Users\\Łukasz\\Desktop\\Scheduler\\Client.Torun.Shared\\Client.Torun.Shared.csproj"
+              "C:\\Projects\\Scheduler\\Scheduler\\Client.Torun.Shared\\Client.Torun.Shared.csproj": {
+                "projectPath": "C:\\Projects\\Scheduler\\Scheduler\\Client.Torun.Shared\\Client.Torun.Shared.csproj"
               },
-              "C:\\Users\\Łukasz\\Desktop\\Scheduler\\Scheduler.Shared\\Scheduler.Shared.csproj": {
-                "projectPath": "C:\\Users\\Łukasz\\Desktop\\Scheduler\\Scheduler.Shared\\Scheduler.Shared.csproj"
+              "C:\\Projects\\Scheduler\\Scheduler\\Scheduler.Shared\\Scheduler.Shared.csproj": {
+                "projectPath": "C:\\Projects\\Scheduler\\Scheduler\\Scheduler.Shared\\Scheduler.Shared.csproj"
               }
             }
           }
@@ -67,20 +67,20 @@
         }
       }
     },
-    "C:\\Users\\Łukasz\\Desktop\\Scheduler\\Client.Torun.Shared\\Client.Torun.Shared.csproj": {
+    "C:\\Projects\\Scheduler\\Scheduler\\Client.Torun.Shared\\Client.Torun.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Łukasz\\Desktop\\Scheduler\\Client.Torun.Shared\\Client.Torun.Shared.csproj",
+        "projectUniqueName": "C:\\Projects\\Scheduler\\Scheduler\\Client.Torun.Shared\\Client.Torun.Shared.csproj",
         "projectName": "Client.Torun.Shared",
-        "projectPath": "C:\\Users\\Łukasz\\Desktop\\Scheduler\\Client.Torun.Shared\\Client.Torun.Shared.csproj",
-        "packagesPath": "C:\\Users\\Łukasz\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Łukasz\\Desktop\\Scheduler\\Client.Torun.Shared\\obj\\",
+        "projectPath": "C:\\Projects\\Scheduler\\Scheduler\\Client.Torun.Shared\\Client.Torun.Shared.csproj",
+        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\Scheduler\\Scheduler\\Client.Torun.Shared\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Łukasz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -119,20 +119,20 @@
         }
       }
     },
-    "C:\\Users\\Łukasz\\Desktop\\Scheduler\\Scheduler.Shared\\Scheduler.Shared.csproj": {
+    "C:\\Projects\\Scheduler\\Scheduler\\Scheduler.Shared\\Scheduler.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Łukasz\\Desktop\\Scheduler\\Scheduler.Shared\\Scheduler.Shared.csproj",
+        "projectUniqueName": "C:\\Projects\\Scheduler\\Scheduler\\Scheduler.Shared\\Scheduler.Shared.csproj",
         "projectName": "Scheduler.Shared",
-        "projectPath": "C:\\Users\\Łukasz\\Desktop\\Scheduler\\Scheduler.Shared\\Scheduler.Shared.csproj",
-        "packagesPath": "C:\\Users\\Łukasz\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Łukasz\\Desktop\\Scheduler\\Scheduler.Shared\\obj\\",
+        "projectPath": "C:\\Projects\\Scheduler\\Scheduler\\Scheduler.Shared\\Scheduler.Shared.csproj",
+        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\Scheduler\\Scheduler\\Scheduler.Shared\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Łukasz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

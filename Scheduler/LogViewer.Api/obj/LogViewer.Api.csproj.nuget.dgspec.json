@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Łukasz\\Desktop\\Scheduler\\LogViewer.Api\\LogViewer.Api.csproj": {}
+    "C:\\Projects\\Scheduler\\Scheduler\\LogViewer.Api\\LogViewer.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Łukasz\\Desktop\\Scheduler\\LogViewer.Api\\LogViewer.Api.csproj": {
+    "C:\\Projects\\Scheduler\\Scheduler\\LogViewer.Api\\LogViewer.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Łukasz\\Desktop\\Scheduler\\LogViewer.Api\\LogViewer.Api.csproj",
+        "projectUniqueName": "C:\\Projects\\Scheduler\\Scheduler\\LogViewer.Api\\LogViewer.Api.csproj",
         "projectName": "LogViewer.Api",
-        "projectPath": "C:\\Users\\Łukasz\\Desktop\\Scheduler\\LogViewer.Api\\LogViewer.Api.csproj",
-        "packagesPath": "C:\\Users\\Łukasz\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Łukasz\\Desktop\\Scheduler\\LogViewer.Api\\obj\\",
+        "projectPath": "C:\\Projects\\Scheduler\\Scheduler\\LogViewer.Api\\LogViewer.Api.csproj",
+        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\Scheduler\\Scheduler\\LogViewer.Api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Łukasz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

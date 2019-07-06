@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Łukasz\\Desktop\\Scheduler\\IdentityServer\\IdentityServer.csproj": {}
+    "C:\\Projects\\Scheduler\\Scheduler\\IdentityServer\\IdentityServer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Łukasz\\Desktop\\Scheduler\\IdentityServer\\IdentityServer.csproj": {
+    "C:\\Projects\\Scheduler\\Scheduler\\IdentityServer\\IdentityServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Łukasz\\Desktop\\Scheduler\\IdentityServer\\IdentityServer.csproj",
+        "projectUniqueName": "C:\\Projects\\Scheduler\\Scheduler\\IdentityServer\\IdentityServer.csproj",
         "projectName": "IdentityServer",
-        "projectPath": "C:\\Users\\Łukasz\\Desktop\\Scheduler\\IdentityServer\\IdentityServer.csproj",
-        "packagesPath": "C:\\Users\\Łukasz\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Łukasz\\Desktop\\Scheduler\\IdentityServer\\obj\\",
+        "projectPath": "C:\\Projects\\Scheduler\\Scheduler\\IdentityServer\\IdentityServer.csproj",
+        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\Scheduler\\Scheduler\\IdentityServer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Łukasz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

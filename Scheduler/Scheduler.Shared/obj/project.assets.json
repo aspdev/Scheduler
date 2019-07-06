@@ -726,23 +726,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Łukasz\\.nuget\\packages\\": {},
+    "C:\\Users\\Dell\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Łukasz\\Desktop\\Scheduler\\Scheduler.Shared\\Scheduler.Shared.csproj",
+      "projectUniqueName": "C:\\Projects\\Scheduler\\Scheduler\\Scheduler.Shared\\Scheduler.Shared.csproj",
       "projectName": "Scheduler.Shared",
-      "projectPath": "C:\\Users\\Łukasz\\Desktop\\Scheduler\\Scheduler.Shared\\Scheduler.Shared.csproj",
-      "packagesPath": "C:\\Users\\Łukasz\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Łukasz\\Desktop\\Scheduler\\Scheduler.Shared\\obj\\",
+      "projectPath": "C:\\Projects\\Scheduler\\Scheduler\\Scheduler.Shared\\Scheduler.Shared.csproj",
+      "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
+      "outputPath": "C:\\Projects\\Scheduler\\Scheduler\\Scheduler.Shared\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Łukasz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
