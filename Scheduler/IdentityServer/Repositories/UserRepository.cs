@@ -46,10 +46,15 @@ namespace IdentityServer.Repositories
             {
                 var user = await FindByUsername(username, clientName);
 
-                if(user != null)
+                if(user != null && user.ChangePassword == false)
                 {
                     return user.Password.Equals(password);
                 }
+                else if (user != null && user.ChangePassword == true)
+                {
+                    return user.TemporaryPassword.Equals(password);
+                }
+
 
                 return false;
             }

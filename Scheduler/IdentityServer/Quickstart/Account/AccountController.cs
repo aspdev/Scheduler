@@ -116,6 +116,13 @@ namespace IdentityServer
                 if (await _userRepository.ValidateCredentials(model.Username, model.Password, context.ClientId))
                 {
                     var user = await _userRepository.FindByUsername(model.Username, context.ClientId);
+
+                    if (user.ChangePassword)
+                    {
+
+                        return RedirectToAction("ChangePassword", "ChangePassword", new { returnUrl = context.RedirectUri, username = model.Username });
+                    }
+
                     await _events.RaiseAsync(new UserLoginSuccessEvent(user.Email, user.Id, user.Email));
 
                     // only set explicit expiration here if user chooses "remember me". 

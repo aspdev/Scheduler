@@ -115,3 +115,4 @@ C:\Projects\Scheduler\Scheduler\IdentityServer\obj\Debug\netcoreapp2.1\IdentityS
 C:\Projects\Scheduler\Scheduler\IdentityServer\obj\Debug\netcoreapp2.1\IdentityServer.dll
 C:\Projects\Scheduler\Scheduler\IdentityServer\obj\Debug\netcoreapp2.1\IdentityServer.pdb
 C:\Projects\Scheduler\Scheduler\IdentityServer\obj\Debug\netcoreapp2.1\IdentityServer.csproj.CopyComplete
+C:\Projects\Scheduler\Scheduler\IdentityServer\obj\Debug\netcoreapp2.1\Razor\Views\Account\ChangePassword.g.cshtml.cs
