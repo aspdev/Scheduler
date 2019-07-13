@@ -32,3 +32,5 @@ C:\Projects\Scheduler\Scheduler\Client.Torun.RavenDataService\obj\Debug\netcorea
 C:\Projects\Scheduler\Scheduler\Client.Torun.RavenDataService\obj\Debug\netcoreapp2.2\Client.Torun.RavenDataService.csproj.CopyComplete
 C:\Projects\Scheduler\Scheduler\Client.Torun.RavenDataService\obj\Debug\netcoreapp2.2\Client.Torun.RavenDataService.dll
 C:\Projects\Scheduler\Scheduler\Client.Torun.RavenDataService\obj\Debug\netcoreapp2.2\Client.Torun.RavenDataService.pdb
+C:\Projects\Scheduler\Scheduler\Client.Torun.RavenDataService\bin\Debug\netcoreapp2.2\Scheduler.Mailer.dll
+C:\Projects\Scheduler\Scheduler\Client.Torun.RavenDataService\bin\Debug\netcoreapp2.2\Scheduler.Mailer.pdb

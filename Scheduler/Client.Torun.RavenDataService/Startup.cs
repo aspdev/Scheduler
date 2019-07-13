@@ -18,6 +18,8 @@ using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Scheduler.Mailer.Interfaces;
+using Scheduler.Mailer.MailKit;
 
 namespace Client.Torun.RavenDataService
 {
@@ -38,7 +40,7 @@ namespace Client.Torun.RavenDataService
 
 
             _dataServiceConfiguration = new DataServiceConfiguration();
-            _configuration.Bind("DataService", _dataServiceConfiguration);
+            _configuration.Bind("DataServiceConfiguration", _dataServiceConfiguration);
         }
 
         public void ConfigureServices(IServiceCollection services)
@@ -70,6 +72,11 @@ namespace Client.Torun.RavenDataService
 
             services.AddSingleton<IDocumentStoreHolder, DocumentStoreHolder>();
             services.AddSingleton(_dataServiceConfiguration);
+            services.AddTransient<ISchedulerMailer>(serviceProvider => 
+                new MailKitMailer(_dataServiceConfiguration.MailBoxHost, 
+                _dataServiceConfiguration.MailBoxPortNumber, _dataServiceConfiguration.MailBoxUseSsl, 
+                _dataServiceConfiguration.MailBoxAddress));
+                
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();

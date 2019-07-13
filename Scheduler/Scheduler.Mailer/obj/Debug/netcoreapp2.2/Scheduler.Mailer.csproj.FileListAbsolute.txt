@@ -1,0 +1,9 @@
+C:\Projects\Scheduler\Scheduler\Scheduler.Mailer\bin\Debug\netcoreapp2.2\Scheduler.Mailer.deps.json
+C:\Projects\Scheduler\Scheduler\Scheduler.Mailer\bin\Debug\netcoreapp2.2\Scheduler.Mailer.dll
+C:\Projects\Scheduler\Scheduler\Scheduler.Mailer\obj\Debug\netcoreapp2.2\Scheduler.Mailer.csprojAssemblyReference.cache
+C:\Projects\Scheduler\Scheduler\Scheduler.Mailer\obj\Debug\netcoreapp2.2\Scheduler.Mailer.csproj.CoreCompileInputs.cache
+C:\Projects\Scheduler\Scheduler\Scheduler.Mailer\obj\Debug\netcoreapp2.2\Scheduler.Mailer.AssemblyInfoInputs.cache
+C:\Projects\Scheduler\Scheduler\Scheduler.Mailer\obj\Debug\netcoreapp2.2\Scheduler.Mailer.AssemblyInfo.cs
+C:\Projects\Scheduler\Scheduler\Scheduler.Mailer\bin\Debug\netcoreapp2.2\Scheduler.Mailer.pdb
+C:\Projects\Scheduler\Scheduler\Scheduler.Mailer\obj\Debug\netcoreapp2.2\Scheduler.Mailer.dll
+C:\Projects\Scheduler\Scheduler\Scheduler.Mailer\obj\Debug\netcoreapp2.2\Scheduler.Mailer.pdb

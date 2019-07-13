@@ -12,6 +12,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Authorization;
+using MimeKit;
+using MailKit.Net.Smtp;
+using MailKit.Security;
+using MimeKit.Text;
+using Scheduler.Mailer.Interfaces;
+using Client.Torun.RavenDataService.Config;
 
 namespace Client.Torun.RavenDataService.Controllers
 {
@@ -22,12 +28,17 @@ namespace Client.Torun.RavenDataService.Controllers
         private readonly IDocumentStore _store;
         private readonly IMapper _mapper;
         private readonly IUrlHelper _urlHelper;
+        private readonly ISchedulerMailer _schedulerMailer;
+        private readonly DataServiceConfiguration _dataServiceConfiguration;
 
-        public AdminController(IDocumentStoreHolder documentStoreHolder, IMapper mapper, IUrlHelper urlHelper)
+        public AdminController(IDocumentStoreHolder documentStoreHolder, IMapper mapper, IUrlHelper urlHelper, 
+            ISchedulerMailer schedulerMailer, DataServiceConfiguration dataServiceConfiguration)
         {
             _store = documentStoreHolder.Store;
             _mapper = mapper;
             _urlHelper = urlHelper;
+            _schedulerMailer = schedulerMailer;
+            _dataServiceConfiguration = dataServiceConfiguration;
 
         }
 
@@ -56,7 +67,11 @@ namespace Client.Torun.RavenDataService.Controllers
 
                 await session.SaveChangesAsync();
 
-                // email notification to Change Password
+                string username = dbUser.Email.Replace("@", "<span>@</span>");
+
+                string message = $"<b>Dear {dbUser.FirstName}</b></br><p>You received this message because your Scheduler Account has been created.</p><p>Your <b>username</b>: {username}</p><p>Your <b>first-time login password</b>: {dbUser.TemporaryPassword}</p><p>Follow the link below to change your password and log in to Scheduler application:</p><p><a href={_dataServiceConfiguration.ClientUrl}>Login</a></p><p>Best</p><p>Scheduler Team</p>";
+
+                _schedulerMailer.SendMail("Scheduler-Notifications", dbUser.Email, "Scheduler Account", message, _dataServiceConfiguration.MailBoxPassword); 
 
                 var userToReturn = _mapper.Map<PostCreationUserToReturnDto>(dbUser);
 
