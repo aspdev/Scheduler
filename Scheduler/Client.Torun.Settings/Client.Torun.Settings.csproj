@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,7 +15,7 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="XCOPY &quot;$(TargetDir)Client.Torun.Settings.dll&quot; &quot;C:\Users\Łukasz\Desktop\Scheduler\Scheduler.Api\bin\Debug\netcoreapp2.2\Torun.Settings&quot; /S /Y" />
+    <Exec Command="XCOPY &quot;$(TargetDir)Client.Torun.Settings.dll&quot; &quot;C:\Projects\Scheduler\Scheduler\Scheduler.Api\bin\Debug\netcoreapp2.2\Torun.Settings&quot; /S /Y&#xD;&#xA;&#xD;&#xA;" />
   </Target>
 
 </Project>

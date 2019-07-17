@@ -24,3 +24,17 @@ G:\Backup\Scheduler\Client.Torun.Settings\obj\Debug\netcoreapp2.2\Client.Torun.S
 G:\Backup\Scheduler\Client.Torun.Settings\obj\Debug\netcoreapp2.2\Client.Torun.Settings.pdb
 C:\Users\Łukasz\Desktop\Scheduler\Client.Torun.Settings\bin\Debug\netcoreapp2.2\Client.Torun.Shared.dll
 C:\Users\Łukasz\Desktop\Scheduler\Client.Torun.Settings\bin\Debug\netcoreapp2.2\Client.Torun.Shared.pdb
+C:\Projects\Scheduler\Scheduler\Client.Torun.Settings\bin\Debug\netcoreapp2.2\Client.Torun.Settings.deps.json
+C:\Projects\Scheduler\Scheduler\Client.Torun.Settings\bin\Debug\netcoreapp2.2\Client.Torun.Settings.dll
+C:\Projects\Scheduler\Scheduler\Client.Torun.Settings\bin\Debug\netcoreapp2.2\Client.Torun.Settings.pdb
+C:\Projects\Scheduler\Scheduler\Client.Torun.Settings\bin\Debug\netcoreapp2.2\Client.Torun.Shared.dll
+C:\Projects\Scheduler\Scheduler\Client.Torun.Settings\bin\Debug\netcoreapp2.2\Scheduler.Shared.dll
+C:\Projects\Scheduler\Scheduler\Client.Torun.Settings\bin\Debug\netcoreapp2.2\Client.Torun.Shared.pdb
+C:\Projects\Scheduler\Scheduler\Client.Torun.Settings\bin\Debug\netcoreapp2.2\Scheduler.Shared.pdb
+C:\Projects\Scheduler\Scheduler\Client.Torun.Settings\obj\Debug\netcoreapp2.2\Client.Torun.Settings.csprojAssemblyReference.cache
+C:\Projects\Scheduler\Scheduler\Client.Torun.Settings\obj\Debug\netcoreapp2.2\Client.Torun.Settings.csproj.CoreCompileInputs.cache
+C:\Projects\Scheduler\Scheduler\Client.Torun.Settings\obj\Debug\netcoreapp2.2\Client.Torun.Settings.AssemblyInfoInputs.cache
+C:\Projects\Scheduler\Scheduler\Client.Torun.Settings\obj\Debug\netcoreapp2.2\Client.Torun.Settings.AssemblyInfo.cs
+C:\Projects\Scheduler\Scheduler\Client.Torun.Settings\obj\Debug\netcoreapp2.2\Client.Torun.Settings.csproj.CopyComplete
+C:\Projects\Scheduler\Scheduler\Client.Torun.Settings\obj\Debug\netcoreapp2.2\Client.Torun.Settings.dll
+C:\Projects\Scheduler\Scheduler\Client.Torun.Settings\obj\Debug\netcoreapp2.2\Client.Torun.Settings.pdb

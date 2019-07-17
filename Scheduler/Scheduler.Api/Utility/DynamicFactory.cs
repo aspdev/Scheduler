@@ -26,7 +26,7 @@ namespace Scheduler.Api.Utility
 
             
             string assemblyFile = assemblyFiles.First();
-
+            
             Assembly assembly = Assembly.LoadFrom(assemblyFile);
 
             ISpeciesOriginator speciesOriginator = null;
@@ -38,6 +38,7 @@ namespace Scheduler.Api.Utility
                     Object[] args = {date};
 
                     speciesOriginator = Activator.CreateInstance(type, args) as ISpeciesOriginator;
+                    break;
                 }
             }
 
@@ -78,7 +79,7 @@ namespace Scheduler.Api.Utility
 
         private static Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
         {
-            string schedulerFolderPath = @"C:\Users\Łukasz\Desktop\Scheduler\";
+            string schedulerFolderPath = @"C:\Projects\Scheduler\Scheduler\";
             string projectFolderName = args.Name.Remove(args.Name.IndexOf(','));
             string assemblyFolderPath = @"\bin\Debug\netcoreapp2.2\";
             string assemblyName = string.Concat(args.Name.Remove(args.Name.IndexOf(',')), ".dll");

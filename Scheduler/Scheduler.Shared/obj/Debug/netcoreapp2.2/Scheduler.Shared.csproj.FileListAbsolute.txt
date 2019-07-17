@@ -19,7 +19,6 @@ C:\Users\Łukasz\Desktop\Scheduler\Scheduler.Shared\obj\Debug\netcoreapp2.2\Sche
 C:\Projects\Scheduler\Scheduler\Scheduler.Shared\bin\Debug\netcoreapp2.2\Scheduler.Shared.deps.json
 C:\Projects\Scheduler\Scheduler\Scheduler.Shared\bin\Debug\netcoreapp2.2\Scheduler.Shared.dll
 C:\Projects\Scheduler\Scheduler\Scheduler.Shared\bin\Debug\netcoreapp2.2\Scheduler.Shared.pdb
-C:\Projects\Scheduler\Scheduler\Scheduler.Shared\obj\Debug\netcoreapp2.2\Scheduler.Shared.csprojAssemblyReference.cache
 C:\Projects\Scheduler\Scheduler\Scheduler.Shared\obj\Debug\netcoreapp2.2\Scheduler.Shared.csproj.CoreCompileInputs.cache
 C:\Projects\Scheduler\Scheduler\Scheduler.Shared\obj\Debug\netcoreapp2.2\Scheduler.Shared.AssemblyInfoInputs.cache
 C:\Projects\Scheduler\Scheduler\Scheduler.Shared\obj\Debug\netcoreapp2.2\Scheduler.Shared.AssemblyInfo.cs
