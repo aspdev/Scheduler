@@ -65,7 +65,7 @@ namespace Client.Torun.Settings.Optimization
 
         private async Task<int> GetNumberOfDoctorsOnDuty()
         {
-            string url = @"http://localhost:50451/originator/number-of-doctors-on-duty";
+            string url = @"http://localhost:51301/originator/number-of-doctors-on-duty";
 
             var response = await HttpClient.GetAsync(url);
 

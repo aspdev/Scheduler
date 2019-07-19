@@ -40,11 +40,11 @@ namespace Client.Torun.Settings.Originator
         private int _populationSize;
         private int _totalNumberOfDoctors;
         private List<string> _doctorIds = new List<string>();
-        private List<Tuple<string, DateTime>> _daysOff = new List<Tuple<string, DateTime>>();
-        private List<Tuple<string, DateTime>> _daysOffOnLastDayOfPreviousMonth = new List<Tuple<string, DateTime>>();
+        private List<DayOffDto> _daysOff = new List<DayOffDto>();
+        private List<DayOffOnLastDayPreviousMonthDto> _daysOffOnLastDayOfPreviousMonth = new List<DayOffOnLastDayPreviousMonthDto>();
 
-        private List<KeyValuePair<string, Tuple<int, int, int>>> _dutyRequirementsForMonth =
-            new List<KeyValuePair<string, Tuple<int, int, int>>>();
+        private List<DutyRequirementForMonthDto> _dutyRequirementsForMonth =
+            new List<DutyRequirementForMonthDto>();
 
         private readonly List<Individual> _individuals = new List<Individual>();
         private List<DateTime> _publicHolidaysForMonth = new List<DateTime>();
@@ -59,7 +59,7 @@ namespace Client.Torun.Settings.Originator
 
         private List<IGrouping<int, DateTime>> DaysOffGrouppedByDayNumber
         {
-            get { return _daysOff.Select(tuple => tuple.Item2).GroupBy(d => d.Day).ToList(); }
+            get { return _daysOff.Select(d => d.Date).GroupBy(d => d.Day).ToList(); }
         }
 
 
@@ -313,16 +313,16 @@ namespace Client.Torun.Settings.Originator
                         if (!unavailableDoctors.Contains(j))
                         {
                             string doctorId = _doctorIds[j];
-                            KeyValuePair<string, Tuple<int, int, int>> doctorDutyRequirement =
-                                _dutyRequirementsForMonth.FirstOrDefault(d => d.Key == doctorId);
+                            DutyRequirementForMonthDto doctorDutyRequirement =
+                                _dutyRequirementsForMonth.FirstOrDefault(d => d.UserId == doctorId);
 
                             // jeżeli sformułowano wymagania dotyczące ilości dyżurów
-                            if (!doctorDutyRequirement.Equals(default(KeyValuePair<Guid, Tuple<int, int, int>>)))
+                            if (doctorDutyRequirement != null)
                             {
                                 var numberOfDutiesInTheRow = dna.GetRow(j)
                                     .Count(a => a != null && a.Value == Allel.OnDuty.Value);
 
-                                if (numberOfDutiesInTheRow >= doctorDutyRequirement.Value.Item1)
+                                if (numberOfDutiesInTheRow >= doctorDutyRequirement.RequiredTotalDutiesInMonth)
                                 {
                                     //rows.Add(j); // niesdostępny - wyczerpał zdefiniowany limit
                                     unavailableDoctors.Add(j); // dodajemy do listy niedostępnych
@@ -351,7 +351,7 @@ namespace Client.Torun.Settings.Originator
                                             }
                                         }
 
-                                        if (holidayDutiesCount >= doctorDutyRequirement.Value.Item3)
+                                        if (holidayDutiesCount >= doctorDutyRequirement.RequiredTotalHolidayDuties)
                                         {
                                             rows.Add(j); // niedostępny w święta - wyczerpał limit świąt
                                         }
@@ -372,7 +372,7 @@ namespace Client.Torun.Settings.Originator
                                             }
                                         }
 
-                                        if (weekdayDutiesCount >= doctorDutyRequirement.Value.Item2)
+                                        if (weekdayDutiesCount >= doctorDutyRequirement.RequiredTotalWeekdayDuties)
                                         {
                                             rows.Add(j); // niedsotępny w dniu powszednie - wyczerpał limit
                                         }
@@ -531,7 +531,7 @@ namespace Client.Torun.Settings.Originator
         
         }
 
-        private async Task<List<Tuple<string, DateTime>>> GetDaysOffAsync()
+        private async Task<List<DayOffDto>> GetDaysOffAsync()
         {
             string url = "originator/days-off?dateFilter=" + _date;
 
@@ -542,7 +542,7 @@ namespace Client.Torun.Settings.Originator
 
                 var stream = await response.Content.ReadAsStreamAsync();
 
-                List<Tuple<string, DateTime>> daysOff = stream.ReadAndDeserializeFromJson<List<Tuple<string, DateTime>>>();
+                List<DayOffDto> daysOff = stream.ReadAndDeserializeFromJson<List<DayOffDto>>();
 
                 return daysOff;
             }
@@ -568,7 +568,7 @@ namespace Client.Torun.Settings.Originator
 
         }
 
-        private async Task<List<KeyValuePair<string, Tuple<int, int, int>>>> GetDutyRequirementsForMonthAsync()
+        private async Task<List<DutyRequirementForMonthDto>> GetDutyRequirementsForMonthAsync()
         {
             string url = "originator/duty-requirements-for-month?year=" + _date.Year +
                          "&month=" + _date.Month;
@@ -580,8 +580,8 @@ namespace Client.Torun.Settings.Originator
 
                 var stream = await response.Content.ReadAsStreamAsync();
 
-                List<KeyValuePair<string, Tuple<int, int, int>>> dutyRequirements =
-                    stream.ReadAndDeserializeFromJson<List<KeyValuePair<string, Tuple<int, int, int>>>>();
+                List<DutyRequirementForMonthDto> dutyRequirements =
+                    stream.ReadAndDeserializeFromJson<List<DutyRequirementForMonthDto>>();
 
                 return dutyRequirements;
             }
@@ -607,7 +607,7 @@ namespace Client.Torun.Settings.Originator
             
         }
 
-        private async Task<List<Tuple<string, DateTime>>> GetDaysOffOnLastDayOfPreviousMonthAsync()
+        private async Task<List<DayOffOnLastDayPreviousMonthDto>> GetDaysOffOnLastDayOfPreviousMonthAsync()
         {
             string url = "originator/days-off-on-last-day-previous-month?=" +
                          _date.Year + "&month=" + _date.Month;
@@ -619,7 +619,7 @@ namespace Client.Torun.Settings.Originator
 
                 var stream = await response.Content.ReadAsStreamAsync();
 
-                List<Tuple<string, DateTime>> daysOff = stream.ReadAndDeserializeFromJson<List<Tuple<string, DateTime>>>();
+                List<DayOffOnLastDayPreviousMonthDto> daysOff = stream.ReadAndDeserializeFromJson<List<DayOffOnLastDayPreviousMonthDto>>();
 
                 return daysOff;
             }
@@ -654,7 +654,7 @@ namespace Client.Torun.Settings.Originator
                 for (int j = 0; j < _totalNumberOfDoctors; j++)
                 {
                     int index = j;
-                    var daysOff = _daysOff.FindAll(d => d.Item1 == _doctorIds[index]).Select(d => d.Item2.Day).ToList();
+                    var daysOff = _daysOff.FindAll(d => d.UserId == _doctorIds[index]).Select(d => d.Date.Day).ToList();
 
                     if (daysOff.Count == 0)
                     {
@@ -697,8 +697,8 @@ namespace Client.Torun.Settings.Originator
         {
             Parallel.ForEach(_individuals, (individual) =>
             {
-                List<KeyValuePair<string, Tuple<int, int, int>>> dutyRequirementsForMonth =
-                    new List<KeyValuePair<string, Tuple<int, int, int>>>(_dutyRequirementsForMonth);
+                List<DutyRequirementForMonthDto> dutyRequirementsForMonth =
+                    new List<DutyRequirementForMonthDto>(_dutyRequirementsForMonth);
                 List<string> doctorsAvailableForSchedule = new List<string>(_doctorIds);
 
                 for (int i = 0; i < DateTime.DaysInMonth(_date.Year, _date.Month); i++)
@@ -708,11 +708,11 @@ namespace Client.Torun.Settings.Originator
 
                     foreach (var doctorId in new List<string>(doctorsAvailableForSchedule))
                     {
-                        var doctorDutyRequirements = dutyRequirementsForMonth.FirstOrDefault(dr => dr.Key == doctorId);
+                        var doctorDutyRequirements = dutyRequirementsForMonth.FirstOrDefault(dr => dr.UserId == doctorId);
 
-                        if (!doctorDutyRequirements.Equals(default(KeyValuePair<Guid, Tuple<int, int, int>>)))
+                        if (doctorDutyRequirements != null)
                         {
-                            if (doctorDutyRequirements.Value.Item1 == 0)
+                            if (doctorDutyRequirements.RequiredTotalDutiesInMonth == 0)
                             {
                                 doctorsAvailableForSchedule.Remove(doctorId);
                             }
@@ -776,12 +776,11 @@ namespace Client.Torun.Settings.Originator
                                 foreach (var doctorId in new List<string>(doctorsAvailableForDay))
                                 {
                                     var doctorDutyRequirements =
-                                        dutyRequirementsForMonth.FirstOrDefault(dr => dr.Key == doctorId);
+                                        dutyRequirementsForMonth.FirstOrDefault(dr => dr.UserId == doctorId);
 
-                                    if (!doctorDutyRequirements.Equals(
-                                        default(KeyValuePair<Guid, Tuple<int, int, int>>)))
+                                    if (doctorDutyRequirements != null)
                                     {
-                                        if (doctorDutyRequirements.Value.Item3 == 0)
+                                        if (doctorDutyRequirements.RequiredTotalHolidayDuties == 0)
                                         {
                                             doctorsAvailableForDay.Remove(doctorId);
                                         }
@@ -800,12 +799,11 @@ namespace Client.Torun.Settings.Originator
                                 foreach (var doctorId in new List<string>(doctorsAvailableForDay))
                                 {
                                     var doctorDutyRequirements =
-                                        dutyRequirementsForMonth.FirstOrDefault(dr => dr.Key == doctorId);
+                                        dutyRequirementsForMonth.FirstOrDefault(dr => dr.UserId == doctorId);
 
-                                    if (!doctorDutyRequirements.Equals(
-                                        default(KeyValuePair<Guid, Tuple<int, int, int>>)))
+                                    if (doctorDutyRequirements != null)
                                     {
-                                        if (doctorDutyRequirements.Value.Item2 == 0)
+                                        if (doctorDutyRequirements.RequiredTotalWeekdayDuties == 0)
                                         {
                                             doctorsAvailableForDay.Remove(doctorId);
                                         }
@@ -829,10 +827,9 @@ namespace Client.Torun.Settings.Originator
                                     individual.Dna[index, i] = Allel.OnDuty;
 
                                     var doctorDutyRequirements =
-                                        dutyRequirementsForMonth.FirstOrDefault(d => d.Key == doctor);
+                                        dutyRequirementsForMonth.FirstOrDefault(d => d.UserId == doctor);
 
-                                    if (!doctorDutyRequirements.Equals(
-                                        default(KeyValuePair<Guid, Tuple<int, int, int>>)))
+                                    if (doctorDutyRequirements != null)
                                     {
                                         int requiredTotalDuties;
                                         int requiredWeekdayDuties;
@@ -840,21 +837,24 @@ namespace Client.Torun.Settings.Originator
 
                                         if (IsWeekendOrPublicHoliday(currentDate))
                                         {
-                                            requiredTotalDuties = doctorDutyRequirements.Value.Item1 - 1;
-                                            requiredWeekdayDuties = doctorDutyRequirements.Value.Item2;
-                                            requiredHolidayDuties = doctorDutyRequirements.Value.Item3 - 1;
+                                            requiredTotalDuties = doctorDutyRequirements.RequiredTotalDutiesInMonth - 1;
+                                            requiredWeekdayDuties = doctorDutyRequirements.RequiredTotalWeekdayDuties;
+                                            requiredHolidayDuties = doctorDutyRequirements.RequiredTotalHolidayDuties - 1;
                                         }
                                         else
                                         {
-                                            requiredTotalDuties = doctorDutyRequirements.Value.Item1 - 1;
-                                            requiredWeekdayDuties = doctorDutyRequirements.Value.Item2 - 1;
-                                            requiredHolidayDuties = doctorDutyRequirements.Value.Item3;
+                                            requiredTotalDuties = doctorDutyRequirements.RequiredTotalDutiesInMonth - 1;
+                                            requiredWeekdayDuties = doctorDutyRequirements.RequiredTotalWeekdayDuties - 1;
+                                            requiredHolidayDuties = doctorDutyRequirements.RequiredTotalHolidayDuties;
                                         }
 
-                                        KeyValuePair<string, Tuple<int, int, int>> updated =
-                                            new KeyValuePair<string, Tuple<int, int, int>>(doctorDutyRequirements.Key,
-                                                new Tuple<int, int, int>(requiredTotalDuties, requiredWeekdayDuties,
-                                                    requiredHolidayDuties));
+                                        DutyRequirementForMonthDto updated = new DutyRequirementForMonthDto
+                                        {
+                                            UserId = doctorDutyRequirements.UserId,
+                                            RequiredTotalDutiesInMonth = requiredTotalDuties,
+                                            RequiredTotalWeekdayDuties = requiredWeekdayDuties,
+                                            RequiredTotalHolidayDuties = requiredHolidayDuties
+                                        };
 
                                         dutyRequirementsForMonth.Remove(doctorDutyRequirements);
                                         dutyRequirementsForMonth.Add(updated);
@@ -912,7 +912,7 @@ namespace Client.Torun.Settings.Originator
         {
             int totalDutiesInMonth = DateTime.DaysInMonth(_date.Year, _date.Month);
 
-            int totalDutyRequirements = _dutyRequirementsForMonth.Select(dr => dr.Value.Item1).Sum();
+            int totalDutyRequirements = _dutyRequirementsForMonth.Select(dr => dr.RequiredTotalDutiesInMonth).Sum();
 
             return totalDutiesInMonth - totalDutyRequirements;
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -13,7 +14,8 @@ namespace Scheduler.Api.Utility
 
             foreach (var kv in data)
             {
-                dataToReturn.Add(kv.Key.ToShortDateString(), kv.Value);
+                string date = kv.Key.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
+                dataToReturn.Add(date, kv.Value);
             }
 
             return dataToReturn;

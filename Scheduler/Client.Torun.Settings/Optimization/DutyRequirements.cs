@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Client.Torun.Settings.Enumeration;
+using Client.Torun.Shared.DTOs;
 using Newtonsoft.Json;
 using Scheduler.Shared.Abstract;
 using Scheduler.Shared.Classes;
@@ -15,8 +16,8 @@ namespace Client.Torun.Settings.Optimization
     {
         private static readonly HttpClient HttpClient = new HttpClient();
         private readonly DateTime _date;
-        private List<Guid> _doctorIds;
-        private List<KeyValuePair<Guid, Tuple<int, int, int>>> _dutyRequirementsForMonth;
+        private List<string> _doctorIds;
+        private List<DutyRequirementForMonthDto> _dutyRequirementsForMonth;
 
         public DutyRequirements(DateTime date) : base()
         {
@@ -26,22 +27,22 @@ namespace Client.Torun.Settings.Optimization
         public override int CalculateGeneralCost(Individual individual)
         {
             int numberOfMatrixDutyRequirements = MatrixAssignedDutyRequirements(individual.Dna).Sum();
-            int numberOfRequiredDuties = _dutyRequirementsForMonth.Select(d => d.Value.Item1).Sum();
+            int numberOfRequiredDuties = _dutyRequirementsForMonth.Select(d => d.RequiredTotalDutiesInMonth).Sum();
 
             return (numberOfRequiredDuties - numberOfMatrixDutyRequirements);
         }
 
         public override int CalculateLocalCost(IAllel[] rowOfAlleles, int index)
         {
-            Guid doctor = _doctorIds[index];
-            KeyValuePair<Guid, Tuple<int, int, int>> dutyRequirement = _dutyRequirementsForMonth.FirstOrDefault(d => d.Key == doctor);
+            string doctor = _doctorIds[index];
+            DutyRequirementForMonthDto dutyRequirement = _dutyRequirementsForMonth.FirstOrDefault(d => d.UserId == doctor);
 
-            if (dutyRequirement.Equals(default(KeyValuePair<Guid, Tuple<int, int, int>>)))
+            if ( dutyRequirement == null)
             {
                 return 0;
             }
 
-            int numberOfRequiredDuties = dutyRequirement.Value.Item1;
+            int numberOfRequiredDuties = dutyRequirement.RequiredTotalDutiesInMonth;
             int numberOfAssignedDuties = rowOfAlleles.Count(a => a != null && a.Value == Allel.OnDuty.Value);
 
             return (numberOfRequiredDuties - numberOfAssignedDuties);
@@ -61,11 +62,11 @@ namespace Client.Torun.Settings.Optimization
         {
             for (int i = 0; i < dna.GetLength(0); i++)
             {
-                Guid doctor = _doctorIds[i];
-                KeyValuePair<Guid, Tuple<int, int, int>> dutyRequirement = _dutyRequirementsForMonth
-                    .FirstOrDefault(d => d.Key == doctor);
+                string doctor = _doctorIds[i];
+                DutyRequirementForMonthDto dutyRequirement = _dutyRequirementsForMonth
+                    .FirstOrDefault(d => d.UserId == doctor);
 
-                if (dutyRequirement.Equals(default(KeyValuePair<Guid, Tuple<int, int, int>>)))
+                if (dutyRequirement == null)
                 {
                     continue;
                 }
@@ -82,9 +83,9 @@ namespace Client.Torun.Settings.Optimization
             }
         }
 
-        private async Task<List<Guid>> GetDoctorIds()
+        private async Task<List<string>> GetDoctorIds()
         {
-            string url = @"http://localhost:50451/originator/doctor-ids";
+            string url = @"http://localhost:51301/originator/doctor-ids";
 
             var response = await HttpClient.GetAsync(url);
 
@@ -92,14 +93,14 @@ namespace Client.Torun.Settings.Optimization
 
             string content = await response.Content.ReadAsStringAsync();
 
-            List<Guid> doctorIds = JsonConvert.DeserializeObject<List<Guid>>(content);
+            List<string> doctorIds = JsonConvert.DeserializeObject<List<string>>(content);
 
             return doctorIds;
         }
 
-        private async Task<List<KeyValuePair<Guid, Tuple<int, int, int>>>> GetDutyRequirementsForMonth()
+        private async Task<List<DutyRequirementForMonthDto>> GetDutyRequirementsForMonth()
         {
-            string url = @"http://localhost:50451/originator/duty-requirements-for-month?year=" + _date.Year +
+            string url = @"http://localhost:51301/originator/duty-requirements-for-month?year=" + _date.Year +
                          "&month=" + _date.Month;
 
             var response = await HttpClient.GetAsync(url);
@@ -108,8 +109,8 @@ namespace Client.Torun.Settings.Optimization
 
             string content = await response.Content.ReadAsStringAsync();
 
-            List<KeyValuePair<Guid, Tuple<int, int, int>>> dutyRequirements =
-                JsonConvert.DeserializeObject<List<KeyValuePair<Guid, Tuple<int, int, int>>>>(content);
+            List<DutyRequirementForMonthDto> dutyRequirements =
+                JsonConvert.DeserializeObject<List<DutyRequirementForMonthDto>>(content);
 
             return dutyRequirements;
         }

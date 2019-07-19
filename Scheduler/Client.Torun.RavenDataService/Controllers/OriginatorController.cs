@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using Sparrow.Json;
 
 namespace Client.Torun.RavenDataService.Controllers
 {
@@ -16,11 +18,13 @@ namespace Client.Torun.RavenDataService.Controllers
     {
         private readonly DataServiceConfiguration _configuration;
         private readonly IDocumentStore _store;
+        private readonly IMapper _mapper;
 
-        public OriginatorController(DataServiceConfiguration configuration, IDocumentStoreHolder storeHolder)
+        public OriginatorController(DataServiceConfiguration configuration, IDocumentStoreHolder storeHolder, IMapper mapper)
         {
             _configuration = configuration;
             _store = storeHolder.Store;
+            _mapper = mapper;
         }
 
         [HttpGet("number-of-doctors-on-duty")]
@@ -62,15 +66,12 @@ namespace Client.Torun.RavenDataService.Controllers
         [HttpGet("doctor-ids")]
         public async Task<IActionResult> GetDoctorIds()
         {
-
             using (var session = _store.OpenAsyncSession())
             {
                 var doctorIds = await session.Query<User>().Select(u => u.Id).ToListAsync();
 
                 return Ok(doctorIds);
             }
-            
-            
         }
 
         [HttpGet("days-off")]
@@ -83,11 +84,20 @@ namespace Client.Torun.RavenDataService.Controllers
 
             using (var session = _store.OpenAsyncSession())
             {
-                List<Tuple<string, DateTime>> daysOff = await session.Query<DayOff>()
-                     .Where(d => d.Date.Year == dateFilter.Value.Year && d.Date.Month == dateFilter.Value.Month)
-                     .Select(d => new Tuple<string, DateTime>(d.UserId, d.Date)).ToListAsync();
+                if (await session.Query<DayOff>().AnyAsync())
+                {
+                    List<DayOffDto> daysOff = await session.Query<DayOff>()
+                        .Where(d => d.Date.Year == dateFilter.Value.Year && d.Date.Month == dateFilter.Value.Month)
+                        .Select(d => new DayOffDto { UserId = d.UserId, Date = d.Date }).ToListAsync();
 
-                return Ok(daysOff);
+                    return Ok(daysOff);
+                }
+                
+                //List<Tuple<string, DateTime>> daysOff = await session.Query<DayOff>()
+                //     .Where(d => d.Date.Year == dateFilter.Value.Year && d.Date.Month == dateFilter.Value.Month)
+                //     .Select(d => new Tuple<string, DateTime>(d.UserId, d.Date)).ToListAsync();
+
+                return Ok(new List<DayOffDto>());
                 
             }
                        
@@ -152,13 +162,28 @@ namespace Client.Torun.RavenDataService.Controllers
 
             using (var session = _store.OpenAsyncSession())
             {
-                var dutyRequirements = await session.Query<DutyRequirement>()
-                    .Where(dr => dr.Date.Year == currentYear && dr.Date.Month == currentMonth)
-                    .Select(dr => new KeyValuePair<string, Tuple<int, int, int>>(dr.UserId,
-                    new Tuple<int, int, int>(dr.RequiredTotalDutiesInMonth, dr.TotalWeekdayDuties, dr.TotalHolidayDuties)))
-                    .ToListAsync();
+                if (await session.Query<DutyRequirement>().AnyAsync())
+                {
+                    List<DutyRequirementForMonthDto> dutyRequirements = await session.Query<DutyRequirement>()
+                        .Where(dr => dr.Date.Year == currentYear && dr.Date.Month == currentMonth)
+                        .Select(dr => new DutyRequirementForMonthDto
+                        {
+                            UserId = dr.UserId,
+                            RequiredTotalDutiesInMonth = dr.RequiredTotalDutiesInMonth,
+                            RequiredTotalHolidayDuties = dr.TotalHolidayDuties,
+                            RequiredTotalWeekdayDuties = dr.TotalWeekdayDuties
+                        }).ToListAsync();
 
-                return Ok(dutyRequirements);
+                    return Ok(dutyRequirements);
+                }
+                
+                //var dutyRequirements = await session.Query<DutyRequirement>()
+                //    .Where(dr => dr.Date.Year == currentYear && dr.Date.Month == currentMonth)
+                //    .Select(dr => new KeyValuePair<string, Tuple<int, int, int>>(dr.UserId,
+                //    new Tuple<int, int, int>(dr.RequiredTotalDutiesInMonth, dr.TotalWeekdayDuties, dr.TotalHolidayDuties)))
+                //    .ToListAsync();
+
+                return Ok(new List<DutyRequirementForMonthDto>());
             }
         }
 
@@ -180,13 +205,19 @@ namespace Client.Torun.RavenDataService.Controllers
 
             using (var session = _store.OpenAsyncSession())
             {
-                var doctors = await session.Query<Duty>()
-                    .Where(d => d.Date.Year == previousMonth.Year &&
-                                d.Date.Month == previousMonth.Month &&
-                                d.Date.Day == DateTime.DaysInMonth(previousMonth.Year, previousMonth.Month))
-                    .Select(d => d.UserId).ToListAsync();
+                if (await session.Query<Duty>().AnyAsync())
+                {
+                    var doctors = await session.Query<Duty>()
+                        .Where(d => d.Date.Year == previousMonth.Year &&
+                                    d.Date.Month == previousMonth.Month &&
+                                    d.Date.Day == DateTime.DaysInMonth(previousMonth.Year, previousMonth.Month))
+                        .Select(d => d.UserId).ToListAsync();
 
-                return Ok(doctors);
+                    return Ok(doctors);
+                }
+
+                return Ok(new List<string>());
+                
             }
         }
 
@@ -209,12 +240,25 @@ namespace Client.Torun.RavenDataService.Controllers
 
             using (var session = _store.OpenAsyncSession())
             {
-                var daysOff = await session.Query<DayOff>()
-                    .Where(d => d.Date.Year == previousMonthDate.Year && d.Date.Month == previousMonthDate.Month && d.Date.Day == lastDay)
-                    .Select(d => new Tuple<string, DateTime>(d.UserId, d.Date))
-                    .ToListAsync();
+                if (await session.Query<DayOff>().AnyAsync())
+                {
+                    List<DayOffOnLastDayPreviousMonthDto> daysOff = await session.Query<DayOff>()
+                        .Where(d => d.Date.Year == previousMonthDate.Year && d.Date.Month == previousMonthDate.Month &&
+                                    d.Date.Day == lastDay)
+                        .Select(d => new DayOffOnLastDayPreviousMonthDto { UserId = d.UserId, Date = d.Date })
+                        .ToListAsync();
 
-                return Ok(daysOff);
+                    return Ok(daysOff);
+                }
+
+                
+
+                //var daysOff = await session.Query<DayOff>()
+                //    .Where(d => d.Date.Year == previousMonthDate.Year && d.Date.Month == previousMonthDate.Month && d.Date.Day == lastDay)
+                //    .Select(d => new Tuple<string, DateTime>(d.UserId, d.Date))
+                //    .ToListAsync();
+
+                return Ok(new List<DayOffOnLastDayPreviousMonthDto>());
             }
                             
         }
@@ -225,16 +269,19 @@ namespace Client.Torun.RavenDataService.Controllers
 
             using (var session = _store.OpenAsyncSession())
             {
-                var doctorDtos = await session.Query<User>()
-                    .Select(u => new DoctorDto() { }).ToListAsync();
+                if (await session.Query<User>().AnyAsync())
+                {
+                    var users = await session.Query<User>().ToListAsync();
 
-                return Ok(doctorDtos);
+                    var doctorDtos = _mapper.Map<List<DoctorDto>>(users);
+
+                    return Ok(doctorDtos);
+                }
+                
+                return Ok(new List<DoctorDto>());
             }
-                                  
         }
-
-
-
+        
         private DateTime CalculateEasterDate(int year)
         {
             int day = 0;
