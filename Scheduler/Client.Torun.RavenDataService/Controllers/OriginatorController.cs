@@ -9,10 +9,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using Sparrow.Json;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Client.Torun.RavenDataService.Controllers
 {
+    [Authorize]
     [Route("originator")]
     public class OriginatorController : Controller
     {

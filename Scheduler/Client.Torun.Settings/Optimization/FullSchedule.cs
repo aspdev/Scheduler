@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Client.Torun.Settings.Enumeration;
@@ -16,14 +18,31 @@ namespace Client.Torun.Settings.Optimization
     {
         private readonly DateTime _date;
         private static readonly HttpClient HttpClient = new HttpClient();
+        
         private int _numberOfDoctorsOnDuty;
+        private static string _auth;
         
 
 
-        public FullSchedule(DateTime date) : base()
+        public FullSchedule(string authorizationToken, DateTime date) : base()
         {
+            if (string.IsNullOrEmpty(_auth))
+            {
+                _auth = authorizationToken;
+                HttpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {_auth}");
+            }
+            else
+            {
+                if (string.Equals(_auth, authorizationToken, StringComparison.Ordinal) == false)
+                {
+                    _auth = authorizationToken;
+                    HttpClient.DefaultRequestHeaders.Remove("Authorization");
+                    HttpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {_auth}");
+                }
+            }
+
             _date = date;
-           
+
         }
 
         public override int CalculateGeneralCost(Individual individual)
@@ -68,7 +87,7 @@ namespace Client.Torun.Settings.Optimization
             string url = @"http://localhost:51301/originator/number-of-doctors-on-duty";
 
             var response = await HttpClient.GetAsync(url);
-
+            
             response.EnsureSuccessStatusCode();
 
             string content = await response.Content.ReadAsStringAsync();

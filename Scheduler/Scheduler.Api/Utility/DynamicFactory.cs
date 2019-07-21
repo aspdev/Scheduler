@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Scheduler.Shared.Abstract;
 using Scheduler.Shared.Interfaces;
 
@@ -12,7 +13,7 @@ namespace Scheduler.Api.Utility
     public static class DynamicFactory
     {
         
-        public static ISpeciesOriginator GetSpeciesOriginator(string assemblyPath, DateTime date)
+        public static ISpeciesOriginator GetSpeciesOriginator(string assemblyPath, DateTime date, List<Object> arguments)
         {
            AppDomain.CurrentDomain.AssemblyResolve += new ResolveEventHandler(CurrentDomain_AssemblyResolve);
 
@@ -35,9 +36,13 @@ namespace Scheduler.Api.Utility
             {
                 if (type.IsClass && typeof(ISpeciesOriginator).IsAssignableFrom(type))
                 {
-                    Object[] args = {date};
+                    arguments.Add(date);
+                    Object[] args = arguments.ToArray();
+
+                    // parametry w konstruktorach muszą mieć taką samą kolejność jak w talicy Object[] args;
 
                     speciesOriginator = Activator.CreateInstance(type, args) as ISpeciesOriginator;
+                    arguments.Remove(date);
                     break;
                 }
             }
@@ -47,7 +52,7 @@ namespace Scheduler.Api.Utility
         }
           
 
-        public static List<Requirement> GetRequirements(string assemblyPath, DateTime date)
+        public static List<Requirement> GetRequirements(string assemblyPath, DateTime date, List<Object> arguments)
         {
             if (!Directory.Exists(assemblyPath))
             {
@@ -67,10 +72,14 @@ namespace Scheduler.Api.Utility
             {
                 if (type.IsClass && type.IsSubclassOf(typeof(Requirement)))
                 {
-                    Object[] args = { date };
+                    arguments.Add(date);
+                    Object[] args = arguments.ToArray();
+
+                    // parametry w konstruktorach muszą mieć taką samą kolejność jak w talicy Object[] args;
 
                     Requirement requirement = Activator.CreateInstance(type, args) as Requirement;
                     requirements.Add(requirement);
+                    arguments.Remove(date);
                 }
             }
 

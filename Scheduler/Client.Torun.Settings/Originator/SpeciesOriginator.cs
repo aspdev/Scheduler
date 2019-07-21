@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using Client.Torun.Settings.Enumeration;
@@ -30,10 +32,12 @@ namespace Client.Torun.Settings.Originator
             DefaultRequestHeaders =
             {
                 Accept = { new MediaTypeWithQualityHeaderValue("application/json")}, 
-                AcceptEncoding = { new StringWithQualityHeaderValue("gzip")}
+                AcceptEncoding = { new StringWithQualityHeaderValue("gzip")},
+
             }
         };
 
+        private static string _auth;
         private SpinLock _spinLock = new SpinLock();
         private readonly DateTime _date;
         private int _numberOfDoctorsOnDuty;
@@ -61,12 +65,26 @@ namespace Client.Torun.Settings.Originator
         {
             get { return _daysOff.Select(d => d.Date).GroupBy(d => d.Day).ToList(); }
         }
-
-
-        public SpeciesOriginator(DateTime date)
+        
+        public SpeciesOriginator(string authorizationToken, DateTime date)
         {
-            _date = date;
+            if (string.IsNullOrEmpty(_auth))
+            {
+                _auth = authorizationToken;
+                HttpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {_auth}");
+            }
+            else
+            {
+                if (string.Equals(_auth, authorizationToken, StringComparison.Ordinal) == false)
+                {
+                    _auth = authorizationToken;
+                    HttpClient.DefaultRequestHeaders.Remove("Authorization");
+                    HttpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {_auth}");
+                }
+            }
             
+            _date = date;
+           
         }
 
         public async Task SetDataFromCustomApi()
@@ -481,7 +499,7 @@ namespace Client.Torun.Settings.Originator
         private async Task<int> GetPopulationSizeAsync()
         {
             string url = "originator/population-size";
-
+            
             using (var response = await HttpClient.GetAsync(url,
                 HttpCompletionOption.ResponseHeadersRead))
             {
@@ -498,7 +516,7 @@ namespace Client.Torun.Settings.Originator
         private async Task<int> GetTotalNumberOfDoctorsAsync()
         {
             string url = "originator/total-number-of-doctors";
-
+            
             using (var response = await HttpClient.GetAsync(url, 
                 HttpCompletionOption.ResponseHeadersRead))
             {
@@ -516,7 +534,7 @@ namespace Client.Torun.Settings.Originator
         private async Task<List<string>> GetDoctorIdsAsync()
         {
             string url = "originator/doctor-ids";
-
+            
             using (var response = await HttpClient.GetAsync(url, 
                 HttpCompletionOption.ResponseHeadersRead))
             {
@@ -534,7 +552,7 @@ namespace Client.Torun.Settings.Originator
         private async Task<List<DayOffDto>> GetDaysOffAsync()
         {
             string url = "originator/days-off?dateFilter=" + _date;
-
+            
             using (var response = await HttpClient.GetAsync(url, 
                 HttpCompletionOption.ResponseHeadersRead))
             {
@@ -553,7 +571,7 @@ namespace Client.Torun.Settings.Originator
         {
             string url = "originator/public-holidays?year=" + _date.Year + "&month=" +
                          _date.Month;
-
+            
             using (var response = await HttpClient.GetAsync(url, 
                 HttpCompletionOption.ResponseHeadersRead))
             {
@@ -572,7 +590,7 @@ namespace Client.Torun.Settings.Originator
         {
             string url = "originator/duty-requirements-for-month?year=" + _date.Year +
                          "&month=" + _date.Month;
-
+            
             using (var response = await HttpClient.GetAsync(url, 
                 HttpCompletionOption.ResponseHeadersRead))
             {
@@ -592,7 +610,7 @@ namespace Client.Torun.Settings.Originator
         {
             string url = "originator/doctors-on-duty-on-last-day-previous-month?=" +
                          _date.Year + "&month=" + _date.Month;
-
+            
             using (var response = await HttpClient.GetAsync(url, 
                 HttpCompletionOption.ResponseHeadersRead))
             {
@@ -611,7 +629,7 @@ namespace Client.Torun.Settings.Originator
         {
             string url = "originator/days-off-on-last-day-previous-month?=" +
                          _date.Year + "&month=" + _date.Month;
-
+           
             using (var response = await HttpClient.GetAsync(url, 
                 HttpCompletionOption.ResponseHeadersRead))
             {

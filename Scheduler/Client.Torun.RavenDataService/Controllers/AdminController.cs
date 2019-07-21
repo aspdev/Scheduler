@@ -22,6 +22,7 @@ using Client.Torun.RavenDataService.Config;
 
 namespace Client.Torun.RavenDataService.Controllers
 {
+    [Authorize]
     [Route("admin")]
     public class AdminController : Controller
     {

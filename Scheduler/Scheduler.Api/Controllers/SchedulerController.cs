@@ -4,6 +4,7 @@ using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Scheduler.Api.Models;
@@ -36,16 +37,16 @@ namespace Scheduler.Api.Controllers
 
             string assemblyPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().GetName().CodeBase)
                                       .Substring(6) + Path.DirectorySeparatorChar + scheduleCreator.AssemblyDirName;
-                       
+
 
             if (!scheduleCreator.Date.HasValue)
             {
                 return BadRequest();
             }
 
-            ISpeciesOriginator speciesOriginator = DynamicFactory.GetSpeciesOriginator(assemblyPath, scheduleCreator.Date.Value);
+            ISpeciesOriginator speciesOriginator = DynamicFactory.GetSpeciesOriginator(assemblyPath, scheduleCreator.Date.Value, scheduleCreator.Args);
 
-            List<Requirement> requirements = DynamicFactory.GetRequirements(assemblyPath, scheduleCreator.Date.Value);
+            List<Requirement> requirements = DynamicFactory.GetRequirements(assemblyPath, scheduleCreator.Date.Value, scheduleCreator.Args);
 
             await speciesOriginator.SetDataFromCustomApi();
 

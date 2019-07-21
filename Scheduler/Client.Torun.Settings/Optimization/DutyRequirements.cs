@@ -18,10 +18,27 @@ namespace Client.Torun.Settings.Optimization
         private readonly DateTime _date;
         private List<string> _doctorIds;
         private List<DutyRequirementForMonthDto> _dutyRequirementsForMonth;
+        private static string _auth;
 
-        public DutyRequirements(DateTime date) : base()
+        public DutyRequirements(string authorizationToken, DateTime date) : base()
         {
+            if (string.IsNullOrEmpty(_auth))
+            {
+                _auth = authorizationToken;
+                HttpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {_auth}");
+            }
+            else
+            {
+                if (string.Equals(_auth, authorizationToken, StringComparison.Ordinal) == false)
+                {
+                    _auth = authorizationToken;
+                    HttpClient.DefaultRequestHeaders.Remove("Authorization");
+                    HttpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {_auth}");
+                }
+            }
+
             _date = date;
+
         }
 
         public override int CalculateGeneralCost(Individual individual)
@@ -86,6 +103,7 @@ namespace Client.Torun.Settings.Optimization
         private async Task<List<string>> GetDoctorIds()
         {
             string url = @"http://localhost:51301/originator/doctor-ids";
+            
 
             var response = await HttpClient.GetAsync(url);
 
@@ -102,9 +120,10 @@ namespace Client.Torun.Settings.Optimization
         {
             string url = @"http://localhost:51301/originator/duty-requirements-for-month?year=" + _date.Year +
                          "&month=" + _date.Month;
+            
 
             var response = await HttpClient.GetAsync(url);
-
+            
             response.EnsureSuccessStatusCode();
 
             string content = await response.Content.ReadAsStringAsync();

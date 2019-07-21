@@ -35,7 +35,8 @@ namespace IdentityServer
         {
             return new List<ApiResource>
             {
-                new ApiResource("api1", "My API")
+                new ApiResource("api1", "Scheduler.Api"),
+                new ApiResource("api2", "Client.Torun.RavenDataService")
             };
         }
 
