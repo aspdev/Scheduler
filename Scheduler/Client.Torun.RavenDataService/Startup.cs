@@ -58,7 +58,7 @@ namespace Client.Torun.RavenDataService
             {
                 options.AddPolicy("RavenDataServiceApiPolicy", policy =>
 
-                    policy.WithOrigins("http://localhost:8081", "http://localhost:44388")
+                    policy.WithOrigins("http://localhost:8081")
                     .AllowAnyHeader()
                     .AllowAnyMethod()
                     .WithExposedHeaders("X-Pagination")
