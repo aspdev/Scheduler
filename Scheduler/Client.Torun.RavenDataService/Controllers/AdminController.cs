@@ -157,6 +157,18 @@ namespace Client.Torun.RavenDataService.Controllers
 
         }
 
+        [HttpGet("allusers")]
+        public async Task<IActionResult> GetAllUsersWithoutPaging()
+        {
+            using (var session = _store.OpenAsyncSession())
+            {
+                var allUsers = await session.Query<User>().ToListAsync();
+                var allUsersToReturn = _mapper.Map<IEnumerable<UserToReturnDto>>(allUsers);
+
+                return Ok(allUsersToReturn);
+            }
+        }
+
         private string CreateGetUsersResourceUri(ResourceUriType type, int pageNumber, int pageSize, string routeName)
         {
             switch (type)

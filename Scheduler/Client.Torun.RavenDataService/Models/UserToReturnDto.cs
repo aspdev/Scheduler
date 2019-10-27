@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Client.Torun.RavenDataService.Models
+﻿namespace Client.Torun.RavenDataService.Models
 {
     public class UserToReturnDto
     {
