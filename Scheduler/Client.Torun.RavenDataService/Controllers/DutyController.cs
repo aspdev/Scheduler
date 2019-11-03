@@ -4,13 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Client.Torun.RavenDataService.DataStore;
 using Client.Torun.RavenDataService.Entities;
+using Client.Torun.RavenDataService.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Org.BouncyCastle.Math.EC.Rfc7748;
 using Raven.Client.Documents;
 using Raven.Client.Documents.Operations;
 using Raven.Client.Documents.Queries;
-using Raven.Client.Exceptions.Documents.Indexes;
 
 namespace Client.Torun.RavenDataService.Controllers
 {
@@ -91,6 +90,114 @@ namespace Client.Torun.RavenDataService.Controllers
             }
 
             return Ok();
+        }
+
+        [HttpGet("duties/month")]
+        public async Task<IActionResult> GetDuties([FromQuery] string currentDate)
+        {
+            if (currentDate is null)
+            {
+                return BadRequest();
+            }
+
+            if (DateTime.TryParse(currentDate, out var parsedCurrentDate) == false)
+            {
+                return BadRequest();
+            }
+
+            using (var session = _store.OpenAsyncSession())
+            {
+                var dutiesForCurrentDateLazy = session.Query<Duty>().Where(duty => duty.Date.Year == parsedCurrentDate.Year
+                                                    && duty.Date.Month == parsedCurrentDate.Month).LazilyAsync();
+
+                var usersLazy = session.Query<User>().LazilyAsync();
+
+                var dutiesForCurrentDate = await dutiesForCurrentDateLazy.Value as List<Duty>;
+                var users = await usersLazy.Value as List<User>;
+
+                if (users is null)
+                {
+                    throw new ArgumentException("Cannot assign duties while User collection is empty");
+                }
+
+                if (dutiesForCurrentDate is null || dutiesForCurrentDate.Count == 0)
+                {
+                    return NoContent();
+                }
+                
+                var listOfDutiesForMonth = new List<DutyForMonthDto>();
+
+                foreach (var duty in dutiesForCurrentDate)
+                {
+                    var doctor =  users.FirstOrDefault(user => user.Id == duty.UserId);
+
+                    var dutyForMonth = new DutyForMonthDto
+                    {
+                        Name = doctor is null ? "User deleted" : $"{doctor.FirstName} {doctor.LastName}",
+                        Date = duty.Date.ToString("yyyy-MM-dd"),
+                        DoctorId = duty.UserId,
+                        DutyId = duty.Id
+                    };
+
+                    listOfDutiesForMonth.Add(dutyForMonth);
+                }
+
+                return Ok(listOfDutiesForMonth);
+            }
+        }
+
+        [HttpDelete("duties")]
+        public async Task<IActionResult> DeleteDuty([FromQuery] string dutyId)
+        {
+            if (dutyId is null)
+            {
+                return BadRequest();
+            }
+
+            using (var session = _store.OpenAsyncSession())
+            {
+                session.Delete(dutyId);
+                await session.SaveChangesAsync();
+
+                return Ok();
+            }
+        }
+
+        [HttpPost("duties/dutytosave")]
+        public async Task<IActionResult> SaveDuty([FromBody] DutyToSaveDto dutyToSave)
+        {
+            if (dutyToSave is null)
+            {
+                return BadRequest();
+            }
+
+            using (var session = _store.OpenAsyncSession())
+            {
+                var result = DateTime.TryParse(dutyToSave.Date, out var date);
+
+                if (result == false)
+                {
+                    return BadRequest();
+                }
+
+                var duty = new Duty
+                {
+                    Date = date,
+                    UserId = dutyToSave.DoctorId
+                };
+
+                await session.StoreAsync(duty);
+                await session.SaveChangesAsync();
+
+                var savedDutyToReturnDto = new SavedDutyToReturnDto
+                {
+                    Date = duty.Date.ToString("yyyy-MM-dd"),
+                    DoctorId = duty.UserId,
+                    DutyId = duty.Id
+                };
+
+                return Ok(savedDutyToReturnDto);
+            }
         }
     }
 }

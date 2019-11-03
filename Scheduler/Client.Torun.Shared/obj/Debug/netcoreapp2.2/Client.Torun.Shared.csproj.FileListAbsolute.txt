@@ -10,7 +10,6 @@ C:\Users\Łukasz\Desktop\Scheduler\Client.Torun.Shared\obj\Debug\netcoreapp2.2\C
 C:\Projects\Scheduler\Scheduler\Client.Torun.Shared\bin\Debug\netcoreapp2.2\Client.Torun.Shared.deps.json
 C:\Projects\Scheduler\Scheduler\Client.Torun.Shared\bin\Debug\netcoreapp2.2\Client.Torun.Shared.dll
 C:\Projects\Scheduler\Scheduler\Client.Torun.Shared\bin\Debug\netcoreapp2.2\Client.Torun.Shared.pdb
-C:\Projects\Scheduler\Scheduler\Client.Torun.Shared\obj\Debug\netcoreapp2.2\Client.Torun.Shared.csproj.CoreCompileInputs.cache
 C:\Projects\Scheduler\Scheduler\Client.Torun.Shared\obj\Debug\netcoreapp2.2\Client.Torun.Shared.AssemblyInfoInputs.cache
 C:\Projects\Scheduler\Scheduler\Client.Torun.Shared\obj\Debug\netcoreapp2.2\Client.Torun.Shared.AssemblyInfo.cs
 C:\Projects\Scheduler\Scheduler\Client.Torun.Shared\obj\Debug\netcoreapp2.2\Client.Torun.Shared.dll

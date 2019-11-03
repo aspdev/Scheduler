@@ -8,15 +8,9 @@ using Raven.Client.Documents;
 using Raven.Client.Documents.Session;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 using Microsoft.AspNetCore.Authorization;
-using MimeKit;
-using MailKit.Net.Smtp;
-using MailKit.Security;
-using MimeKit.Text;
 using Scheduler.Mailer.Interfaces;
 using Client.Torun.RavenDataService.Config;
 

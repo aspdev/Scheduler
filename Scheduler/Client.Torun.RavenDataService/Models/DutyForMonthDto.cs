@@ -10,5 +10,6 @@ namespace Client.Torun.RavenDataService.Models
         public string Name { get; set; }
         public string Date { get; set; }
         public string DoctorId { get; set; }
+        public string DutyId { get; set; }
     }
 }
