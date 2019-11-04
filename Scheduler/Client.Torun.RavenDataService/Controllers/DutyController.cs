@@ -199,5 +199,32 @@ namespace Client.Torun.RavenDataService.Controllers
                 return Ok(savedDutyToReturnDto);
             }
         }
+
+        [HttpPut("duties/dutytoupdate")]
+        public async Task<IActionResult> UpdateDuty([FromBody] DutyToUpdate dutyToUpdate)
+        {
+            if (dutyToUpdate is null)
+            {
+                return BadRequest();
+            }
+
+            using (var session = _store.OpenAsyncSession())
+            {
+                var duty = await session.LoadAsync<Duty>(dutyToUpdate.DutyId);
+
+                duty.Date = DateTime.Parse(dutyToUpdate.NewDate);
+
+                await session.SaveChangesAsync();
+
+                var updatedDutyToReturnDto = new UpdatedDutyToReturnDto()
+                {
+                    Date = duty.Date.ToString("yyyy-MM-dd"),
+                    DoctorId = duty.UserId,
+                    DutyId = duty.Id
+                };
+
+                return Ok(updatedDutyToReturnDto);
+            }
+        }
     }
 }
