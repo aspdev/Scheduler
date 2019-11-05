@@ -7,6 +7,7 @@ using Client.Torun.RavenDataService.Entities;
 using Client.Torun.RavenDataService.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 using Raven.Client.Documents;
 using Raven.Client.Documents.Operations;
 using Raven.Client.Documents.Queries;
@@ -224,6 +225,50 @@ namespace Client.Torun.RavenDataService.Controllers
                 };
 
                 return Ok(updatedDutyToReturnDto);
+            }
+        }
+
+        [HttpPost("duties/doctor")]
+        public async Task<IActionResult> GetDutiesForDoctor([FromBody]ParamsToGetDutiesForDoctorDto paramsToGetDutiesForDoctor)
+        {
+            if (paramsToGetDutiesForDoctor is null)
+            {
+                return BadRequest();
+            }
+
+            DateTime.TryParse(paramsToGetDutiesForDoctor.Date, out var dateFromParams);
+
+            if (dateFromParams == default)
+            {
+                return BadRequest();
+            }
+
+            using (var session = _store.OpenAsyncSession())
+            {
+
+                var dutiesLazy = session.Query<Duty>()
+                    .Where(duty => duty.UserId == paramsToGetDutiesForDoctor.DoctorId &&
+                                   duty.Date.Year == dateFromParams.Year &&
+                                   duty.Date.Month == dateFromParams.Month)
+                    .LazilyAsync();
+
+                var doctorLazy = session.Advanced.Lazily.LoadAsync<User>(paramsToGetDutiesForDoctor.DoctorId);
+
+                var duties = (List<Duty>) await dutiesLazy.Value;
+                var doctor = await doctorLazy.Value;
+
+                var dutiesForDoctor = new List<DutyForDoctorDto>();
+
+                if (duties.Any())
+                {
+                    dutiesForDoctor = duties.Select(duty => new DutyForDoctorDto
+                    {
+                        Name = $"{doctor.FirstName} {doctor.LastName}",
+                        Date = duty.Date.ToString("yyyy-MM-dd")
+                    }).ToList();
+                }
+
+                return Ok(dutiesForDoctor);
             }
         }
     }
