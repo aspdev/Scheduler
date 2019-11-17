@@ -1,0 +1,481 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Projects\Scheduler\Scheduler" t="IncludeFlat">
+      <e p="Client.Torun.DataService" t="IncludeRecursive">
+        <e p="appsettings.Development.json" t="Include" />
+        <e p="appsettings.json" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Client.Torun.DataService.csproj" t="IncludeRecursive" />
+        <e p="Config" t="Include">
+          <e p="DataServiceConfiguration.cs" t="Include" />
+        </e>
+        <e p="Controllers" t="Include">
+          <e p="OriginatorController.cs" t="Include" />
+          <e p="UserController.cs" t="Include" />
+        </e>
+        <e p="DataServiceContext.cs" t="Include" />
+        <e p="Entities" t="Include">
+          <e p="AdminSettings.cs" t="Include" />
+          <e p="DayOff.cs" t="Include" />
+          <e p="DayOffRequest.cs" t="Include" />
+          <e p="DayOffRequestStatus.cs" t="Include" />
+          <e p="Duty.cs" t="Include" />
+          <e p="DutyRequirement.cs" t="Include" />
+          <e p="SchedulerRole.cs" t="Include" />
+          <e p="User.cs" t="Include" />
+        </e>
+        <e p="EntityConfigurations" t="Include">
+          <e p="AdminSettingsConfiguration.cs" t="Include" />
+          <e p="DayOffConfiguration.cs" t="Include" />
+          <e p="DayOffRequestConfiguration.cs" t="Include" />
+          <e p="DayOffRequestStatusConfiguration.cs" t="Include" />
+          <e p="DutyConfiguration.cs" t="Include" />
+          <e p="DutyRequirementConfiguration.cs" t="Include" />
+          <e p="SchedulerRoleConfiguration.cs" t="Include" />
+          <e p="UserConfiguration.cs" t="Include" />
+        </e>
+        <e p="Enums" t="Include">
+          <e p="RequestStatus.cs" t="Include" />
+          <e p="Role.cs" t="Include" />
+        </e>
+        <e p="Extentions" t="Include">
+          <e p="ExceptionMiddlewareExtention.cs" t="Include" />
+          <e p="HttpRequestExtention.cs" t="Include" />
+          <e p="HttpResponseExtention.cs" t="Include" />
+        </e>
+        <e p="Interfaces" t="Include">
+          <e p="IRepository.cs" t="Include" />
+        </e>
+        <e p="Migrations" t="Include">
+          <e p="20190215103514_InitialMigration.cs" t="Include" />
+          <e p="20190215103514_InitialMigration.Designer.cs" t="Include" />
+          <e p="DataServiceContextModelSnapshot.cs" t="Include" />
+        </e>
+        <e p="Nlog.config" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.2" t="Include">
+              <e p="Client.Torun.DataService.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="launchSettings.json" t="Include" />
+        </e>
+        <e p="Repository" t="Include">
+          <e p="DataServiceRepository.cs" t="Include" />
+        </e>
+        <e p="Startup.cs" t="Include" />
+      </e>
+      <e p="Client.Torun.RavenDataService" t="IncludeRecursive">
+        <e p="appsettings.Development.json" t="Include" />
+        <e p="appsettings.json" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Client.Torun.RavenDataService.csproj" t="IncludeRecursive" />
+        <e p="Config" t="Include">
+          <e p="DataServiceConfiguration.cs" t="Include" />
+        </e>
+        <e p="Controllers" t="Include">
+          <e p="AdminController.cs" t="Include" />
+          <e p="DutyController.cs" t="Include" />
+          <e p="OriginatorController.cs" t="Include" />
+          <e p="UserController.cs" t="Include" />
+        </e>
+        <e p="DataStore" t="Include">
+          <e p="DocumentStoreHolder.cs" t="Include" />
+          <e p="IDocumentStoreHolder.cs" t="Include" />
+        </e>
+        <e p="Entities" t="Include">
+          <e p="AdminSettings.cs" t="Include" />
+          <e p="DayOff.cs" t="Include" />
+          <e p="DayOffRequest.cs" t="Include" />
+          <e p="Duty.cs" t="Include" />
+          <e p="DutyRequirement.cs" t="Include" />
+          <e p="User.cs" t="Include" />
+        </e>
+        <e p="Enums" t="Include">
+          <e p="RequestStatus.cs" t="Include" />
+          <e p="ResourceUriType.cs" t="Include" />
+        </e>
+        <e p="Extentions" t="Include">
+          <e p="ExceptionMiddlewareExtention.cs" t="Include" />
+          <e p="HttpRequestExtention.cs" t="Include" />
+          <e p="HttpResponseExtention.cs" t="Include" />
+        </e>
+        <e p="Helpers" t="Include">
+          <e p="RandomPasswordGenerator.cs" t="Include" />
+        </e>
+        <e p="Mappings" t="Include">
+          <e p="MappingProfile.cs" t="Include" />
+        </e>
+        <e p="Models" t="Include">
+          <e p="DutyForDoctorDto.cs" t="Include" />
+          <e p="DutyForMonthDto.cs" t="Include" />
+          <e p="DutyToSaveDto.cs" t="Include" />
+          <e p="DutyToUpdate.cs" t="Include" />
+          <e p="IsRequirementSetParamsDto.cs" t="Include" />
+          <e p="ParamsToGetDutiesForDoctorDto.cs" t="Include" />
+          <e p="PostCreationRequirementToReturnDto.cs" t="Include" />
+          <e p="PostCreationUserToReturnDto.cs" t="Include" />
+          <e p="RequirementToSetDto.cs" t="Include" />
+          <e p="RequirementToUpdateDto.cs" t="Include" />
+          <e p="SavedDutyToReturnDto.cs" t="Include" />
+          <e p="UpdatedDutyToReturnDto.cs" t="Include" />
+          <e p="UserToCreateDto.cs" t="Include" />
+          <e p="UserToReturnDto.cs" t="Include" />
+        </e>
+        <e p="Nlog.config" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.2" t="Include">
+              <e p="Client.Torun.RavenDataService.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="launchSettings.json" t="Include" />
+        </e>
+        <e p="Startup.cs" t="Include" />
+      </e>
+      <e p="Client.Torun.Settings" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Client.Torun.Settings.csproj" t="IncludeRecursive" />
+        <e p="Enumeration" t="Include">
+          <e p="Allel.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.2" t="Include">
+              <e p="Client.Torun.Settings.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Optimization" t="Include">
+          <e p="DutyRequirements.cs" t="Include" />
+          <e p="FullSchedule.cs" t="Include" />
+        </e>
+        <e p="Originator" t="Include">
+          <e p="SpeciesOriginator.cs" t="Include" />
+        </e>
+        <e p="Utility" t="Include">
+          <e p="RandomGenerator.cs" t="Include" />
+        </e>
+      </e>
+      <e p="Client.Torun.Shared" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Client.Torun.Shared.csproj" t="IncludeRecursive" />
+        <e p="DTOs" t="Include">
+          <e p="DayOffDto.cs" t="Include" />
+          <e p="DayOffOnLastDayPreviousMonthDto.cs" t="Include" />
+          <e p="DoctorDto.cs" t="Include" />
+          <e p="DutyRequirementForMonthDto.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.2" t="Include">
+              <e p="Client.Torun.Shared.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="IdentityServer" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Config.cs" t="Include" />
+        <e p="DataStore" t="Include">
+          <e p="DocumentStoreHolder.cs" t="Include" />
+          <e p="IDocumentStoreHolder.cs" t="Include" />
+        </e>
+        <e p="Entities" t="Include">
+          <e p="Client.cs" t="Include" />
+          <e p="Role.cs" t="Include" />
+          <e p="User.cs" t="Include" />
+        </e>
+        <e p="Extentions" t="Include">
+          <e p="CustomIdentityServerBuilderExtentions.cs" t="Include" />
+        </e>
+        <e p="IdentityServer.csproj" t="IncludeRecursive" />
+        <e p="identityserver4_log.txt" t="Include" />
+        <e p="Interfaces" t="Include">
+          <e p="IUserRepository.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.1" t="Include">
+              <e p="IdentityServer.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="launchSettings.json" t="Include" />
+        </e>
+        <e p="Quickstart" t="Include">
+          <e p="Account" t="Include">
+            <e p="AccountController.cs" t="Include" />
+            <e p="AccountOptions.cs" t="Include" />
+            <e p="ChangePasswordController.cs" t="Include" />
+            <e p="ChangePasswordViewModel.cs" t="Include" />
+            <e p="ExternalController.cs" t="Include" />
+            <e p="ExternalProvider.cs" t="Include" />
+            <e p="LoggedOutViewModel.cs" t="Include" />
+            <e p="LoginInputModel.cs" t="Include" />
+            <e p="LoginViewModel.cs" t="Include" />
+            <e p="LogoutInputModel.cs" t="Include" />
+            <e p="LogoutViewModel.cs" t="Include" />
+            <e p="RedirectViewModel.cs" t="Include" />
+          </e>
+          <e p="Consent" t="Include">
+            <e p="ConsentController.cs" t="Include" />
+            <e p="ConsentInputModel.cs" t="Include" />
+            <e p="ConsentOptions.cs" t="Include" />
+            <e p="ConsentViewModel.cs" t="Include" />
+            <e p="ProcessConsentResult.cs" t="Include" />
+            <e p="ScopeViewModel.cs" t="Include" />
+          </e>
+          <e p="Device" t="Include">
+            <e p="DeviceAuthorizationInputModel.cs" t="Include" />
+            <e p="DeviceAuthorizationViewModel.cs" t="Include" />
+            <e p="DeviceController.cs" t="Include" />
+          </e>
+          <e p="Diagnostics" t="Include">
+            <e p="DiagnosticsController.cs" t="Include" />
+            <e p="DiagnosticsViewModel.cs" t="Include" />
+          </e>
+          <e p="Extensions.cs" t="Include" />
+          <e p="Grants" t="Include">
+            <e p="GrantsController.cs" t="Include" />
+            <e p="GrantsViewModel.cs" t="Include" />
+          </e>
+          <e p="Home" t="Include">
+            <e p="ErrorViewModel.cs" t="Include" />
+            <e p="HomeController.cs" t="Include" />
+          </e>
+          <e p="SecurityHeadersAttribute.cs" t="Include" />
+          <e p="TestUsers.cs" t="Include" />
+        </e>
+        <e p="Repositories" t="Include">
+          <e p="UserRepository.cs" t="Include" />
+        </e>
+        <e p="Services" t="Include">
+          <e p="CustomProfileService.cs" t="Include" />
+          <e p="CustomResourceOwnerPasswordValidator.cs" t="Include" />
+        </e>
+        <e p="Startup.cs" t="Include" />
+        <e p="tempkey.rsa" t="Include" />
+        <e p="Views" t="Include">
+          <e p="_ViewImports.cshtml" t="Include" />
+          <e p="_ViewStart.cshtml" t="Include" />
+          <e p="Account" t="Include">
+            <e p="ChangePassword.cshtml" t="Include" />
+            <e p="LoggedOut.cshtml" t="Include" />
+            <e p="Login.cshtml" t="Include" />
+            <e p="Logout.cshtml" t="Include" />
+          </e>
+          <e p="Consent" t="Include">
+            <e p="Index.cshtml" t="Include" />
+          </e>
+          <e p="Device" t="Include">
+            <e p="Success.cshtml" t="Include" />
+            <e p="UserCodeCapture.cshtml" t="Include" />
+            <e p="UserCodeConfirmation.cshtml" t="Include" />
+          </e>
+          <e p="Diagnostics" t="Include">
+            <e p="Index.cshtml" t="Include" />
+          </e>
+          <e p="Grants" t="Include">
+            <e p="Index.cshtml" t="Include" />
+          </e>
+          <e p="Home" t="Include">
+            <e p="Index.cshtml" t="Include" />
+          </e>
+          <e p="Shared" t="Include">
+            <e p="_Layout.cshtml" t="Include" />
+            <e p="_ScopeListItem.cshtml" t="Include" />
+            <e p="_ValidationSummary.cshtml" t="Include" />
+            <e p="Error.cshtml" t="Include" />
+            <e p="Redirect.cshtml" t="Include" />
+          </e>
+        </e>
+        <e p="wwwroot" t="Include">
+          <e p="css" t="Include">
+            <e p="site.css" t="Include" />
+            <e p="site.less" t="Include" />
+            <e p="site.min.css" t="Include" />
+          </e>
+          <e p="favicon.ico" t="Include" />
+          <e p="icon.jpg" t="Include" />
+          <e p="icon.png" t="Include" />
+          <e p="js" t="Include">
+            <e p="signin-redirect.js" t="Include" />
+            <e p="signout-redirect.js" t="Include" />
+          </e>
+          <e p="lib" t="Include">
+            <e p="bootstrap" t="Include">
+              <e p="css" t="Include">
+                <e p="bootstrap.css" t="Include" />
+                <e p="bootstrap.css.map" t="Include" />
+                <e p="bootstrap.min.css" t="Include" />
+              </e>
+              <e p="fonts" t="Include">
+                <e p="glyphicons-halflings-regular.eot" t="Include" />
+                <e p="glyphicons-halflings-regular.svg" t="Include" />
+                <e p="glyphicons-halflings-regular.ttf" t="Include" />
+                <e p="glyphicons-halflings-regular.woff" t="Include" />
+                <e p="glyphicons-halflings-regular.woff2" t="Include" />
+              </e>
+              <e p="js" t="Include">
+                <e p="bootstrap.js" t="Include" />
+                <e p="bootstrap.min.js" t="Include" />
+              </e>
+            </e>
+            <e p="jquery" t="Include">
+              <e p="jquery.js" t="Include" />
+              <e p="jquery.min.js" t="Include" />
+              <e p="jquery.min.map" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="LogViewer.Api" t="IncludeRecursive">
+        <e p="appsettings.Development.json" t="Include" />
+        <e p="appsettings.json" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Config" t="Include">
+          <e p="LogViewerConfiguration.cs" t="Include" />
+        </e>
+        <e p="Controllers" t="Include">
+          <e p="LoggerController.cs" t="Include" />
+        </e>
+        <e p="Entities" t="Include">
+          <e p="Logevent.cs" t="Include" />
+        </e>
+        <e p="Enums" t="Include">
+          <e p="ResourceUriType.cs" t="Include" />
+        </e>
+        <e p="LogViewer.Api.csproj" t="IncludeRecursive" />
+        <e p="Models" t="Include">
+          <e p="LogeventDto.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.2" t="Include">
+              <e p="LogViewer.Api.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="launchSettings.json" t="Include" />
+        </e>
+        <e p="Startup.cs" t="Include" />
+      </e>
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Scheduler.Api" t="IncludeRecursive">
+        <e p="appsettings.Development.json" t="Include" />
+        <e p="appsettings.json" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Controllers" t="Include">
+          <e p="SchedulerController.cs" t="Include" />
+        </e>
+        <e p="Extensions" t="Include">
+          <e p="ExceptionMiddlewareExtention.cs" t="Include" />
+        </e>
+        <e p="Models" t="Include">
+          <e p="ScheduleCreatorDto.cs" t="Include" />
+        </e>
+        <e p="Nlog.config" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.2" t="Include">
+              <e p="Scheduler.Api.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="launchSettings.json" t="Include" />
+        </e>
+        <e p="Scheduler.Api.csproj" t="IncludeRecursive" />
+        <e p="Startup.cs" t="Include" />
+        <e p="Utility" t="Include">
+          <e p="Converter.cs" t="Include" />
+          <e p="DynamicFactory.cs" t="Include" />
+        </e>
+      </e>
+      <e p="Scheduler.Engine" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="EventArgs" t="Include">
+          <e p="BestSolutionEventArg.cs" t="Include" />
+        </e>
+        <e p="Genetics" t="Include">
+          <e p="CostCalculator.cs" t="Include" />
+          <e p="Population.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.2" t="Include">
+              <e p="Scheduler.Engine.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Scheduler.Engine.csproj" t="IncludeRecursive" />
+        <e p="Utility" t="Include">
+          <e p="RandomGenerator.cs" t="Include" />
+        </e>
+      </e>
+      <e p="Scheduler.Mailer" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Interfaces" t="Include">
+          <e p="ISchedulerMailer.cs" t="Include" />
+        </e>
+        <e p="MailKit" t="Include">
+          <e p="MailKitMailer.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.2" t="Include">
+              <e p="Scheduler.Mailer.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Scheduler.Mailer.csproj" t="IncludeRecursive" />
+      </e>
+      <e p="Scheduler.Shared" t="IncludeRecursive">
+        <e p="Abstract" t="Include">
+          <e p="Requirement.cs" t="Include" />
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Classes" t="Include">
+          <e p="Individual.cs" t="Include" />
+          <e p="PreGenerationCheckMessenger.cs" t="Include" />
+        </e>
+        <e p="CustomExceptions" t="Include">
+          <e p="ApiException.cs" t="Include" />
+        </e>
+        <e p="Extensions" t="Include">
+          <e p="GetRowFrom2DArray.cs" t="Include" />
+          <e p="StreamExtentions.cs" t="Include" />
+        </e>
+        <e p="Interfaces" t="Include">
+          <e p="IAllel.cs" t="Include" />
+          <e p="IRequirement.cs" t="Include" />
+          <e p="ISpeciesOriginator.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.2" t="Include">
+              <e p="Scheduler.Shared.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Scheduler.Shared.csproj" t="IncludeRecursive" />
+      </e>
+      <e p="Scheduler.sln" t="IncludeFlat" />
+    </e>
+    <e p="C:\temp\ReSharper\_Scheduler.-238085968.RD.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Dell\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+  </component>
+</project>

@@ -1,11 +1,8 @@
 ﻿using AutoMapper;
-using Client.Torun.RavenDataService.Config;
 using Client.Torun.RavenDataService.Entities;
 using Client.Torun.RavenDataService.Helpers;
 using Client.Torun.RavenDataService.Models;
 using Client.Torun.Shared.DTOs;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Routing.Constraints;
 
 namespace Client.Torun.RavenDataService.Mappings
 {
@@ -29,6 +26,9 @@ namespace Client.Torun.RavenDataService.Mappings
             CreateMap<RequirementToSetDto, DutyRequirement>()
                 .AfterMap((s, d) => { d.Id = string.Empty; });
             CreateMap<DutyRequirement, PostCreationRequirementToReturnDto>();
+            CreateMap<DayOffToSetDto, DayOff>();
+            CreateMap<DayOff, DayOffToReturnDto>()
+                .ForMember(d => d.Date, opt => opt.MapFrom(src => src.Date.Date.ToString("yyyy-MM-dd")));
 
         }
     }

@@ -1,11 +1,16 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Client.Torun.RavenDataService.DataStore;
 using Client.Torun.RavenDataService.Entities;
 using Client.Torun.RavenDataService.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using Raven.Client.Documents;
+using Raven.Client.Documents.Linq;
 
 namespace Client.Torun.RavenDataService.Controllers
 {
@@ -77,8 +82,7 @@ namespace Client.Torun.RavenDataService.Controllers
             {
                 if (await session.Query<DutyRequirement>().AnyAsync())
                 {
-                    var requirement = await session.Query<DutyRequirement>()
-                        .Where(userRequirement => userRequirement.UserId == isRequirementSetParams.UserId
+                    var requirement = await Queryable.Where(session.Query<DutyRequirement>(), userRequirement => userRequirement.UserId == isRequirementSetParams.UserId
                                               && userRequirement.Date.Year == isRequirementSetParams.Date.Value.Year
                                               && userRequirement.Date.Month == isRequirementSetParams.Date.Value.Month)
                         .FirstOrDefaultAsync();
@@ -90,6 +94,68 @@ namespace Client.Torun.RavenDataService.Controllers
                 }
 
                 return Ok(new {isRequirementSet = false});
+            }
+        }
+
+        [Route("day-off")]
+        [HttpPost]
+        public async Task<IActionResult> SetDayOff([FromBody] DayOffToSetDto dayOffToSet)
+        {
+            if (dayOffToSet is null)
+            {
+                return BadRequest();
+            }
+
+            using (var session = _store.OpenAsyncSession())
+            {
+               var dayOffToSave = _mapper.Map<DayOff>(dayOffToSet);
+               await session.StoreAsync(dayOffToSave);
+               await session.SaveChangesAsync();
+
+               var dayOffToReturn = _mapper.Map<DayOffToReturnDto>(dayOffToSave);
+
+               return Ok(dayOffToReturn);
+            }
+        }
+
+        [Route("days-off")]
+        [HttpGet]
+        public async Task<IActionResult> GetDaysOffForUser([FromQuery] DateTime currentViewDate, string userId)
+        {
+            if (currentViewDate == default || userId is null)
+            {
+                return BadRequest();
+            }
+
+            using (var session = _store.OpenAsyncSession())
+            {
+                var daysOff = await session.Query<DayOff>()
+                    .Where(dayOff => dayOff.Date.Year == currentViewDate.Date.Year
+                                     && dayOff.Date.Month == currentViewDate.Date.Month
+                                     && dayOff.UserId == userId)
+                    .ToListAsync();
+
+                var daysOffToReturn = _mapper.Map<IEnumerable<DayOffToReturnDto>>(daysOff);
+
+                return Ok(daysOffToReturn);
+            }
+        }
+
+        [Route("day-off")]
+        [HttpDelete]
+        public async Task<IActionResult> DeleteDayOff([FromQuery] string dayOffId)
+        {
+            if (dayOffId is null)
+            {
+                return BadRequest();
+            }
+
+            using (var session = _store.OpenAsyncSession())
+            {
+                session.Delete(dayOffId);
+                await session.SaveChangesAsync();
+
+                return Ok();
             }
         }
     }

@@ -32,7 +32,6 @@ C:\Projects\Scheduler\Scheduler\Client.Torun.Settings\bin\Debug\netcoreapp2.2\Sc
 C:\Projects\Scheduler\Scheduler\Client.Torun.Settings\bin\Debug\netcoreapp2.2\Client.Torun.Shared.pdb
 C:\Projects\Scheduler\Scheduler\Client.Torun.Settings\bin\Debug\netcoreapp2.2\Scheduler.Shared.pdb
 C:\Projects\Scheduler\Scheduler\Client.Torun.Settings\obj\Debug\netcoreapp2.2\Client.Torun.Settings.csprojAssemblyReference.cache
-C:\Projects\Scheduler\Scheduler\Client.Torun.Settings\obj\Debug\netcoreapp2.2\Client.Torun.Settings.csproj.CoreCompileInputs.cache
 C:\Projects\Scheduler\Scheduler\Client.Torun.Settings\obj\Debug\netcoreapp2.2\Client.Torun.Settings.AssemblyInfoInputs.cache
 C:\Projects\Scheduler\Scheduler\Client.Torun.Settings\obj\Debug\netcoreapp2.2\Client.Torun.Settings.AssemblyInfo.cs
 C:\Projects\Scheduler\Scheduler\Client.Torun.Settings\obj\Debug\netcoreapp2.2\Client.Torun.Settings.csproj.CopyComplete

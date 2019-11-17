@@ -1,0 +1,98 @@
+﻿{
+  "version": "1.0.0",
+  "restore": {
+    "projectUniqueName": "C:\\Projects\\Scheduler\\Scheduler\\Client.Torun.RavenDataService\\Client.Torun.RavenDataService.csproj",
+    "projectName": "Client.Torun.RavenDataService",
+    "projectPath": "C:\\Projects\\Scheduler\\Scheduler\\Client.Torun.RavenDataService\\Client.Torun.RavenDataService.csproj",
+    "outputPath": "C:\\Projects\\Scheduler\\Scheduler\\Client.Torun.RavenDataService\\obj\\",
+    "projectStyle": "PackageReference",
+    "fallbackFolders": [
+      "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+    ],
+    "originalTargetFrameworks": [
+      "netcoreapp2.2"
+    ],
+    "sources": {
+      "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+      "https://api.nuget.org/v3/index.json": {}
+    },
+    "frameworks": {
+      "netcoreapp2.2": {
+        "projectReferences": {
+          "C:\\Projects\\Scheduler\\Scheduler\\Client.Torun.Shared\\Client.Torun.Shared.csproj": {
+            "projectPath": "C:\\Projects\\Scheduler\\Scheduler\\Client.Torun.Shared\\Client.Torun.Shared.csproj"
+          },
+          "C:\\Projects\\Scheduler\\Scheduler\\Scheduler.Mailer\\Scheduler.Mailer.csproj": {
+            "projectPath": "C:\\Projects\\Scheduler\\Scheduler\\Scheduler.Mailer\\Scheduler.Mailer.csproj"
+          }
+        }
+      }
+    },
+    "warningProperties": {
+      "warnAsError": [
+        "NU1605"
+      ]
+    }
+  },
+  "frameworks": {
+    "netcoreapp2.2": {
+      "dependencies": {
+        "AutoMapper": {
+          "target": "Package",
+          "version": "[8.1.1, )"
+        },
+        "IdentityServer4.AccessTokenValidation": {
+          "target": "Package",
+          "version": "[2.7.0, )"
+        },
+        "MailKit": {
+          "target": "Package",
+          "version": "[2.2.0, )"
+        },
+        "Microsoft.AspNetCore.App": {
+          "suppressParent": "All",
+          "target": "Package",
+          "version": "[2.2.0, )",
+          "autoReferenced": true
+        },
+        "Microsoft.AspNetCore.Razor.Design": {
+          "suppressParent": "All",
+          "target": "Package",
+          "version": "[2.2.0, )"
+        },
+        "Microsoft.NETCore.App": {
+          "suppressParent": "All",
+          "target": "Package",
+          "version": "[2.2.0, )",
+          "autoReferenced": true
+        },
+        "NLog.Targets.ElasticSearch": {
+          "target": "Package",
+          "version": "[6.1.0, )"
+        },
+        "NLog.Web.AspNetCore": {
+          "target": "Package",
+          "version": "[4.8.3, )"
+        },
+        "Newtonsoft.Json": {
+          "target": "Package",
+          "version": "[12.0.2, )"
+        },
+        "RavenDB.Client": {
+          "target": "Package",
+          "version": "[4.2.0, )"
+        }
+      },
+      "imports": [
+        "net461",
+        "net462",
+        "net47",
+        "net471",
+        "net472",
+        "net48"
+      ],
+      "assetTargetFallback": true,
+      "warn": true
+    }
+  }
+}

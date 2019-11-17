@@ -126,14 +126,12 @@ namespace Client.Torun.Settings.Originator
 
             // 1. Sprawdzamy czy całkowita liczba lekarzy wystarczy, aby umożliwić ułożenie grafiku z wymaganym interwałem dyżurowym i wymaganą ilością lekarzy na dyżurze
             //    Np. 2 dyżury dziennie z interwałem 2 - musi byc minimum 4 lekarzy
+            // Zbyt mała całkowita ilość lekarzy w stosunku do wymaganej ilości lekarzy na dyżurze i przyjętego interwału dyżurowego
 
             if (!IsTotalDoctorsGreaterOrEqualToNumberOfDoctorsOnDutyTimesDutyInterval())
             {
-                string message =
-                    "Zbyt mała całkowita ilość lekarzy w stosunku do wymaganej ilości lekarzy na dyżurze i przyjętego interwału dyżurowego";
+                string message = "Not enough doctors relative to the duty interval";
                 messenger.Messages.Add(message);
-
-                
             }
 
             // 2. Sprawdzamy czy danego dnia ilość niemożności nie jest zbyt duża w stosunku do wymaganej ilości dyżurantów
@@ -142,24 +140,23 @@ namespace Client.Torun.Settings.Originator
             {
                 if (IsTotalDaysOffOnADayGreaterThanAllowedMaxDaysOffOnSingleDay(day.Count()))
                 {
-                    string message =
-                        $"Zbyt duża ilość niemożności w dniu {new DateTime(_date.Year, _date.Month, day.Key).ToShortDateString()} w stosunku do wymaganej ilości lekarzy na dyżurze";
+                    string message = $"Too many absences on {new DateTime(_date.Year, _date.Month, day.Key).ToShortDateString()}. Cannot assign required number of doctors.";
 
                     messenger.Messages.Add(message);
-                    
                 }
             }
 
             // 3. Czy jeśli WSZYSCY lekarze zgłosili żądanie dyżurowe, to czy ilość wszystkich dyżurów jest większa niż zgłaszana dostępność lekarzy (niepokryte godziny)
             //    Np. Jeśli L1 - 3 dyżury, L2 - 8 dyżurów, etc a suma < niż 60 (bo tyle jest w miesiącu)
+            //    Suma żądanej ilości dyżurów jest o {diff} mniejsza niż całkowita wymagana ilość dyżurów w jednostce
             if (_dutyRequirementsForMonth.Count() == _numberOfDoctorsOnDuty)
             {
                 int diff = CalculateDifferenceBetweenTotalDutiesAndTotalDutyRequirements();
 
                 if (diff > 0)
                 {
-                    string message =
-                        $"Suma żądanej ilości dyżurów jest o {diff} mniejsza niż całkowita wymagana ilość dyżurów w jednostce.";
+                    var dutySingularOrPlural = diff > 1 ? "duties" : "duty";
+                    string message = $"The total of duties to assign in the month exceeds the total of duties requested. Cannot assign {diff} doctor {dutySingularOrPlural}.";
 
                     messenger.Messages.Add(message);
                 }
@@ -183,7 +180,7 @@ namespace Client.Torun.Settings.Originator
                     if (DaysOffGrouppedByDayNumber[i].Count() > AllowedMaxDaysOffOnSeveralConsequtiveDays &&
                         DaysOffGrouppedByDayNumber[i + 1].Count() > AllowedMaxDaysOffOnSeveralConsequtiveDays)
                     {
-                        string message = $"Niekorzystny układ niemożności w dniach {new DateTime(_date.Year, _date.Month, DaysOffGrouppedByDayNumber[i].Key).ToShortDateString()} oraz" +
+                        string message = $"Adverse arrangement of absences on {new DateTime(_date.Year, _date.Month, DaysOffGrouppedByDayNumber[i].Key).ToShortDateString()} and" +
                                          $" {new DateTime(_date.Year, _date.Month, DaysOffGrouppedByDayNumber[i].Key + 1).ToShortDateString()}";
 
                         messenger.Messages.Add(message);
@@ -207,8 +204,8 @@ namespace Client.Torun.Settings.Originator
                     DateTime previousMonthDate = firstDayOfCurrentMonth.AddMonths(-1);
 
                     string message =
-                        $"Zbyt duża ilość niemożności w dniu {firstDayOfCurrentMonth.ToShortDateString()} " +
-                        $"w stosunku do ilości niemożności w dniu {new DateTime(previousMonthDate.Year, previousMonthDate.Month, DateTime.DaysInMonth(previousMonthDate.Year, previousMonthDate.Month))}";
+                        $"Too many absences on {firstDayOfCurrentMonth.ToShortDateString()} " +
+                        $"relative to {new DateTime(previousMonthDate.Year, previousMonthDate.Month, DateTime.DaysInMonth(previousMonthDate.Year, previousMonthDate.Month))}";
 
                     messenger.Messages.Add(message);
                 }

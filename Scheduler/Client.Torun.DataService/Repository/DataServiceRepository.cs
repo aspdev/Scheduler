@@ -106,7 +106,7 @@ namespace Client.Torun.DataService.Repository
         public async Task<List<DoctorDto>> GetDoctorDtos()
         {
             var doctorDtos = await _context.Users.Select(u => 
-                new DoctorDto() { DoctorId = u.UserId, Email = u.Email, Name = u.FirstName + " " + u.LastName }).ToListAsync();
+                new DoctorDto() { DoctorId = u.UserId.ToString(), Email = u.Email, Name = u.FirstName + " " + u.LastName }).ToListAsync();
 
             return doctorDtos; 
         }
