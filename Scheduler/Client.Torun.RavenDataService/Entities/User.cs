@@ -16,6 +16,10 @@ namespace Client.Torun.RavenDataService.Entities
         public string TokenToResetPasswordValidFrom { get; set; }
         public List<string> Roles { get; set; } = new List<string>();
         public List<string> Clients { get; set; } = new List<string>();
+
+        public string Color { get; set; }
+        
+        
         
     }
 }

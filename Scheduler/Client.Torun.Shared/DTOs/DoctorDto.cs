@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Client.Torun.Shared.DTOs
 {
@@ -13,5 +11,7 @@ namespace Client.Torun.Shared.DTOs
         public string Email { get; set; }
 
         public List<string> Roles { get; set; }
+
+        public string Color { get; set; }
     }
 }

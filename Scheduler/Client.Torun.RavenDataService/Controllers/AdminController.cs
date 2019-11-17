@@ -58,7 +58,8 @@ namespace Client.Torun.RavenDataService.Controllers
                 }
 
                 var dbUser = _mapper.Map<User>(userToCreteDto);
-
+                dbUser.Color = await GetColor();
+                
                 await session.StoreAsync(dbUser);
 
                 await session.SaveChangesAsync();
@@ -197,6 +198,18 @@ namespace Client.Torun.RavenDataService.Controllers
             username = username.Remove(index, 1);
 
             return username;
+        }
+
+        private async Task<string> GetColor()
+        {
+            using (var session = _store.OpenAsyncSession())
+            {
+                var color = await session.Query<Color>().FirstAsync(c => c.IsInUse == false);
+                color.IsInUse = true;
+                await session.SaveChangesAsync();
+
+                return color.Value;
+            }
         }
     }
 }

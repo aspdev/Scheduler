@@ -432,7 +432,7 @@ namespace Client.Torun.Settings.Originator
                 {
                     for (int k = i; k <= i; k++)
                     {
-                        if (dna[j, k] != null)
+                        if (dna[j, k] != null && dna[j, k] != Allel.DayOff)
                         {
                             var doctorId = _doctorIds[j];
                             var doctorDto = _doctorDtos.FirstOrDefault(d => d.DoctorId == doctorId);

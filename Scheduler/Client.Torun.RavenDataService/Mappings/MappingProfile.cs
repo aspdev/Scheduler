@@ -22,7 +22,8 @@ namespace Client.Torun.RavenDataService.Mappings
                 .ForMember(d => d.DoctorId, opt => opt.MapFrom(src => src.Id))
                 .ForMember(d => d.Name, opt => opt.MapFrom(src => $"{src.FirstName} {src.LastName}"))
                 .ForMember(d => d.Email, opt => opt.MapFrom(src => src.Email))
-                .ForMember(d => d.Roles, opt => opt.MapFrom(src => src.Roles));
+                .ForMember(d => d.Roles, opt => opt.MapFrom(src => src.Roles))
+                .ForMember(d => d.Color, opt => opt.MapFrom(src => src.Color));
             CreateMap<RequirementToSetDto, DutyRequirement>()
                 .AfterMap((s, d) => { d.Id = string.Empty; });
             CreateMap<DutyRequirement, PostCreationRequirementToReturnDto>();

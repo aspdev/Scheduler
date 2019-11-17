@@ -137,7 +137,8 @@ namespace Client.Torun.RavenDataService.Controllers
                         Name = doctor is null ? "User deleted" : $"{doctor.FirstName} {doctor.LastName}",
                         Date = duty.Date.ToString("yyyy-MM-dd"),
                         DoctorId = duty.UserId,
-                        DutyId = duty.Id
+                        DutyId = duty.Id,
+                        Color = doctor is null ? "red" : doctor.Color
                     };
 
                     listOfDutiesForMonth.Add(dutyForMonth);
