@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Projects\Scheduler\Scheduler" t="IncludeFlat">
@@ -89,6 +89,7 @@
         </e>
         <e p="Entities" t="Include">
           <e p="AdminSettings.cs" t="Include" />
+          <e p="Color.cs" t="Include" />
           <e p="DayOff.cs" t="Include" />
           <e p="DayOffRequest.cs" t="Include" />
           <e p="Duty.cs" t="Include" />
@@ -111,6 +112,8 @@
           <e p="MappingProfile.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
+          <e p="DayOffToReturnDto.cs" t="Include" />
+          <e p="DayOffToSetDto.cs" t="Include" />
           <e p="DutyForDoctorDto.cs" t="Include" />
           <e p="DutyForMonthDto.cs" t="Include" />
           <e p="DutyToSaveDto.cs" t="Include" />
@@ -189,8 +192,6 @@
           <e p="IDocumentStoreHolder.cs" t="Include" />
         </e>
         <e p="Entities" t="Include">
-          <e p="Client.cs" t="Include" />
-          <e p="Role.cs" t="Include" />
           <e p="User.cs" t="Include" />
         </e>
         <e p="Extentions" t="Include">

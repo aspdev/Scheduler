@@ -64,7 +64,9 @@ namespace IdentityServer
                         "api1",
                         "api2",
                         IdentityServerConstants.StandardScopes.Address
-                    }
+                    },
+                    
+                    AllowOfflineAccess = true
                 }
             };
         }
