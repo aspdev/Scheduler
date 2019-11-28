@@ -64,12 +64,6 @@ namespace IdentityServer
             // build a model so we know what to show on the login page
             var vm = await BuildLoginViewModelAsync(returnUrl);
 
-            if (vm.IsExternalLoginOnly)
-            {
-                // we only have one option for logging in and it's an external provider
-                return RedirectToAction("Challenge", "External", new { provider = vm.ExternalLoginScheme, returnUrl });
-            }
-
             return View(vm);
         }
 
@@ -124,14 +118,7 @@ namespace IdentityServer
             // build a model so the logout page knows what to display
             var vm = await BuildLogoutViewModelAsync(logoutId);
 
-            if (vm.ShowLogoutPrompt == false)
-            {
-                // if the request for logout was properly authenticated from IdentityServer, then
-                // we don't need to show the prompt and can just log the user out directly.
-                return await Logout(vm);
-            }
-
-            return View(vm);
+            return await Logout(vm);
         }
 
         /// <summary>

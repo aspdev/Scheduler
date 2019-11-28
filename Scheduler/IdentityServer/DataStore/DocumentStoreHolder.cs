@@ -1,4 +1,8 @@
-﻿using Raven.Client.Documents;
+﻿using System.Linq;
+using System.Security;
+using System.Security.Cryptography.X509Certificates;
+using Microsoft.Extensions.Configuration;
+using Raven.Client.Documents;
 
 namespace IdentityServer.DataStore
 {
@@ -6,13 +10,20 @@ namespace IdentityServer.DataStore
     {
         public IDocumentStore Store { get; }
 
-        public DocumentStoreHolder()
+        public DocumentStoreHolder(IConfiguration configuration)
         {
+            var certPassword = configuration.GetSection("Certificates")["Raven.Certificate.Password"];
+            var cerPath = configuration.GetSection("Certificates")["Raven.Certificate.Path"];
+            
+            var secureString = new SecureString();
+            certPassword.ToCharArray().ToList().ForEach(secureString.AppendChar);
+            secureString.MakeReadOnly();
+            
             var store = new DocumentStore
             {
-                Urls = new[] { "http://127.0.0.1:8080", "http://127.0.0.2:8080",
-                    "http://127.0.0.3:8080" },
-                Database = "IdentityServerUsers"
+                Urls = new [] {"https://a.free.scheduler.ravendb.cloud"},
+                Database = "IdentityServerUsers",
+                Certificate = new X509Certificate2(cerPath, secureString)
             };
 
             Store = store.Initialize();

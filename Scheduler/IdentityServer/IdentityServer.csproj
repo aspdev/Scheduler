@@ -19,4 +19,13 @@
     <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
     <PackageReference Include="Serilog.Sinks.File" Version="4.0.0" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Consent\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Device\Success.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Device\UserCodeCapture.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Device\UserCodeConfirmation.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Diagnostics\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Grants\Index.cshtml" />
+  </ItemGroup>
 </Project>

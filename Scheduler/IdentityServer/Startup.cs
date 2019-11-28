@@ -3,23 +3,33 @@
 
 
 using System;
+using System.Linq;
+using System.Security;
+using System.Security.Cryptography.X509Certificates;
 using IdentityServer.DataStore;
 using IdentityServer.Extentions;
 using IdentityServer4;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Raven.Client;
 
 namespace IdentityServer
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; private set; }
         public IHostingEnvironment Environment { get; }
 
         public Startup(IHostingEnvironment environment)
         {
             Environment = environment;
+            var configurationBuilder = new ConfigurationBuilder()
+                .SetBasePath(environment.ContentRootPath)
+                .AddJsonFile("appsettings.json", false, true);
+            Configuration = configurationBuilder.Build();
         }
 
         public void ConfigureServices(IServiceCollection services)
@@ -29,25 +39,14 @@ namespace IdentityServer
             services.AddSingleton<IDocumentStoreHolder, DocumentStoreHolder>();
 
             var builder = services.AddIdentityServer()
-               .AddInMemoryIdentityResources(Config.GetIdentityResources())
-               .AddInMemoryApiResources(Config.GetApis())
-               .AddInMemoryClients(Config.GetClients())
-               .AddCustomUserStore();
-                              
-                
+                .AddInMemoryIdentityResources(Config.GetIdentityResources())
+                .AddInMemoryApiResources(Config.GetApis())
+                .AddInMemoryClients(Config.GetClients())
+                .AddCustomUserStore()
+                .LoadSigningCredentialsFrom(Configuration.GetSection("Certificates")["Token.Certificate.Path"], 
+                    Configuration.GetSection("Certificates")["Token.Certificate.Password"]);
 
-            if (Environment.IsDevelopment())
-            {
-                // dane uwierzytelniające do podpisywania tokenów // tzw. signing certificate
-                // trzeba podmienić na prawdziwy certyfikat gdy robimy deploy na serwer
-                // można go wygenerować w CMD, pponiższe rozwiązanie jest tymczasowe
-                builder.AddDeveloperSigningCredential();
-            }
-            else
-            {
-                throw new Exception("need to configure key material");
-            }
-
+            services.AddSingleton(Configuration);
             services.AddAuthentication()
                 .AddGoogle("Google", options =>
                 {

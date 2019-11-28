@@ -185,6 +185,8 @@
         </e>
       </e>
       <e p="IdentityServer" t="IncludeRecursive">
+        <e p=".gitignore" t="Include" />
+        <e p="appsettings.json" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="Config.cs" t="Include" />
         <e p="DataStore" t="Include">
@@ -196,6 +198,7 @@
         </e>
         <e p="Extentions" t="Include">
           <e p="CustomIdentityServerBuilderExtentions.cs" t="Include" />
+          <e p="IdentityServerBuilderExtensions.cs" t="Include" />
         </e>
         <e p="IdentityServer.csproj" t="IncludeRecursive" />
         <e p="identityserver4_log.txt" t="Include" />
@@ -219,7 +222,6 @@
             <e p="AccountOptions.cs" t="Include" />
             <e p="ChangePasswordController.cs" t="Include" />
             <e p="ChangePasswordViewModel.cs" t="Include" />
-            <e p="ExternalController.cs" t="Include" />
             <e p="ExternalProvider.cs" t="Include" />
             <e p="LoggedOutViewModel.cs" t="Include" />
             <e p="LoginInputModel.cs" t="Include" />
@@ -228,34 +230,11 @@
             <e p="LogoutViewModel.cs" t="Include" />
             <e p="RedirectViewModel.cs" t="Include" />
           </e>
-          <e p="Consent" t="Include">
-            <e p="ConsentController.cs" t="Include" />
-            <e p="ConsentInputModel.cs" t="Include" />
-            <e p="ConsentOptions.cs" t="Include" />
-            <e p="ConsentViewModel.cs" t="Include" />
-            <e p="ProcessConsentResult.cs" t="Include" />
-            <e p="ScopeViewModel.cs" t="Include" />
-          </e>
-          <e p="Device" t="Include">
-            <e p="DeviceAuthorizationInputModel.cs" t="Include" />
-            <e p="DeviceAuthorizationViewModel.cs" t="Include" />
-            <e p="DeviceController.cs" t="Include" />
-          </e>
-          <e p="Diagnostics" t="Include">
-            <e p="DiagnosticsController.cs" t="Include" />
-            <e p="DiagnosticsViewModel.cs" t="Include" />
-          </e>
-          <e p="Extensions.cs" t="Include" />
-          <e p="Grants" t="Include">
-            <e p="GrantsController.cs" t="Include" />
-            <e p="GrantsViewModel.cs" t="Include" />
-          </e>
           <e p="Home" t="Include">
             <e p="ErrorViewModel.cs" t="Include" />
             <e p="HomeController.cs" t="Include" />
           </e>
           <e p="SecurityHeadersAttribute.cs" t="Include" />
-          <e p="TestUsers.cs" t="Include" />
         </e>
         <e p="Repositories" t="Include">
           <e p="UserRepository.cs" t="Include" />
@@ -271,30 +250,13 @@
           <e p="_ViewStart.cshtml" t="Include" />
           <e p="Account" t="Include">
             <e p="ChangePassword.cshtml" t="Include" />
-            <e p="LoggedOut.cshtml" t="Include" />
             <e p="Login.cshtml" t="Include" />
-            <e p="Logout.cshtml" t="Include" />
-          </e>
-          <e p="Consent" t="Include">
-            <e p="Index.cshtml" t="Include" />
-          </e>
-          <e p="Device" t="Include">
-            <e p="Success.cshtml" t="Include" />
-            <e p="UserCodeCapture.cshtml" t="Include" />
-            <e p="UserCodeConfirmation.cshtml" t="Include" />
-          </e>
-          <e p="Diagnostics" t="Include">
-            <e p="Index.cshtml" t="Include" />
-          </e>
-          <e p="Grants" t="Include">
-            <e p="Index.cshtml" t="Include" />
           </e>
           <e p="Home" t="Include">
             <e p="Index.cshtml" t="Include" />
           </e>
           <e p="Shared" t="Include">
             <e p="_Layout.cshtml" t="Include" />
-            <e p="_ScopeListItem.cshtml" t="Include" />
             <e p="_ValidationSummary.cshtml" t="Include" />
             <e p="Error.cshtml" t="Include" />
             <e p="Redirect.cshtml" t="Include" />
@@ -477,6 +439,7 @@
       <e p="Scheduler.sln" t="IncludeFlat" />
     </e>
     <e p="C:\temp\ReSharper\_Scheduler.-238085968.RD.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Dell\.Rider2019.2\Config\scratches" t="IncludeRecursive" />
     <e p="C:\Users\Dell\.Rider2019.2\system\extResources" t="IncludeRecursive" />
   </component>
 </project>
