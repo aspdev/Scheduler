@@ -1,0 +1,16 @@
+C:\Projects\Scheduler\Scheduler\Tests\bin\Debug\netcoreapp2.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+C:\Projects\Scheduler\Scheduler\Tests\bin\Debug\netcoreapp2.1\xunit.runner.reporters.netcoreapp10.dll
+C:\Projects\Scheduler\Scheduler\Tests\bin\Debug\netcoreapp2.1\xunit.runner.utility.netcoreapp10.dll
+C:\Projects\Scheduler\Scheduler\Tests\bin\Debug\netcoreapp2.1\Tests.deps.json
+C:\Projects\Scheduler\Scheduler\Tests\bin\Debug\netcoreapp2.1\Tests.runtimeconfig.json
+C:\Projects\Scheduler\Scheduler\Tests\bin\Debug\netcoreapp2.1\Tests.runtimeconfig.dev.json
+C:\Projects\Scheduler\Scheduler\Tests\bin\Debug\netcoreapp2.1\Tests.dll
+C:\Projects\Scheduler\Scheduler\Tests\bin\Debug\netcoreapp2.1\Tests.pdb
+C:\Projects\Scheduler\Scheduler\Tests\bin\Debug\netcoreapp2.1\Common.dll
+C:\Projects\Scheduler\Scheduler\Tests\bin\Debug\netcoreapp2.1\Common.pdb
+C:\Projects\Scheduler\Scheduler\Tests\obj\Debug\netcoreapp2.1\Tests.csprojAssemblyReference.cache
+C:\Projects\Scheduler\Scheduler\Tests\obj\Debug\netcoreapp2.1\Tests.AssemblyInfoInputs.cache
+C:\Projects\Scheduler\Scheduler\Tests\obj\Debug\netcoreapp2.1\Tests.AssemblyInfo.cs
+C:\Projects\Scheduler\Scheduler\Tests\obj\Debug\netcoreapp2.1\Tests.csproj.CopyComplete
+C:\Projects\Scheduler\Scheduler\Tests\obj\Debug\netcoreapp2.1\Tests.dll
+C:\Projects\Scheduler\Scheduler\Tests\obj\Debug\netcoreapp2.1\Tests.pdb

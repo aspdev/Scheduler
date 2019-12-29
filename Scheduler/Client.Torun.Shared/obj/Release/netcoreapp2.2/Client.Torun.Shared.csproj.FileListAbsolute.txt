@@ -1,0 +1,8 @@
+C:\Projects\Scheduler\Scheduler\Client.Torun.Shared\bin\Release\netcoreapp2.2\Client.Torun.Shared.deps.json
+C:\Projects\Scheduler\Scheduler\Client.Torun.Shared\bin\Release\netcoreapp2.2\Client.Torun.Shared.dll
+C:\Projects\Scheduler\Scheduler\Client.Torun.Shared\bin\Release\netcoreapp2.2\Client.Torun.Shared.pdb
+C:\Projects\Scheduler\Scheduler\Client.Torun.Shared\obj\Release\netcoreapp2.2\Client.Torun.Shared.csprojAssemblyReference.cache
+C:\Projects\Scheduler\Scheduler\Client.Torun.Shared\obj\Release\netcoreapp2.2\Client.Torun.Shared.AssemblyInfoInputs.cache
+C:\Projects\Scheduler\Scheduler\Client.Torun.Shared\obj\Release\netcoreapp2.2\Client.Torun.Shared.AssemblyInfo.cs
+C:\Projects\Scheduler\Scheduler\Client.Torun.Shared\obj\Release\netcoreapp2.2\Client.Torun.Shared.dll
+C:\Projects\Scheduler\Scheduler\Client.Torun.Shared\obj\Release\netcoreapp2.2\Client.Torun.Shared.pdb

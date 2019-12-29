@@ -25,8 +25,14 @@ namespace Client.Torun.RavenDataService.Config
 
         public string MailBoxPassword { get; set; }
 
-        
-
+        public Certificates Certificates { get; set; }
 
     }
+
+    public class Certificates
+    {
+        public string RavenCertificatePassword { get; set; }
+    }
+    
+    
 }

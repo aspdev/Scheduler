@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.Internal;
 using Scheduler.Shared.Abstract;
 using Scheduler.Shared.Interfaces;
 
@@ -15,14 +16,14 @@ namespace Scheduler.Api.Utility
         
         public static ISpeciesOriginator GetSpeciesOriginator(string assemblyPath, DateTime date, List<Object> arguments)
         {
-           AppDomain.CurrentDomain.AssemblyResolve += new ResolveEventHandler(CurrentDomain_AssemblyResolve);
-
+            AppDomain.CurrentDomain.AssemblyResolve += (sender,args) => LoadAssemblyFromFile(sender, args, assemblyPath);
+            
             if (!Directory.Exists(assemblyPath))
             {
                 throw new InvalidOperationException($"Could not find the assembly path {assemblyPath}");
             }
 
-           IEnumerable<string> assemblyFiles =
+            IEnumerable<string> assemblyFiles =
                 Directory.EnumerateFiles(assemblyPath, "*.dll", SearchOption.TopDirectoryOnly);
 
             
@@ -51,7 +52,6 @@ namespace Scheduler.Api.Utility
             
         }
           
-
         public static List<Requirement> GetRequirements(string assemblyPath, DateTime date, List<Object> arguments)
         {
             if (!Directory.Exists(assemblyPath))
@@ -86,13 +86,10 @@ namespace Scheduler.Api.Utility
             return requirements;
         }
 
-        private static Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
+        private static Assembly LoadAssemblyFromFile(object sender, ResolveEventArgs args, string assemblyPath)
         {
-            string schedulerFolderPath = @"C:\Projects\Scheduler\Scheduler\";
-            string projectFolderName = args.Name.Remove(args.Name.IndexOf(','));
-            string assemblyFolderPath = @"\bin\Debug\netcoreapp2.2\";
             string assemblyName = string.Concat(args.Name.Remove(args.Name.IndexOf(',')), ".dll");
-            string path = string.Concat(schedulerFolderPath, projectFolderName, assemblyFolderPath, assemblyName);
+            string path = Path.Combine(assemblyPath, assemblyName);
             return Assembly.LoadFile(path);
         }
     }

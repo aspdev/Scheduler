@@ -19,7 +19,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Client.Torun.Shared\Client.Torun.Shared.csproj" />
+    <ProjectReference Include="..\Common\Common.csproj" />
     <ProjectReference Include="..\Scheduler.Mailer\Scheduler.Mailer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Certificates" />
   </ItemGroup>
 
 </Project>

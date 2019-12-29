@@ -4,6 +4,7 @@ using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Scheduler.Api.Models;
@@ -18,10 +19,12 @@ namespace Scheduler.Api.Controllers
     [Authorize]
     public class SchedulerController : Controller
     {
+        private readonly IHostingEnvironment _environment;
         private readonly ILogger _logger;
         
-        public SchedulerController(ILoggerFactory loggerFactory)
+        public SchedulerController(ILoggerFactory loggerFactory, IHostingEnvironment environment)
         {
+            _environment = environment;
             _logger = loggerFactory.CreateLogger<SchedulerController>();
         }
 
@@ -34,9 +37,10 @@ namespace Scheduler.Api.Controllers
                 return BadRequest();
             }
 
-            string assemblyPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().GetName().CodeBase)
-                                      .Substring(6) + Path.DirectorySeparatorChar + scheduleCreator.AssemblyDirName;
-
+            /*//string assemblyPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().GetName().CodeBase)
+                                      .Substring(6) + Path.DirectorySeparatorChar + scheduleCreator.AssemblyDirName;*/
+            
+            string assemblyPath = Path.Combine(_environment.ContentRootPath, scheduleCreator.AssemblyDirName);
 
             if (!scheduleCreator.Date.HasValue)
             {
@@ -75,7 +79,7 @@ namespace Scheduler.Api.Controllers
 
             Dictionary<string, object>  dataToReturn = Converter.ConvertDateTimeToString(data);
 
-            return Ok(dataToReturn);
+              return Ok(dataToReturn);
                      
         }
 

@@ -57,3 +57,4 @@ C:\Projects\Scheduler\Scheduler\Scheduler.Api\obj\Debug\netcoreapp2.2\Scheduler.
 C:\Projects\Scheduler\Scheduler\Scheduler.Api\bin\Debug\netcoreapp2.2\appsettings.Development.json
 C:\Projects\Scheduler\Scheduler\Scheduler.Api\bin\Debug\netcoreapp2.2\appsettings.json
 C:\Projects\Scheduler\Scheduler\Scheduler.Api\bin\Debug\netcoreapp2.2\Properties\launchSettings.json
+C:\Projects\Scheduler\Scheduler\Scheduler.Api\bin\Debug\netcoreapp2.2\Nlog.config

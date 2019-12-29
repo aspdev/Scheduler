@@ -4,6 +4,7 @@ using Raven.Client.Documents;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Common;
 
 namespace IdentityServer.Repositories
 {
@@ -42,23 +43,21 @@ namespace IdentityServer.Repositories
 
         public async Task<bool> ValidateCredentials(string username, string password, string clientName)
         {
-            using (var session = _store.OpenAsyncSession())
+            var user = await FindByUsername(username, clientName);
+
+            var salt = user.Salt;
+            var hashedPassword = PasswordHasher.HashPassword(password, Convert.FromBase64String(salt));
+            
+            if(user != null && user.ChangePassword == false)
             {
-                var user = await FindByUsername(username, clientName);
-
-                if(user != null && user.ChangePassword == false)
-                {
-                    return user.Password.Equals(password);
-                }
-                else if (user != null && user.ChangePassword == true)
-                {
-                    return user.TemporaryPassword.Equals(password);
-                }
-
-
-                return false;
+                return user.Password.Equals(hashedPassword);
             }
-                      
+            else if (user != null && user.ChangePassword == true)
+            {
+                return user.TemporaryPassword.Equals(hashedPassword);
+            }
+
+            return false;
         }
     }
 }

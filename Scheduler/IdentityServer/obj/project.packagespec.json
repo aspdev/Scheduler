@@ -10,15 +10,19 @@
       "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
     ],
     "originalTargetFrameworks": [
-      "netcoreapp2.1"
+      "netcoreapp2.2"
     ],
     "sources": {
       "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
       "https://api.nuget.org/v3/index.json": {}
     },
     "frameworks": {
-      "netcoreapp2.1": {
-        "projectReferences": {}
+      "netcoreapp2.2": {
+        "projectReferences": {
+          "C:\\Projects\\Scheduler\\Scheduler\\Common\\Common.csproj": {
+            "projectPath": "C:\\Projects\\Scheduler\\Scheduler\\Common\\Common.csproj"
+          }
+        }
       }
     },
     "warningProperties": {
@@ -28,7 +32,7 @@
     }
   },
   "frameworks": {
-    "netcoreapp2.1": {
+    "netcoreapp2.2": {
       "dependencies": {
         "IdentityServer4": {
           "target": "Package",
@@ -41,21 +45,13 @@
         "Microsoft.AspNetCore.App": {
           "suppressParent": "All",
           "target": "Package",
-          "version": "[2.1.1, )",
+          "version": "[2.2.0, )",
           "autoReferenced": true
-        },
-        "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
-          "target": "Package",
-          "version": "[2.1.6, )"
-        },
-        "Microsoft.EntityFrameworkCore.SqlServer": {
-          "target": "Package",
-          "version": "[2.1.8, )"
         },
         "Microsoft.NETCore.App": {
           "suppressParent": "All",
           "target": "Package",
-          "version": "[2.1.0, )",
+          "version": "[2.2.0, )",
           "autoReferenced": true
         },
         "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
@@ -96,7 +92,8 @@
         "net48"
       ],
       "assetTargetFallback": true,
-      "warn": true
+      "warn": true,
+      "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
     }
   }
 }

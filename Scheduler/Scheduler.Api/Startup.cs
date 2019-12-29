@@ -5,8 +5,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using NLog.Extensions.Logging;
-using NLog.Web;
 using Scheduler.Api.Extensions;
 
 
@@ -14,9 +12,11 @@ namespace Scheduler.Api
 {
     public class Startup
     {
-        public Startup(IHostingEnvironment env)
+        private readonly ILogger<Startup> _logger;
+
+        public Startup(IHostingEnvironment env, ILogger<Startup> logger)
         {
-            env.ConfigureNLog("Nlog.config");
+            _logger = logger;
         }
         
         public void ConfigureServices(IServiceCollection services)
@@ -25,16 +25,16 @@ namespace Scheduler.Api
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddIdentityServerAuthentication(options =>
                 {
-                    options.Authority = "https://localhost:44349";
+                    options.Authority = "https://identityserver.arantasar.hostingasp.pl";
                     options.RequireHttpsMetadata = true;
                     options.ApiName = "api1";
 
                 });
-
+            
             services.AddCors(options =>
             {
                 options.AddPolicy("SchedulerApiPolicy", policy =>
-                    policy.WithOrigins("http://localhost:8081")
+                    policy.WithOrigins("https://smartscheduler.pl")
                     .AllowAnyHeader()
                     .AllowAnyMethod()
                     .AllowCredentials());
@@ -42,17 +42,20 @@ namespace Scheduler.Api
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddMvc();
+            services.AddHttpsRedirection(options =>
+            {
+                options.RedirectStatusCode = StatusCodes.Status308PermanentRedirect;
+                options.HttpsPort = 443; 
+               
+            });
             
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-
+            app.UseHttpsRedirection();
             app.UseCors("SchedulerApiPolicy");
-
-            var logger = loggerFactory.CreateLogger<Startup>();
-
-            app.ConfigureExceptionMiddleware(logger, env);
+            app.ConfigureExceptionMiddleware(_logger, env);
             app.UseAuthentication();
             app.UseMvc();
         }

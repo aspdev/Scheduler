@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading.Tasks;
 using Client.Torun.Settings.Enumeration;
 using Newtonsoft.Json;
@@ -84,7 +81,7 @@ namespace Client.Torun.Settings.Optimization
 
         private async Task<int> GetNumberOfDoctorsOnDuty()
         {
-            string url = @"http://localhost:51301/originator/number-of-doctors-on-duty";
+            string url = @"https://ravendataservice.arantasar.hostingasp.pl/originator/number-of-doctors-on-duty";
 
             var response = await HttpClient.GetAsync(url);
             

@@ -102,7 +102,7 @@ namespace Client.Torun.Settings.Optimization
 
         private async Task<List<string>> GetDoctorIds()
         {
-            string url = @"http://localhost:51301/originator/doctor-ids";
+            string url = @"https://ravendataservice.arantasar.hostingasp.pl/originator/doctor-ids";
             
 
             var response = await HttpClient.GetAsync(url);
@@ -118,7 +118,7 @@ namespace Client.Torun.Settings.Optimization
 
         private async Task<List<DutyRequirementForMonthDto>> GetDutyRequirementsForMonth()
         {
-            string url = @"http://localhost:51301/originator/duty-requirements-for-month?year=" + _date.Year +
+            string url = @"https://ravendataservice.arantasar.hostingasp.pl/originator/duty-requirements-for-month?year=" + _date.Year +
                          "&month=" + _date.Month;
             
 

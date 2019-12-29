@@ -1,0 +1,8 @@
+C:\Projects\Scheduler\Scheduler\Scheduler.Shared\bin\Release\netcoreapp2.2\Scheduler.Shared.deps.json
+C:\Projects\Scheduler\Scheduler\Scheduler.Shared\bin\Release\netcoreapp2.2\Scheduler.Shared.dll
+C:\Projects\Scheduler\Scheduler\Scheduler.Shared\bin\Release\netcoreapp2.2\Scheduler.Shared.pdb
+C:\Projects\Scheduler\Scheduler\Scheduler.Shared\obj\Release\netcoreapp2.2\Scheduler.Shared.csprojAssemblyReference.cache
+C:\Projects\Scheduler\Scheduler\Scheduler.Shared\obj\Release\netcoreapp2.2\Scheduler.Shared.AssemblyInfoInputs.cache
+C:\Projects\Scheduler\Scheduler\Scheduler.Shared\obj\Release\netcoreapp2.2\Scheduler.Shared.AssemblyInfo.cs
+C:\Projects\Scheduler\Scheduler\Scheduler.Shared\obj\Release\netcoreapp2.2\Scheduler.Shared.dll
+C:\Projects\Scheduler\Scheduler\Scheduler.Shared\obj\Release\netcoreapp2.2\Scheduler.Shared.pdb

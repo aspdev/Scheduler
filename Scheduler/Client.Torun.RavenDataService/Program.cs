@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using NLog.Web;
+using Microsoft.Extensions.Logging;
+using NLog.Extensions.Logging;
 
 
 namespace Client.Torun.RavenDataService
@@ -14,9 +15,13 @@ namespace Client.Torun.RavenDataService
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>()
-                .UseNLog();
+                .ConfigureLogging((hostingContext, logging) =>
+                {
+                    logging.ClearProviders();
+                    logging.AddNLog();
+                })
+                .UseStartup<Startup>();
 
-            
+
     }
 }

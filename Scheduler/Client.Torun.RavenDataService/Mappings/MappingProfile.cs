@@ -14,7 +14,6 @@ namespace Client.Torun.RavenDataService.Mappings
                 .AfterMap((s, d) => {
                     d.Id = string.Empty;
                     d.Clients.Add("scheduler-client-torun");
-                    d.TemporaryPassword = RandomPasswordGenerator.GeneratePassword(15);
                 });
             CreateMap<User, PostCreationUserToReturnDto>();
             CreateMap<User, UserToReturnDto>();

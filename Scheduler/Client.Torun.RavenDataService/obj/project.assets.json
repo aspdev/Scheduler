@@ -4773,6 +4773,19 @@
           "bin/placeholder/Client.Torun.Shared.dll": {}
         }
       },
+      "Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "dependencies": {
+          "Microsoft.AspNetCore.Cryptography.KeyDerivation": "2.1.1"
+        },
+        "compile": {
+          "bin/placeholder/Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Common.dll": {}
+        }
+      },
       "Scheduler.Mailer/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.2",
@@ -12908,6 +12921,11 @@
       "path": "../Client.Torun.Shared/Client.Torun.Shared.csproj",
       "msbuildProject": "../Client.Torun.Shared/Client.Torun.Shared.csproj"
     },
+    "Common/1.0.0": {
+      "type": "project",
+      "path": "../Common/Common.csproj",
+      "msbuildProject": "../Common/Common.csproj"
+    },
     "Scheduler.Mailer/1.0.0": {
       "type": "project",
       "path": "../Scheduler.Mailer/Scheduler.Mailer.csproj",
@@ -12918,6 +12936,7 @@
     ".NETCoreApp,Version=v2.2": [
       "AutoMapper >= 8.1.1",
       "Client.Torun.Shared >= 1.0.0",
+      "Common >= 1.0.0",
       "IdentityServer4.AccessTokenValidation >= 2.7.0",
       "MailKit >= 2.2.0",
       "Microsoft.AspNetCore.App >= 2.2.0",
@@ -12962,6 +12981,9 @@
           "projectReferences": {
             "C:\\Projects\\Scheduler\\Scheduler\\Client.Torun.Shared\\Client.Torun.Shared.csproj": {
               "projectPath": "C:\\Projects\\Scheduler\\Scheduler\\Client.Torun.Shared\\Client.Torun.Shared.csproj"
+            },
+            "C:\\Projects\\Scheduler\\Scheduler\\Common\\Common.csproj": {
+              "projectPath": "C:\\Projects\\Scheduler\\Scheduler\\Common\\Common.csproj"
             },
             "C:\\Projects\\Scheduler\\Scheduler\\Scheduler.Mailer\\Scheduler.Mailer.csproj": {
               "projectPath": "C:\\Projects\\Scheduler\\Scheduler\\Scheduler.Mailer\\Scheduler.Mailer.csproj"
@@ -13033,7 +13055,8 @@
           "net48"
         ],
         "assetTargetFallback": true,
-        "warn": true
+        "warn": true,
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

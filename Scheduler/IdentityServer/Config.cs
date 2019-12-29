@@ -4,9 +4,7 @@
 
 using IdentityServer4;
 using IdentityServer4.Models;
-using IdentityServer4.Test;
 using System.Collections.Generic;
-using System.Security.Claims;
 
 namespace IdentityServer
 {
@@ -53,9 +51,9 @@ namespace IdentityServer
                     RequireConsent = false,
                     
                     // the URL of the CLIENT where you get the results
-                    RedirectUris =           { "http://localhost:8081/callback/" }, 
-                    PostLogoutRedirectUris = { "http://localhost:8081/" },
-                    AllowedCorsOrigins =     { "http://localhost:8081/" },
+                    RedirectUris =           { "https://smartscheduler.pl/callback/" }, 
+                    PostLogoutRedirectUris = { "https://smartscheduler.pl/" },
+                    AllowedCorsOrigins =     { "https://smartscheduler.pl" },
 
                     AllowedScopes =
                     {

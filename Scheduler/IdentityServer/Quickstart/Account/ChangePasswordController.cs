@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Common;
 
 namespace IdentityServer.Quickstart.Account
 {
@@ -36,7 +37,11 @@ namespace IdentityServer.Quickstart.Account
                 using(var session = _store.OpenAsyncSession())
                 {
                     var user = await session.Query<User>().FirstAsync(u => u.Email == model.Username);
-                    user.Password = model.NewPassword;
+
+                    var salt = Convert.FromBase64String(user.Salt);
+                    var hashedPassword = PasswordHasher.HashPassword(model.NewPassword, salt);
+                    
+                    user.Password = hashedPassword;
                     user.TemporaryPassword = null;
                     user.ChangePassword = false;
 

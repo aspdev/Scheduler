@@ -27,7 +27,7 @@ namespace Client.Torun.Settings.Originator
             AutomaticDecompression = System.Net.DecompressionMethods.GZip
         })
         {
-            BaseAddress = new Uri("http://localhost:51301"),
+            BaseAddress = new Uri("https://ravendataservice.arantasar.hostingasp.pl/"),
             Timeout = new TimeSpan(0, 0, 30), // UWAGA! TimeOut nie jest na razie obsłużony
             DefaultRequestHeaders =
             {

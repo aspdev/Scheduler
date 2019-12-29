@@ -2,19 +2,15 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
-using System;
-using System.Linq;
-using System.Security;
-using System.Security.Cryptography.X509Certificates;
+using System.IO;
 using IdentityServer.DataStore;
 using IdentityServer.Extentions;
-using IdentityServer4;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Tokens;
-using Raven.Client;
+using Microsoft.Extensions.Logging;
 
 namespace IdentityServer
 {
@@ -23,7 +19,7 @@ namespace IdentityServer
         public IConfiguration Configuration { get; private set; }
         public IHostingEnvironment Environment { get; }
 
-        public Startup(IHostingEnvironment environment)
+        public Startup(IHostingEnvironment environment, ILogger<Startup> logger)
         {
             Environment = environment;
             var configurationBuilder = new ConfigurationBuilder()
@@ -34,42 +30,30 @@ namespace IdentityServer
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
+           services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
 
             services.AddSingleton<IDocumentStoreHolder, DocumentStoreHolder>();
+
+            var certificatePath = Path.Combine(Environment.ContentRootPath, "Certificates", "IdentityServerCert.pfx");
+            
 
             var builder = services.AddIdentityServer()
                 .AddInMemoryIdentityResources(Config.GetIdentityResources())
                 .AddInMemoryApiResources(Config.GetApis())
                 .AddInMemoryClients(Config.GetClients())
                 .AddCustomUserStore()
-                .LoadSigningCredentialsFrom(Configuration.GetSection("Certificates")["Token.Certificate.Path"], 
+                .LoadSigningCredentialsFrom(certificatePath,
                     Configuration.GetSection("Certificates")["Token.Certificate.Password"]);
+                
+           services.AddSingleton(Configuration);
 
-            services.AddSingleton(Configuration);
-            services.AddAuthentication()
-                .AddGoogle("Google", options =>
-                {
-                    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+           services.AddHttpsRedirection(options =>
+           {
+               options.RedirectStatusCode = StatusCodes.Status308PermanentRedirect;
+               options.HttpsPort = 443; 
+               
+           });
 
-                    options.ClientId = "<insert here>";
-                    options.ClientSecret = "<insert here>";
-                })
-                .AddOpenIdConnect("oidc", "OpenID Connect", options =>
-                {
-                    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
-                    options.SignOutScheme = IdentityServerConstants.SignoutScheme;
-                    options.SaveTokens = true;
-
-                    options.Authority = "https://demo.identityserver.io/";
-                    options.ClientId = "implicit";
-
-                    options.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        NameClaimType = "name",
-                        RoleClaimType = "role"
-                    };
-                });
         }
 
         public void Configure(IApplicationBuilder app)
@@ -79,6 +63,7 @@ namespace IdentityServer
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseIdentityServer();

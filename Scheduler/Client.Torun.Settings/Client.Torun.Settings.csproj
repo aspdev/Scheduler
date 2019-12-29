@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="XCOPY &quot;$(TargetDir)Client.Torun.Settings.dll&quot; &quot;C:\Projects\Scheduler\Scheduler\Scheduler.Api\bin\Debug\netcoreapp2.2\Torun.Settings&quot; /S /Y&#xD;&#xA;&#xD;&#xA;" />
+    <Exec Command="XCOPY &quot;$(TargetDir)Client.Torun.Settings.dll&quot; &quot;C:\Projects\Scheduler\Scheduler\Scheduler.Api\bin\Debug\netcoreapp2.2\Torun.Settings&quot; /S /Y&#xD;&#xA;XCOPY &quot;$(TargetDir)Client.Torun.Shared.dll&quot; &quot;C:\Projects\Scheduler\Scheduler\Scheduler.Api\bin\Debug\netcoreapp2.2\Torun.Settings&quot; /S /Y&#xD;&#xA;XCOPY &quot;$(TargetDir)Scheduler.Shared.dll&quot; &quot;C:\Projects\Scheduler\Scheduler\Scheduler.Api\bin\Debug\netcoreapp2.2\Torun.Settings&quot; /S /Y&#xD;&#xA;" />
   </Target>
 
 </Project>

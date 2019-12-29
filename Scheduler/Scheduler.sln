@@ -11,8 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scheduler.Shared", "Schedul
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client.Torun.Settings", "Client.Torun.Settings\Client.Torun.Settings.csproj", "{185451B1-A5D9-458C-98D7-1BA904D8AAA4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client.Torun.DataService", "Client.Torun.DataService\Client.Torun.DataService.csproj", "{C24F1D61-CCAC-46FA-8CF1-955647F19B7D}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogViewer.Api", "LogViewer.Api\LogViewer.Api.csproj", "{031ECDCD-1EA5-4757-BF08-B25E78D90FC9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client.Torun.Shared", "Client.Torun.Shared\Client.Torun.Shared.csproj", "{10CEB472-774C-4537-8806-FEAF670490F2}"
@@ -22,6 +20,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client.Torun.RavenDataService", "Client.Torun.RavenDataService\Client.Torun.RavenDataService.csproj", "{5603463E-6F7D-47C6-8B9A-45FBB2D965C7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scheduler.Mailer", "Scheduler.Mailer\Scheduler.Mailer.csproj", "{A7D66DDB-4374-402E-9427-940706CA842C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{5E3DA301-2117-44C5-9AC7-BA0A8B7BF788}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{7F0DD881-8B13-4F54-BF08-55391C30411A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,10 +47,6 @@ Global
 		{185451B1-A5D9-458C-98D7-1BA904D8AAA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{185451B1-A5D9-458C-98D7-1BA904D8AAA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{185451B1-A5D9-458C-98D7-1BA904D8AAA4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C24F1D61-CCAC-46FA-8CF1-955647F19B7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C24F1D61-CCAC-46FA-8CF1-955647F19B7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C24F1D61-CCAC-46FA-8CF1-955647F19B7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C24F1D61-CCAC-46FA-8CF1-955647F19B7D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{031ECDCD-1EA5-4757-BF08-B25E78D90FC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{031ECDCD-1EA5-4757-BF08-B25E78D90FC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{031ECDCD-1EA5-4757-BF08-B25E78D90FC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -69,6 +67,14 @@ Global
 		{A7D66DDB-4374-402E-9427-940706CA842C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7D66DDB-4374-402E-9427-940706CA842C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7D66DDB-4374-402E-9427-940706CA842C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E3DA301-2117-44C5-9AC7-BA0A8B7BF788}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E3DA301-2117-44C5-9AC7-BA0A8B7BF788}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E3DA301-2117-44C5-9AC7-BA0A8B7BF788}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E3DA301-2117-44C5-9AC7-BA0A8B7BF788}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F0DD881-8B13-4F54-BF08-55391C30411A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F0DD881-8B13-4F54-BF08-55391C30411A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F0DD881-8B13-4F54-BF08-55391C30411A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F0DD881-8B13-4F54-BF08-55391C30411A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -2,77 +2,13 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Projects\Scheduler\Scheduler" t="IncludeFlat">
-      <e p="Client.Torun.DataService" t="IncludeRecursive">
-        <e p="appsettings.Development.json" t="Include" />
-        <e p="appsettings.json" t="Include" />
-        <e p="bin" t="ExcludeRecursive" />
-        <e p="Client.Torun.DataService.csproj" t="IncludeRecursive" />
-        <e p="Config" t="Include">
-          <e p="DataServiceConfiguration.cs" t="Include" />
-        </e>
-        <e p="Controllers" t="Include">
-          <e p="OriginatorController.cs" t="Include" />
-          <e p="UserController.cs" t="Include" />
-        </e>
-        <e p="DataServiceContext.cs" t="Include" />
-        <e p="Entities" t="Include">
-          <e p="AdminSettings.cs" t="Include" />
-          <e p="DayOff.cs" t="Include" />
-          <e p="DayOffRequest.cs" t="Include" />
-          <e p="DayOffRequestStatus.cs" t="Include" />
-          <e p="Duty.cs" t="Include" />
-          <e p="DutyRequirement.cs" t="Include" />
-          <e p="SchedulerRole.cs" t="Include" />
-          <e p="User.cs" t="Include" />
-        </e>
-        <e p="EntityConfigurations" t="Include">
-          <e p="AdminSettingsConfiguration.cs" t="Include" />
-          <e p="DayOffConfiguration.cs" t="Include" />
-          <e p="DayOffRequestConfiguration.cs" t="Include" />
-          <e p="DayOffRequestStatusConfiguration.cs" t="Include" />
-          <e p="DutyConfiguration.cs" t="Include" />
-          <e p="DutyRequirementConfiguration.cs" t="Include" />
-          <e p="SchedulerRoleConfiguration.cs" t="Include" />
-          <e p="UserConfiguration.cs" t="Include" />
-        </e>
-        <e p="Enums" t="Include">
-          <e p="RequestStatus.cs" t="Include" />
-          <e p="Role.cs" t="Include" />
-        </e>
-        <e p="Extentions" t="Include">
-          <e p="ExceptionMiddlewareExtention.cs" t="Include" />
-          <e p="HttpRequestExtention.cs" t="Include" />
-          <e p="HttpResponseExtention.cs" t="Include" />
-        </e>
-        <e p="Interfaces" t="Include">
-          <e p="IRepository.cs" t="Include" />
-        </e>
-        <e p="Migrations" t="Include">
-          <e p="20190215103514_InitialMigration.cs" t="Include" />
-          <e p="20190215103514_InitialMigration.Designer.cs" t="Include" />
-          <e p="DataServiceContextModelSnapshot.cs" t="Include" />
-        </e>
-        <e p="Nlog.config" t="Include" />
-        <e p="obj" t="ExcludeRecursive">
-          <e p="Debug" t="Include">
-            <e p="netcoreapp2.2" t="Include">
-              <e p="Client.Torun.DataService.AssemblyInfo.cs" t="Include" />
-            </e>
-          </e>
-        </e>
-        <e p="Program.cs" t="Include" />
-        <e p="Properties" t="Include">
-          <e p="launchSettings.json" t="Include" />
-        </e>
-        <e p="Repository" t="Include">
-          <e p="DataServiceRepository.cs" t="Include" />
-        </e>
-        <e p="Startup.cs" t="Include" />
-      </e>
       <e p="Client.Torun.RavenDataService" t="IncludeRecursive">
-        <e p="appsettings.Development.json" t="Include" />
+        <e p=".gitignore" t="Include" />
         <e p="appsettings.json" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
+        <e p="Certificates" t="Include">
+          <e p="free.scheduler.client.certificate.with.password.pfx" t="Include" />
+        </e>
         <e p="Client.Torun.RavenDataService.csproj" t="IncludeRecursive" />
         <e p="Config" t="Include">
           <e p="DataServiceConfiguration.cs" t="Include" />
@@ -134,12 +70,16 @@
           <e p="Debug" t="Include">
             <e p="netcoreapp2.2" t="Include">
               <e p="Client.Torun.RavenDataService.AssemblyInfo.cs" t="Include" />
+              <e p="Client.Torun.RavenDataService.RazorAssemblyInfo.cs" t="Include" />
             </e>
           </e>
         </e>
         <e p="Program.cs" t="Include" />
         <e p="Properties" t="Include">
           <e p="launchSettings.json" t="Include" />
+          <e p="PublishProfiles" t="Include">
+            <e p="ravendataservice.arantasar.hostingasp.pl - Web Deploy.pubxml" t="Include" />
+          </e>
         </e>
         <e p="Startup.cs" t="Include" />
       </e>
@@ -184,10 +124,26 @@
           </e>
         </e>
       </e>
+      <e p="Common" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Common.csproj" t="IncludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.2" t="Include">
+              <e p="Common.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="PasswordHasher.cs" t="Include" />
+      </e>
       <e p="IdentityServer" t="IncludeRecursive">
         <e p=".gitignore" t="Include" />
         <e p="appsettings.json" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
+        <e p="Certificates" t="Include">
+          <e p="free.scheduler.client.certificate.with.password.pfx" t="Include" />
+          <e p="IdentityServerCert.pfx" t="Include" />
+        </e>
         <e p="Config.cs" t="Include" />
         <e p="DataStore" t="Include">
           <e p="DocumentStoreHolder.cs" t="Include" />
@@ -207,14 +163,18 @@
         </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
-            <e p="netcoreapp2.1" t="Include">
+            <e p="netcoreapp2.2" t="Include">
               <e p="IdentityServer.AssemblyInfo.cs" t="Include" />
+              <e p="IdentityServer.RazorAssemblyInfo.cs" t="Include" />
             </e>
           </e>
         </e>
         <e p="Program.cs" t="Include" />
         <e p="Properties" t="Include">
           <e p="launchSettings.json" t="Include" />
+          <e p="PublishProfiles" t="Include">
+            <e p="identityserver.arantasar.hostingasp.pl - Web Deploy.pubxml" t="Include" />
+          </e>
         </e>
         <e p="Quickstart" t="Include">
           <e p="Account" t="Include">
@@ -326,6 +286,7 @@
           <e p="Debug" t="Include">
             <e p="netcoreapp2.2" t="Include">
               <e p="LogViewer.Api.AssemblyInfo.cs" t="Include" />
+              <e p="LogViewer.Api.RazorAssemblyInfo.cs" t="Include" />
             </e>
           </e>
         </e>
@@ -354,12 +315,16 @@
           <e p="Debug" t="Include">
             <e p="netcoreapp2.2" t="Include">
               <e p="Scheduler.Api.AssemblyInfo.cs" t="Include" />
+              <e p="Scheduler.Api.RazorAssemblyInfo.cs" t="Include" />
             </e>
           </e>
         </e>
         <e p="Program.cs" t="Include" />
         <e p="Properties" t="Include">
           <e p="launchSettings.json" t="Include" />
+          <e p="PublishProfiles" t="Include">
+            <e p="api.scheduler.arantasar.hostingasp.pl - Web Deploy.pubxml" t="Include" />
+          </e>
         </e>
         <e p="Scheduler.Api.csproj" t="IncludeRecursive" />
         <e p="Startup.cs" t="Include" />
@@ -437,9 +402,30 @@
         <e p="Scheduler.Shared.csproj" t="IncludeRecursive" />
       </e>
       <e p="Scheduler.sln" t="IncludeFlat" />
+      <e p="Tests" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="MailerTests.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.2" t="Include">
+              <e p="Tests.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="PasswordHasherTests.cs" t="Include" />
+        <e p="Tests.csproj" t="IncludeRecursive" />
+      </e>
     </e>
-    <e p="C:\temp\ReSharper\_Scheduler.-238085968.RD.00" t="ExcludeRecursive" />
-    <e p="C:\Users\Dell\.Rider2019.2\Config\scratches" t="IncludeRecursive" />
-    <e p="C:\Users\Dell\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\temp\ReSharper\ReSharperHost193._Scheduler.-238085968.RD.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Dell\.nuget\packages\microsoft.net.test.sdk\16.4.0\build\netcoreapp2.1" t="Include">
+      <e p="Microsoft.NET.Test.Sdk.Program.cs" t="Include" />
+    </e>
+    <e p="C:\Users\Dell\.nuget\packages\microsoft.testplatform.testhost\16.4.0\build\netcoreapp2.1\x64\testhost.dll" t="Include" />
+    <e p="C:\Users\Dell\.nuget\packages\microsoft.testplatform.testhost\16.4.0\build\netcoreapp2.1\x64\testhost.exe" t="Include" />
+    <e p="C:\Users\Dell\.nuget\packages\xunit.runner.visualstudio\2.4.1\build\netcoreapp1.0\xunit.runner.reporters.netcoreapp10.dll" t="Include" />
+    <e p="C:\Users\Dell\.nuget\packages\xunit.runner.visualstudio\2.4.1\build\netcoreapp1.0\xunit.runner.utility.netcoreapp10.dll" t="Include" />
+    <e p="C:\Users\Dell\.nuget\packages\xunit.runner.visualstudio\2.4.1\build\netcoreapp1.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll" t="Include" />
+    <e p="C:\Users\Dell\.Rider2019.3\Config\scratches" t="IncludeRecursive" />
+    <e p="C:\Users\Dell\.Rider2019.3\system\extResources" t="IncludeRecursive" />
   </component>
 </project>

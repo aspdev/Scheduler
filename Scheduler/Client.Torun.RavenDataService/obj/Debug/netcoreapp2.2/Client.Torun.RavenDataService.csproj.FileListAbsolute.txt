@@ -34,6 +34,7 @@ C:\Projects\Scheduler\Scheduler\Client.Torun.RavenDataService\obj\Debug\netcorea
 C:\Projects\Scheduler\Scheduler\Client.Torun.RavenDataService\bin\Debug\netcoreapp2.2\Scheduler.Mailer.dll
 C:\Projects\Scheduler\Scheduler\Client.Torun.RavenDataService\bin\Debug\netcoreapp2.2\Scheduler.Mailer.pdb
 C:\Projects\Scheduler\Scheduler\Client.Torun.RavenDataService\bin\Debug\netcoreapp2.2\Nlog.config
-C:\Projects\Scheduler\Scheduler\Client.Torun.RavenDataService\bin\Debug\netcoreapp2.2\appsettings.Development.json
 C:\Projects\Scheduler\Scheduler\Client.Torun.RavenDataService\bin\Debug\netcoreapp2.2\appsettings.json
 C:\Projects\Scheduler\Scheduler\Client.Torun.RavenDataService\bin\Debug\netcoreapp2.2\Properties\launchSettings.json
+C:\Projects\Scheduler\Scheduler\Client.Torun.RavenDataService\bin\Debug\netcoreapp2.2\Common.dll
+C:\Projects\Scheduler\Scheduler\Client.Torun.RavenDataService\bin\Debug\netcoreapp2.2\Common.pdb

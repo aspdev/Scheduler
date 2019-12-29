@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.IdentityModel.Tokens.Jwt;
 using AutoMapper;
 using Client.Torun.RavenDataService.Config;
 using Client.Torun.RavenDataService.DataStore;
@@ -25,19 +21,19 @@ namespace Client.Torun.RavenDataService
 {
     public class Startup
     {
+        private readonly ILogger<Startup> _logger;
 
         private readonly DataServiceConfiguration _dataServiceConfiguration;
         private readonly IConfiguration _configuration;
 
-        public Startup(IHostingEnvironment env)
+        public Startup(IHostingEnvironment env, ILogger<Startup> logger)
         {
+            _logger = logger;
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
-
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+                
             _configuration = builder.Build();
-
 
             _dataServiceConfiguration = new DataServiceConfiguration();
             _configuration.Bind("DataServiceConfiguration", _dataServiceConfiguration);
@@ -49,7 +45,7 @@ namespace Client.Torun.RavenDataService
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddIdentityServerAuthentication(options => 
                 {
-                    options.Authority = "https://localhost:44349";
+                    options.Authority = "https://identityserver.arantasar.hostingasp.pl/";
                     options.RequireHttpsMetadata = true;
                     options.ApiName = "api2";
                 });
@@ -58,17 +54,14 @@ namespace Client.Torun.RavenDataService
             {
                 options.AddPolicy("RavenDataServiceApiPolicy", policy =>
 
-                    policy.WithOrigins("http://localhost:8081")
+                    policy.WithOrigins("https://smartscheduler.pl")
                     .AllowAnyHeader()
                     .AllowAnyMethod()
                     .WithExposedHeaders("X-Pagination")
                     .AllowCredentials()
 
                 );
-
-
             });
-
 
             services.AddSingleton<IDocumentStoreHolder, DocumentStoreHolder>();
             services.AddSingleton(_dataServiceConfiguration);
@@ -96,15 +89,22 @@ namespace Client.Torun.RavenDataService
             IMapper mapper = mappingConfig.CreateMapper();
             services.AddSingleton(mapper);
             
+            services.AddHttpsRedirection(options =>
+            {
+                options.RedirectStatusCode = StatusCodes.Status308PermanentRedirect;
+                options.HttpsPort = 443; 
+               
+            });
+            
             services.AddMvc();
         }
 
         
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app)
         {
-            var logger = loggerFactory.CreateLogger<Startup>();
+            app.UseHttpsRedirection();
             app.UseCors("RavenDataServiceApiPolicy");
-            app.ConfigureExceptionMiddleware(logger, env);
+            app.ConfigureExceptionMiddleware(_logger);
             app.UseAuthentication();
             app.UseMvc();
         }

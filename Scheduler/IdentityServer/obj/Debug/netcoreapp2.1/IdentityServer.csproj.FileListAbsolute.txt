@@ -83,7 +83,6 @@ C:\Projects\Scheduler\Scheduler\IdentityServer\bin\Debug\netcoreapp2.1\IdentityS
 C:\Projects\Scheduler\Scheduler\IdentityServer\bin\Debug\netcoreapp2.1\IdentityServer.pdb
 C:\Projects\Scheduler\Scheduler\IdentityServer\bin\Debug\netcoreapp2.1\IdentityServer.Views.dll
 C:\Projects\Scheduler\Scheduler\IdentityServer\bin\Debug\netcoreapp2.1\IdentityServer.Views.pdb
-C:\Projects\Scheduler\Scheduler\IdentityServer\obj\Debug\netcoreapp2.1\IdentityServer.csprojAssemblyReference.cache
 C:\Projects\Scheduler\Scheduler\IdentityServer\obj\Debug\netcoreapp2.1\IdentityServer.RazorAssemblyInfo.cache
 C:\Projects\Scheduler\Scheduler\IdentityServer\obj\Debug\netcoreapp2.1\IdentityServer.RazorAssemblyInfo.cs
 C:\Projects\Scheduler\Scheduler\IdentityServer\obj\Debug\netcoreapp2.1\IdentityServer.AssemblyInfoInputs.cache
@@ -108,3 +107,6 @@ C:\Projects\Scheduler\Scheduler\IdentityServer\obj\Debug\netcoreapp2.1\Razor\Vie
 C:\Projects\Scheduler\Scheduler\IdentityServer\obj\Debug\netcoreapp2.1\Razor\Views\_ViewImports.cshtml.g.cs
 C:\Projects\Scheduler\Scheduler\IdentityServer\obj\Debug\netcoreapp2.1\Razor\Views\_ViewStart.cshtml.g.cs
 C:\Projects\Scheduler\Scheduler\IdentityServer\bin\Debug\netcoreapp2.1\appsettings.json
+C:\Projects\Scheduler\Scheduler\IdentityServer\obj\Debug\netcoreapp2.1\IdentityServer.csprojAssemblyReference.cache
+C:\Projects\Scheduler\Scheduler\IdentityServer\bin\Debug\netcoreapp2.1\Common.dll
+C:\Projects\Scheduler\Scheduler\IdentityServer\bin\Debug\netcoreapp2.1\Common.pdb

@@ -8,9 +8,8 @@ namespace Client.Torun.RavenDataService.Extentions
 {
     public static class ExceptionMiddlewareExtention
     {
-        public static void ConfigureExceptionMiddleware(this IApplicationBuilder app, ILogger logger, IHostingEnvironment environment)
+        public static void ConfigureExceptionMiddleware(this IApplicationBuilder app, ILogger logger)
         {
-
             app.UseExceptionHandler(appError =>
             {
                 appError.Run(async context =>
@@ -20,7 +19,6 @@ namespace Client.Torun.RavenDataService.Extentions
                     if (errorFeature != null)
                     {
                         var exception = errorFeature.Error;
-
 
                         if (context.Request.ContainsPathBase("originator"))
                         {
@@ -33,9 +31,7 @@ namespace Client.Torun.RavenDataService.Extentions
                         logger.LogError(message);
 
                         await context.Response.WriteAsync("An unexpected error occurred! Try again later");
-
                     }
-
                 });
             });
 

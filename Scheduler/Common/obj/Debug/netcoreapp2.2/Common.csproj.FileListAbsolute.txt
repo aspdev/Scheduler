@@ -1,0 +1,8 @@
+C:\Projects\Scheduler\Scheduler\Common\bin\Debug\netcoreapp2.2\Common.deps.json
+C:\Projects\Scheduler\Scheduler\Common\bin\Debug\netcoreapp2.2\Common.dll
+C:\Projects\Scheduler\Scheduler\Common\bin\Debug\netcoreapp2.2\Common.pdb
+C:\Projects\Scheduler\Scheduler\Common\obj\Debug\netcoreapp2.2\Common.csprojAssemblyReference.cache
+C:\Projects\Scheduler\Scheduler\Common\obj\Debug\netcoreapp2.2\Common.AssemblyInfoInputs.cache
+C:\Projects\Scheduler\Scheduler\Common\obj\Debug\netcoreapp2.2\Common.AssemblyInfo.cs
+C:\Projects\Scheduler\Scheduler\Common\obj\Debug\netcoreapp2.2\Common.dll
+C:\Projects\Scheduler\Scheduler\Common\obj\Debug\netcoreapp2.2\Common.pdb

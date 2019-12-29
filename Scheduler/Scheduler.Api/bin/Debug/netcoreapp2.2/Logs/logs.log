@@ -1,0 +1,288 @@
+2019-12-08 21:06:28.3119|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|HandleAuthenticateAsync called
+2019-12-08 21:06:28.3461|DEBUG|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|AuthenticationScheme: Bearer was not authenticated.
+2019-12-08 21:08:33.8636|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|HandleAuthenticateAsync called
+2019-12-08 21:08:33.8636|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|Token found: eyJhbGciOiJSUzI1NiIsImtpZCI6IjA1OTEzMUM2RjI0QzI4RjM3MEMzMjAxM0ZDODNGQzhDMEQ2NTI3QTAiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJCWkV4eHZKTUtQTnd3eUFUX0lQOGpBMWxKNkEifQ.eyJuYmYiOjE1NzU4MzU2MTMsImV4cCI6MTU3NTgzOTIxMywiaXNzIjoiaHR0cDovL2lkZW50aXR5c2VydmVyLmFyYW50YXNhci5ob3N0aW5nYXNwLnBsIiwiYXVkIjpbImh0dHA6Ly9pZGVudGl0eXNlcnZlci5hcmFudGFzYXIuaG9zdGluZ2FzcC5wbC9yZXNvdXJjZXMiLCJhcGkxIiwiYXBpMiJdLCJjbGllbnRfaWQiOiJzY2hlZHVsZXItY2xpZW50LXRvcnVuIiwic3ViIjoiMjc3NzlkYzktZWIwYy00NWNjLWFhNGQtNDg2MTBmODQ2MmUxIiwiYXV0aF90aW1lIjoxNTc1ODM1NjEyLCJpZHAiOiJsb2NhbCIsInJvbGVzIjoiW1wibWFuYWdlclwiXSIsImZpcnN0TmFtZSI6IsWBdWthc3oiLCJsYXN0TmFtZSI6IkRvYnJ6ecWEc2tpIiwidXNlcm5hbWUiOiJsdWthc3pAcmF2ZW5kYi5jb20iLCJzY29wZSI6WyJvcGVuaWQiLCJwcm9maWxlIiwiYXBpMSIsImFwaTIiXSwiYW1yIjpbInB3ZCJdfQ.f1Ypy4rqatQXlF-nviXZitrNCYCiPfh-3DpcDE0rOD6nTJM2bCFL3nWc90r-CNQ41loHrwbymgaAh3LIxK8j70NjOqoyuJwV8YePe-0oEoGt32LjReGY1UBFdgBqRCzD2_qZawYIMMm7P39Bw-9vwNoJnSs2ry6Ro2_HJu0EVMDzhMStyjCUCgHdP-ocDBZPgJD15cdYTeoMp5OFg2Tx-0cmR3WkcnUeFAYm302gWtEWAPKyupdtHTNMv8drvFZSJFNEIoVDBAr56rmQWp7g_GO6N5zrsh_kaMYQZTJLxTkOJz9EhDSPnQ4CbzxK4Mk4_OtfWmUGLTY9NQWhpJW4kg
+2019-12-08 21:08:33.8741|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|Token is a JWT and is supported.
+2019-12-08 21:08:34.5031|DEBUG|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|AuthenticationScheme: Bearer was successfully authenticated.
+2019-12-08 21:18:43.3165|ERROR|Scheduler.Api.Startup|System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---> System.IO.FileNotFoundException: Could not load file or assembly 'Client.Torun.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. The system cannot find the file specified. ---> System.IO.FileNotFoundException: Could not load file or assembly 'C:\Projects\Scheduler\Scheduler\Scheduler.Api\bin\Debug\netcoreapp2.2\Torun.SettingsClient.Torun.Shared.dll'. The system cannot find the file specified.
+   at System.Runtime.Loader.AssemblyLoadContext.LoadFromPath(IntPtr ptrNativeAssemblyLoadContext, String ilPath, String niPath, ObjectHandleOnStack retAssembly)
+   at System.Runtime.Loader.AssemblyLoadContext.LoadFromAssemblyPath(String assemblyPath)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at Scheduler.Api.Utility.DynamicFactory.LoadFileFromAssembly(Object sender, ResolveEventArgs args, String assemblyPath) in C:\Projects\Scheduler\Scheduler\Scheduler.Api\Utility\DynamicFactory.cs:line 105
+   at Scheduler.Api.Utility.DynamicFactory.<>c__DisplayClass0_0.<GetSpeciesOriginator>b__0(Object sender, ResolveEventArgs args) in C:\Projects\Scheduler\Scheduler\Scheduler.Api\Utility\DynamicFactory.cs:line 19
+   at System.AppDomain.InvokeResolveEvent(ResolveEventHandler eventHandler, RuntimeAssembly assembly, String name)
+   at System.AppDomain.OnAssemblyResolveEvent(RuntimeAssembly assembly, String assemblyFullName)
+   --- End of inner exception stack trace ---
+   at Client.Torun.Settings.Originator.SpeciesOriginator..ctor(String authorizationToken, DateTime date)
+   --- End of inner exception stack trace ---
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at System.Activator.CreateInstance(Type type, Object[] args)
+   at Scheduler.Api.Utility.DynamicFactory.GetSpeciesOriginator(String assemblyPath, DateTime date, List`1 arguments) in C:\Projects\Scheduler\Scheduler\Scheduler.Api\Utility\DynamicFactory.cs:line 45
+   at Scheduler.Api.Controllers.SchedulerController.GetSchedule(ScheduleCreatorDto scheduleCreator) in C:\Projects\Scheduler\Scheduler\Scheduler.Api\Controllers\SchedulerController.cs:line 50
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at System.Threading.Tasks.ValueTask`1.get_Result()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.Invoke(HttpContext context)
+2019-12-08 21:19:12.7707|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|HandleAuthenticateAsync called
+2019-12-08 21:19:12.7994|DEBUG|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|AuthenticationScheme: Bearer was not authenticated.
+2019-12-08 21:20:28.8234|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|HandleAuthenticateAsync called
+2019-12-08 21:20:28.8244|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|Token found: eyJhbGciOiJSUzI1NiIsImtpZCI6IjA1OTEzMUM2RjI0QzI4RjM3MEMzMjAxM0ZDODNGQzhDMEQ2NTI3QTAiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJCWkV4eHZKTUtQTnd3eUFUX0lQOGpBMWxKNkEifQ.eyJuYmYiOjE1NzU4MzU2MTMsImV4cCI6MTU3NTgzOTIxMywiaXNzIjoiaHR0cDovL2lkZW50aXR5c2VydmVyLmFyYW50YXNhci5ob3N0aW5nYXNwLnBsIiwiYXVkIjpbImh0dHA6Ly9pZGVudGl0eXNlcnZlci5hcmFudGFzYXIuaG9zdGluZ2FzcC5wbC9yZXNvdXJjZXMiLCJhcGkxIiwiYXBpMiJdLCJjbGllbnRfaWQiOiJzY2hlZHVsZXItY2xpZW50LXRvcnVuIiwic3ViIjoiMjc3NzlkYzktZWIwYy00NWNjLWFhNGQtNDg2MTBmODQ2MmUxIiwiYXV0aF90aW1lIjoxNTc1ODM1NjEyLCJpZHAiOiJsb2NhbCIsInJvbGVzIjoiW1wibWFuYWdlclwiXSIsImZpcnN0TmFtZSI6IsWBdWthc3oiLCJsYXN0TmFtZSI6IkRvYnJ6ecWEc2tpIiwidXNlcm5hbWUiOiJsdWthc3pAcmF2ZW5kYi5jb20iLCJzY29wZSI6WyJvcGVuaWQiLCJwcm9maWxlIiwiYXBpMSIsImFwaTIiXSwiYW1yIjpbInB3ZCJdfQ.f1Ypy4rqatQXlF-nviXZitrNCYCiPfh-3DpcDE0rOD6nTJM2bCFL3nWc90r-CNQ41loHrwbymgaAh3LIxK8j70NjOqoyuJwV8YePe-0oEoGt32LjReGY1UBFdgBqRCzD2_qZawYIMMm7P39Bw-9vwNoJnSs2ry6Ro2_HJu0EVMDzhMStyjCUCgHdP-ocDBZPgJD15cdYTeoMp5OFg2Tx-0cmR3WkcnUeFAYm302gWtEWAPKyupdtHTNMv8drvFZSJFNEIoVDBAr56rmQWp7g_GO6N5zrsh_kaMYQZTJLxTkOJz9EhDSPnQ4CbzxK4Mk4_OtfWmUGLTY9NQWhpJW4kg
+2019-12-08 21:20:28.8244|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|Token is a JWT and is supported.
+2019-12-08 21:20:29.3123|DEBUG|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|AuthenticationScheme: Bearer was successfully authenticated.
+2019-12-08 21:20:29.3915|ERROR|Scheduler.Api.Startup|System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---> System.IO.FileNotFoundException: Could not load file or assembly 'Client.Torun.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. The system cannot find the file specified. ---> System.IO.FileNotFoundException: Could not load file or assembly 'C:\Projects\Scheduler\Scheduler\Scheduler.Api\bin\Debug\netcoreapp2.2\Torun.SettingsClient.Torun.Shared.dll'. The system cannot find the file specified.
+   at System.Runtime.Loader.AssemblyLoadContext.LoadFromPath(IntPtr ptrNativeAssemblyLoadContext, String ilPath, String niPath, ObjectHandleOnStack retAssembly)
+   at System.Runtime.Loader.AssemblyLoadContext.LoadFromAssemblyPath(String assemblyPath)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at Scheduler.Api.Utility.DynamicFactory.LoadFileFromAssembly(Object sender, ResolveEventArgs args, String assemblyPath) in C:\Projects\Scheduler\Scheduler\Scheduler.Api\Utility\DynamicFactory.cs:line 105
+   at Scheduler.Api.Utility.DynamicFactory.<>c__DisplayClass0_0.<GetSpeciesOriginator>b__0(Object sender, ResolveEventArgs args) in C:\Projects\Scheduler\Scheduler\Scheduler.Api\Utility\DynamicFactory.cs:line 19
+   at System.AppDomain.InvokeResolveEvent(ResolveEventHandler eventHandler, RuntimeAssembly assembly, String name)
+   --- End of inner exception stack trace ---
+   at Client.Torun.Settings.Originator.SpeciesOriginator..ctor(String authorizationToken, DateTime date)
+   --- End of inner exception stack trace ---
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at System.Activator.CreateInstance(Type type, Object[] args)
+   at Scheduler.Api.Utility.DynamicFactory.GetSpeciesOriginator(String assemblyPath, DateTime date, List`1 arguments) in C:\Projects\Scheduler\Scheduler\Scheduler.Api\Utility\DynamicFactory.cs:line 45
+   at Scheduler.Api.Controllers.SchedulerController.GetSchedule(ScheduleCreatorDto scheduleCreator) in C:\Projects\Scheduler\Scheduler\Scheduler.Api\Controllers\SchedulerController.cs:line 50
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at System.Threading.Tasks.ValueTask`1.get_Result()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.Invoke(HttpContext context)
+2019-12-08 21:47:18.7285|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|HandleAuthenticateAsync called
+2019-12-08 21:47:18.7649|DEBUG|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|AuthenticationScheme: Bearer was not authenticated.
+2019-12-08 21:47:43.7282|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|HandleAuthenticateAsync called
+2019-12-08 21:47:43.7456|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|Token found: eyJhbGciOiJSUzI1NiIsImtpZCI6IjA1OTEzMUM2RjI0QzI4RjM3MEMzMjAxM0ZDODNGQzhDMEQ2NTI3QTAiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJCWkV4eHZKTUtQTnd3eUFUX0lQOGpBMWxKNkEifQ.eyJuYmYiOjE1NzU4MzU2MTMsImV4cCI6MTU3NTgzOTIxMywiaXNzIjoiaHR0cDovL2lkZW50aXR5c2VydmVyLmFyYW50YXNhci5ob3N0aW5nYXNwLnBsIiwiYXVkIjpbImh0dHA6Ly9pZGVudGl0eXNlcnZlci5hcmFudGFzYXIuaG9zdGluZ2FzcC5wbC9yZXNvdXJjZXMiLCJhcGkxIiwiYXBpMiJdLCJjbGllbnRfaWQiOiJzY2hlZHVsZXItY2xpZW50LXRvcnVuIiwic3ViIjoiMjc3NzlkYzktZWIwYy00NWNjLWFhNGQtNDg2MTBmODQ2MmUxIiwiYXV0aF90aW1lIjoxNTc1ODM1NjEyLCJpZHAiOiJsb2NhbCIsInJvbGVzIjoiW1wibWFuYWdlclwiXSIsImZpcnN0TmFtZSI6IsWBdWthc3oiLCJsYXN0TmFtZSI6IkRvYnJ6ecWEc2tpIiwidXNlcm5hbWUiOiJsdWthc3pAcmF2ZW5kYi5jb20iLCJzY29wZSI6WyJvcGVuaWQiLCJwcm9maWxlIiwiYXBpMSIsImFwaTIiXSwiYW1yIjpbInB3ZCJdfQ.f1Ypy4rqatQXlF-nviXZitrNCYCiPfh-3DpcDE0rOD6nTJM2bCFL3nWc90r-CNQ41loHrwbymgaAh3LIxK8j70NjOqoyuJwV8YePe-0oEoGt32LjReGY1UBFdgBqRCzD2_qZawYIMMm7P39Bw-9vwNoJnSs2ry6Ro2_HJu0EVMDzhMStyjCUCgHdP-ocDBZPgJD15cdYTeoMp5OFg2Tx-0cmR3WkcnUeFAYm302gWtEWAPKyupdtHTNMv8drvFZSJFNEIoVDBAr56rmQWp7g_GO6N5zrsh_kaMYQZTJLxTkOJz9EhDSPnQ4CbzxK4Mk4_OtfWmUGLTY9NQWhpJW4kg
+2019-12-08 21:47:43.7489|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|Token is a JWT and is supported.
+2019-12-08 21:47:44.3385|DEBUG|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|AuthenticationScheme: Bearer was successfully authenticated.
+2019-12-08 21:52:38.8719|ERROR|Scheduler.Api.Startup|System.Net.Http.HttpRequestException: No connection could be made because the target machine actively refused it ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it
+   at System.Net.Http.ConnectHelper.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.ConnectHelper.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)
+   at System.Threading.Tasks.ValueTask`1.get_Result()
+   at System.Net.Http.HttpConnectionPool.CreateConnectionAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Threading.Tasks.ValueTask`1.get_Result()
+   at System.Net.Http.HttpConnectionPool.WaitForCreatedConnectionAsync(ValueTask`1 creationTask)
+   at System.Threading.Tasks.ValueTask`1.get_Result()
+   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.FinishSendAsyncBuffered(Task`1 sendTask, HttpRequestMessage request, CancellationTokenSource cts, Boolean disposeCts)
+   at Client.Torun.Settings.Optimization.DutyRequirements.GetDoctorIds()
+   at Client.Torun.Settings.Optimization.DutyRequirements.<SetDataFromRemoteApi>b__8_0()
+   at Client.Torun.Settings.Optimization.DutyRequirements.SetDataFromRemoteApi()
+   at Scheduler.Api.Controllers.SchedulerController.GetSchedule(ScheduleCreatorDto scheduleCreator) in C:\Projects\Scheduler\Scheduler\Scheduler.Api\Controllers\SchedulerController.cs:line 58
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at System.Threading.Tasks.ValueTask`1.get_Result()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.Invoke(HttpContext context)
+2019-12-08 21:59:10.3541|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|HandleAuthenticateAsync called
+2019-12-08 21:59:10.3865|DEBUG|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|AuthenticationScheme: Bearer was not authenticated.
+2019-12-08 22:00:42.6753|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|HandleAuthenticateAsync called
+2019-12-08 22:00:42.7056|DEBUG|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|AuthenticationScheme: Bearer was not authenticated.
+2019-12-08 22:01:32.7352|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|HandleAuthenticateAsync called
+2019-12-08 22:01:32.7352|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|Token found: eyJhbGciOiJSUzI1NiIsImtpZCI6IjA1OTEzMUM2RjI0QzI4RjM3MEMzMjAxM0ZDODNGQzhDMEQ2NTI3QTAiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJCWkV4eHZKTUtQTnd3eUFUX0lQOGpBMWxKNkEifQ.eyJuYmYiOjE1NzU4MzU2MTMsImV4cCI6MTU3NTgzOTIxMywiaXNzIjoiaHR0cDovL2lkZW50aXR5c2VydmVyLmFyYW50YXNhci5ob3N0aW5nYXNwLnBsIiwiYXVkIjpbImh0dHA6Ly9pZGVudGl0eXNlcnZlci5hcmFudGFzYXIuaG9zdGluZ2FzcC5wbC9yZXNvdXJjZXMiLCJhcGkxIiwiYXBpMiJdLCJjbGllbnRfaWQiOiJzY2hlZHVsZXItY2xpZW50LXRvcnVuIiwic3ViIjoiMjc3NzlkYzktZWIwYy00NWNjLWFhNGQtNDg2MTBmODQ2MmUxIiwiYXV0aF90aW1lIjoxNTc1ODM1NjEyLCJpZHAiOiJsb2NhbCIsInJvbGVzIjoiW1wibWFuYWdlclwiXSIsImZpcnN0TmFtZSI6IsWBdWthc3oiLCJsYXN0TmFtZSI6IkRvYnJ6ecWEc2tpIiwidXNlcm5hbWUiOiJsdWthc3pAcmF2ZW5kYi5jb20iLCJzY29wZSI6WyJvcGVuaWQiLCJwcm9maWxlIiwiYXBpMSIsImFwaTIiXSwiYW1yIjpbInB3ZCJdfQ.f1Ypy4rqatQXlF-nviXZitrNCYCiPfh-3DpcDE0rOD6nTJM2bCFL3nWc90r-CNQ41loHrwbymgaAh3LIxK8j70NjOqoyuJwV8YePe-0oEoGt32LjReGY1UBFdgBqRCzD2_qZawYIMMm7P39Bw-9vwNoJnSs2ry6Ro2_HJu0EVMDzhMStyjCUCgHdP-ocDBZPgJD15cdYTeoMp5OFg2Tx-0cmR3WkcnUeFAYm302gWtEWAPKyupdtHTNMv8drvFZSJFNEIoVDBAr56rmQWp7g_GO6N5zrsh_kaMYQZTJLxTkOJz9EhDSPnQ4CbzxK4Mk4_OtfWmUGLTY9NQWhpJW4kg
+2019-12-08 22:01:32.7352|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|Token is a JWT and is supported.
+2019-12-08 22:01:33.2386|DEBUG|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|AuthenticationScheme: Bearer was successfully authenticated.
+2019-12-08 22:27:37.1159|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|HandleAuthenticateAsync called
+2019-12-08 22:27:37.1495|DEBUG|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|AuthenticationScheme: Bearer was not authenticated.
+2019-12-08 22:28:32.1309|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|HandleAuthenticateAsync called
+2019-12-08 22:28:32.1309|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|Token found: eyJhbGciOiJSUzI1NiIsImtpZCI6IjA1OTEzMUM2RjI0QzI4RjM3MEMzMjAxM0ZDODNGQzhDMEQ2NTI3QTAiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJCWkV4eHZKTUtQTnd3eUFUX0lQOGpBMWxKNkEifQ.eyJuYmYiOjE1NzU4NDA0OTUsImV4cCI6MTU3NTg0NDA5NSwiaXNzIjoiaHR0cDovL2lkZW50aXR5c2VydmVyLmFyYW50YXNhci5ob3N0aW5nYXNwLnBsIiwiYXVkIjpbImh0dHA6Ly9pZGVudGl0eXNlcnZlci5hcmFudGFzYXIuaG9zdGluZ2FzcC5wbC9yZXNvdXJjZXMiLCJhcGkxIiwiYXBpMiJdLCJjbGllbnRfaWQiOiJzY2hlZHVsZXItY2xpZW50LXRvcnVuIiwic3ViIjoiMjc3NzlkYzktZWIwYy00NWNjLWFhNGQtNDg2MTBmODQ2MmUxIiwiYXV0aF90aW1lIjoxNTc1ODQwNDk1LCJpZHAiOiJsb2NhbCIsInJvbGVzIjoiW1wibWFuYWdlclwiXSIsImZpcnN0TmFtZSI6IsWBdWthc3oiLCJsYXN0TmFtZSI6IkRvYnJ6ecWEc2tpIiwidXNlcm5hbWUiOiJsdWthc3pAcmF2ZW5kYi5jb20iLCJzY29wZSI6WyJvcGVuaWQiLCJwcm9maWxlIiwiYXBpMSIsImFwaTIiXSwiYW1yIjpbInB3ZCJdfQ.vqe8WY6_TY_WxOsmp3_Tx9J3lWVMrIcDHQ_XK6aChL2tHz-xazgF6rMnlFQSCgTggbFBs4Ysu7FjLwwMurhv3EEJq4zv3bbW-JebNRRGMmeXdALa6a7HJP9vXWrONqv2ZYjfK2zjA1g0C9JZHH1-UAFZ1W4XIDU49U-c_l7dVI5tZ57VC8Kdm_6Yt94Kj9PSLl85FxH4SpjFeRBUuid1bDZDyrRo0wjXxmQ0PaO2CFc55gXROqXgEjGoB1MR5v2HJ_WGbpR1KMW8Y0tsf5MJ2CBCe_hmJLsyf5oxkMkRNdtG_lqj8JlCwfDMRKjcY_cv-sBkjcH8RQReKtAehAN94g
+2019-12-08 22:28:32.1309|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|Token is a JWT and is supported.
+2019-12-08 22:28:32.6686|DEBUG|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|AuthenticationScheme: Bearer was successfully authenticated.
+2019-12-08 22:28:32.7475|ERROR|Scheduler.Api.Startup|System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---> System.IO.FileNotFoundException: Could not load file or assembly 'Client.Torun.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. The system cannot find the file specified.
+   at Client.Torun.Settings.Originator.SpeciesOriginator..ctor(String authorizationToken, DateTime date)
+   --- End of inner exception stack trace ---
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at System.Activator.CreateInstance(Type type, Object[] args)
+   at Scheduler.Api.Utility.DynamicFactory.GetSpeciesOriginator(String assemblyPath, DateTime date, List`1 arguments) in C:\Projects\Scheduler\Scheduler\Scheduler.Api\Utility\DynamicFactory.cs:line 45
+   at Scheduler.Api.Controllers.SchedulerController.GetSchedule(ScheduleCreatorDto scheduleCreator) in C:\Projects\Scheduler\Scheduler\Scheduler.Api\Controllers\SchedulerController.cs:line 50
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at System.Threading.Tasks.ValueTask`1.get_Result()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.Invoke(HttpContext context)
+2019-12-08 22:31:49.4804|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|HandleAuthenticateAsync called
+2019-12-08 22:31:49.5203|DEBUG|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|AuthenticationScheme: Bearer was not authenticated.
+2019-12-08 22:32:00.6960|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|HandleAuthenticateAsync called
+2019-12-08 22:32:00.6960|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|Token found: eyJhbGciOiJSUzI1NiIsImtpZCI6IjA1OTEzMUM2RjI0QzI4RjM3MEMzMjAxM0ZDODNGQzhDMEQ2NTI3QTAiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJCWkV4eHZKTUtQTnd3eUFUX0lQOGpBMWxKNkEifQ.eyJuYmYiOjE1NzU4NDA0OTUsImV4cCI6MTU3NTg0NDA5NSwiaXNzIjoiaHR0cDovL2lkZW50aXR5c2VydmVyLmFyYW50YXNhci5ob3N0aW5nYXNwLnBsIiwiYXVkIjpbImh0dHA6Ly9pZGVudGl0eXNlcnZlci5hcmFudGFzYXIuaG9zdGluZ2FzcC5wbC9yZXNvdXJjZXMiLCJhcGkxIiwiYXBpMiJdLCJjbGllbnRfaWQiOiJzY2hlZHVsZXItY2xpZW50LXRvcnVuIiwic3ViIjoiMjc3NzlkYzktZWIwYy00NWNjLWFhNGQtNDg2MTBmODQ2MmUxIiwiYXV0aF90aW1lIjoxNTc1ODQwNDk1LCJpZHAiOiJsb2NhbCIsInJvbGVzIjoiW1wibWFuYWdlclwiXSIsImZpcnN0TmFtZSI6IsWBdWthc3oiLCJsYXN0TmFtZSI6IkRvYnJ6ecWEc2tpIiwidXNlcm5hbWUiOiJsdWthc3pAcmF2ZW5kYi5jb20iLCJzY29wZSI6WyJvcGVuaWQiLCJwcm9maWxlIiwiYXBpMSIsImFwaTIiXSwiYW1yIjpbInB3ZCJdfQ.vqe8WY6_TY_WxOsmp3_Tx9J3lWVMrIcDHQ_XK6aChL2tHz-xazgF6rMnlFQSCgTggbFBs4Ysu7FjLwwMurhv3EEJq4zv3bbW-JebNRRGMmeXdALa6a7HJP9vXWrONqv2ZYjfK2zjA1g0C9JZHH1-UAFZ1W4XIDU49U-c_l7dVI5tZ57VC8Kdm_6Yt94Kj9PSLl85FxH4SpjFeRBUuid1bDZDyrRo0wjXxmQ0PaO2CFc55gXROqXgEjGoB1MR5v2HJ_WGbpR1KMW8Y0tsf5MJ2CBCe_hmJLsyf5oxkMkRNdtG_lqj8JlCwfDMRKjcY_cv-sBkjcH8RQReKtAehAN94g
+2019-12-08 22:32:00.6960|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|Token is a JWT and is supported.
+2019-12-08 22:32:01.2289|DEBUG|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|AuthenticationScheme: Bearer was successfully authenticated.
+2019-12-08 22:32:04.2978|ERROR|Scheduler.Api.Startup|System.Net.Http.HttpRequestException: No connection could be made because the target machine actively refused it ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it
+   at System.Net.Http.ConnectHelper.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.ConnectHelper.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)
+   at System.Threading.Tasks.ValueTask`1.get_Result()
+   at System.Net.Http.HttpConnectionPool.CreateConnectionAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Threading.Tasks.ValueTask`1.get_Result()
+   at System.Net.Http.HttpConnectionPool.WaitForCreatedConnectionAsync(ValueTask`1 creationTask)
+   at System.Threading.Tasks.ValueTask`1.get_Result()
+   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.FinishSendAsyncBuffered(Task`1 sendTask, HttpRequestMessage request, CancellationTokenSource cts, Boolean disposeCts)
+   at Client.Torun.Settings.Optimization.DutyRequirements.GetDoctorIds()
+   at Client.Torun.Settings.Optimization.DutyRequirements.<SetDataFromRemoteApi>b__8_0()
+   at Client.Torun.Settings.Optimization.DutyRequirements.SetDataFromRemoteApi()
+   at Scheduler.Api.Controllers.SchedulerController.GetSchedule(ScheduleCreatorDto scheduleCreator) in C:\Projects\Scheduler\Scheduler\Scheduler.Api\Controllers\SchedulerController.cs:line 58
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at System.Threading.Tasks.ValueTask`1.get_Result()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.Invoke(HttpContext context)
+2019-12-08 22:56:46.0383|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|HandleAuthenticateAsync called
+2019-12-08 22:56:46.0673|DEBUG|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|AuthenticationScheme: Bearer was not authenticated.
+2019-12-08 22:57:33.3781|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|HandleAuthenticateAsync called
+2019-12-08 22:57:33.3781|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|Token found: eyJhbGciOiJSUzI1NiIsImtpZCI6IjA1OTEzMUM2RjI0QzI4RjM3MEMzMjAxM0ZDODNGQzhDMEQ2NTI3QTAiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJCWkV4eHZKTUtQTnd3eUFUX0lQOGpBMWxKNkEifQ.eyJuYmYiOjE1NzU4NDA0OTUsImV4cCI6MTU3NTg0NDA5NSwiaXNzIjoiaHR0cDovL2lkZW50aXR5c2VydmVyLmFyYW50YXNhci5ob3N0aW5nYXNwLnBsIiwiYXVkIjpbImh0dHA6Ly9pZGVudGl0eXNlcnZlci5hcmFudGFzYXIuaG9zdGluZ2FzcC5wbC9yZXNvdXJjZXMiLCJhcGkxIiwiYXBpMiJdLCJjbGllbnRfaWQiOiJzY2hlZHVsZXItY2xpZW50LXRvcnVuIiwic3ViIjoiMjc3NzlkYzktZWIwYy00NWNjLWFhNGQtNDg2MTBmODQ2MmUxIiwiYXV0aF90aW1lIjoxNTc1ODQwNDk1LCJpZHAiOiJsb2NhbCIsInJvbGVzIjoiW1wibWFuYWdlclwiXSIsImZpcnN0TmFtZSI6IsWBdWthc3oiLCJsYXN0TmFtZSI6IkRvYnJ6ecWEc2tpIiwidXNlcm5hbWUiOiJsdWthc3pAcmF2ZW5kYi5jb20iLCJzY29wZSI6WyJvcGVuaWQiLCJwcm9maWxlIiwiYXBpMSIsImFwaTIiXSwiYW1yIjpbInB3ZCJdfQ.vqe8WY6_TY_WxOsmp3_Tx9J3lWVMrIcDHQ_XK6aChL2tHz-xazgF6rMnlFQSCgTggbFBs4Ysu7FjLwwMurhv3EEJq4zv3bbW-JebNRRGMmeXdALa6a7HJP9vXWrONqv2ZYjfK2zjA1g0C9JZHH1-UAFZ1W4XIDU49U-c_l7dVI5tZ57VC8Kdm_6Yt94Kj9PSLl85FxH4SpjFeRBUuid1bDZDyrRo0wjXxmQ0PaO2CFc55gXROqXgEjGoB1MR5v2HJ_WGbpR1KMW8Y0tsf5MJ2CBCe_hmJLsyf5oxkMkRNdtG_lqj8JlCwfDMRKjcY_cv-sBkjcH8RQReKtAehAN94g
+2019-12-08 22:57:33.3781|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|Token is a JWT and is supported.
+2019-12-08 22:57:33.9102|DEBUG|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|AuthenticationScheme: Bearer was successfully authenticated.
+2019-12-08 23:18:08.4393|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|HandleAuthenticateAsync called
+2019-12-08 23:18:08.4686|DEBUG|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|AuthenticationScheme: Bearer was not authenticated.
+2019-12-08 23:19:02.1436|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|HandleAuthenticateAsync called
+2019-12-08 23:19:02.1436|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|Token found: eyJhbGciOiJSUzI1NiIsImtpZCI6IjA1OTEzMUM2RjI0QzI4RjM3MEMzMjAxM0ZDODNGQzhDMEQ2NTI3QTAiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJCWkV4eHZKTUtQTnd3eUFUX0lQOGpBMWxKNkEifQ.eyJuYmYiOjE1NzU4NDM1MjcsImV4cCI6MTU3NTg0NzEyNywiaXNzIjoiaHR0cDovL2lkZW50aXR5c2VydmVyLmFyYW50YXNhci5ob3N0aW5nYXNwLnBsIiwiYXVkIjpbImh0dHA6Ly9pZGVudGl0eXNlcnZlci5hcmFudGFzYXIuaG9zdGluZ2FzcC5wbC9yZXNvdXJjZXMiLCJhcGkxIiwiYXBpMiJdLCJjbGllbnRfaWQiOiJzY2hlZHVsZXItY2xpZW50LXRvcnVuIiwic3ViIjoiMjc3NzlkYzktZWIwYy00NWNjLWFhNGQtNDg2MTBmODQ2MmUxIiwiYXV0aF90aW1lIjoxNTc1ODQzNTI2LCJpZHAiOiJsb2NhbCIsInJvbGVzIjoiW1wibWFuYWdlclwiXSIsImZpcnN0TmFtZSI6IsWBdWthc3oiLCJsYXN0TmFtZSI6IkRvYnJ6ecWEc2tpIiwidXNlcm5hbWUiOiJsdWthc3pAcmF2ZW5kYi5jb20iLCJzY29wZSI6WyJvcGVuaWQiLCJwcm9maWxlIiwiYXBpMSIsImFwaTIiXSwiYW1yIjpbInB3ZCJdfQ.skuTTEABSZd9dfC3A3Ck1xMbM5_N9kHs0kOAsj74R61K9mLk6FbkuS-vMV_Vo46Cedi8FbNuqqL15CyJS6gwcfW-PnOpJGC_2eB1dH5Eub1P61bayL73qMhw4tAzDMZ18CK3oFBIkVEnK6_tqLLZYziwjAqgHehm332Z7FMdL3CzvIPxmmvUT5j4PqHj2GJWNYaCwLBPJvEKZNSeU_4reiTCbDST8n3mLyHwmvVnh_figICL-uA69b8cyiYVdT0wuSXk9rPdraWHFky5Y4c8l1CGqB7gsZy9aIudlsopWPBC73IMfpM_4AKunFfk1-DtSzyamPMa08Hn-5m2wqDqzA
+2019-12-08 23:19:02.1436|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|Token is a JWT and is supported.
+2019-12-08 23:19:02.6615|DEBUG|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|AuthenticationScheme: Bearer was successfully authenticated.
+2019-12-08 23:36:40.7607|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|HandleAuthenticateAsync called
+2019-12-08 23:36:40.7888|DEBUG|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|AuthenticationScheme: Bearer was not authenticated.
+2019-12-08 23:37:07.3825|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|HandleAuthenticateAsync called
+2019-12-08 23:37:07.3825|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|Token found: eyJhbGciOiJSUzI1NiIsImtpZCI6IjA1OTEzMUM2RjI0QzI4RjM3MEMzMjAxM0ZDODNGQzhDMEQ2NTI3QTAiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJCWkV4eHZKTUtQTnd3eUFUX0lQOGpBMWxKNkEifQ.eyJuYmYiOjE1NzU4NDQ2MTgsImV4cCI6MTU3NTg0ODIxOCwiaXNzIjoiaHR0cDovL2lkZW50aXR5c2VydmVyLmFyYW50YXNhci5ob3N0aW5nYXNwLnBsIiwiYXVkIjpbImh0dHA6Ly9pZGVudGl0eXNlcnZlci5hcmFudGFzYXIuaG9zdGluZ2FzcC5wbC9yZXNvdXJjZXMiLCJhcGkxIiwiYXBpMiJdLCJjbGllbnRfaWQiOiJzY2hlZHVsZXItY2xpZW50LXRvcnVuIiwic3ViIjoiMjc3NzlkYzktZWIwYy00NWNjLWFhNGQtNDg2MTBmODQ2MmUxIiwiYXV0aF90aW1lIjoxNTc1ODQ0NjE4LCJpZHAiOiJsb2NhbCIsInJvbGVzIjoiW1wibWFuYWdlclwiXSIsImZpcnN0TmFtZSI6IsWBdWthc3oiLCJsYXN0TmFtZSI6IkRvYnJ6ecWEc2tpIiwidXNlcm5hbWUiOiJsdWthc3pAcmF2ZW5kYi5jb20iLCJzY29wZSI6WyJvcGVuaWQiLCJwcm9maWxlIiwiYXBpMSIsImFwaTIiXSwiYW1yIjpbInB3ZCJdfQ.C2NVNZ3scg0DqxcU8o-rsnbHT7N2MQFGuAw_DqE18C9EWilr_zlWhPFMe3Ox5UF__A89XJqI0UXwUnja4rlNiRiuepgLfn1QtWgbmb3_smB3PZ_VjvvEQoEa_hOMkl66j3nROm8cJYE14at1mNgkkR0BJ5i-I4L5QhMgkILR03ZjxHMkTdHVnfWpPkwAc-PwYXEXzOkPGDZjg_wN2sxOkd1Si5wahpsk_BG9SaQx8TwkPj4Lud4p7Lfc2jPPByvRlimf9UcSe_9CAi-CDm9XhJEMzjsKMh6q4itR3txT4CDtUqLEG_WoQ4dz1fMAT_oaBIMd0D8aNuL0pr_04s5lOg
+2019-12-08 23:37:07.4105|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|Token is a JWT and is supported.
+2019-12-08 23:37:07.9330|DEBUG|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|AuthenticationScheme: Bearer was successfully authenticated.
+2019-12-08 23:41:39.2239|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|HandleAuthenticateAsync called
+2019-12-08 23:41:39.2551|DEBUG|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|AuthenticationScheme: Bearer was not authenticated.
+2019-12-08 23:45:22.7688|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|HandleAuthenticateAsync called
+2019-12-08 23:45:22.7994|DEBUG|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|AuthenticationScheme: Bearer was not authenticated.
+2019-12-08 23:46:24.1008|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|HandleAuthenticateAsync called
+2019-12-08 23:46:24.1008|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|Token found: eyJhbGciOiJSUzI1NiIsImtpZCI6IjA1OTEzMUM2RjI0QzI4RjM3MEMzMjAxM0ZDODNGQzhDMEQ2NTI3QTAiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJCWkV4eHZKTUtQTnd3eUFUX0lQOGpBMWxKNkEifQ.eyJuYmYiOjE1NzU4NDUxNjQsImV4cCI6MTU3NTg0ODc2NCwiaXNzIjoiaHR0cDovL2lkZW50aXR5c2VydmVyLmFyYW50YXNhci5ob3N0aW5nYXNwLnBsIiwiYXVkIjpbImh0dHA6Ly9pZGVudGl0eXNlcnZlci5hcmFudGFzYXIuaG9zdGluZ2FzcC5wbC9yZXNvdXJjZXMiLCJhcGkxIiwiYXBpMiJdLCJjbGllbnRfaWQiOiJzY2hlZHVsZXItY2xpZW50LXRvcnVuIiwic3ViIjoiMjc3NzlkYzktZWIwYy00NWNjLWFhNGQtNDg2MTBmODQ2MmUxIiwiYXV0aF90aW1lIjoxNTc1ODQ1MTY0LCJpZHAiOiJsb2NhbCIsInJvbGVzIjoiW1wibWFuYWdlclwiXSIsImZpcnN0TmFtZSI6IsWBdWthc3oiLCJsYXN0TmFtZSI6IkRvYnJ6ecWEc2tpIiwidXNlcm5hbWUiOiJsdWthc3pAcmF2ZW5kYi5jb20iLCJzY29wZSI6WyJvcGVuaWQiLCJwcm9maWxlIiwiYXBpMSIsImFwaTIiXSwiYW1yIjpbInB3ZCJdfQ.YN0iv2x8ZKCIzuMIoHfCZ-DmLrSmlx7WSVt82P6hWZ-nIN5enwSHiwcniZXvwK9b9CNOxS4yvyftD5ifAQtIelwKe8KzibHKZ-k8-MKN9w2palme8W2GRt00G-cdcar8fltrrYlR4sV6m-cpUk5p7ibCWs1dTuMGkGLcrVgd710ehiO16oiBP0YkRaYxdqK0EX7ZOcw8ErrvVNdS-2xXgOp0VBJdik_TwM1AO5iuV0tiG-Ycg7ovNQa3mcuWlLeXKEFjQKHiHXZ3yrESTfP3RAUctn4AUU3BlgGg0-HJGdmHqXO0-_VjdFkGLD9xpVCeZyPc2U1aji7M4QMfKYdg7g
+2019-12-08 23:46:24.1303|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|Token is a JWT and is supported.
+2019-12-08 23:46:24.6249|DEBUG|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|AuthenticationScheme: Bearer was successfully authenticated.
+2019-12-09 00:00:05.0860|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|HandleAuthenticateAsync called
+2019-12-09 00:00:05.1160|DEBUG|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|AuthenticationScheme: Bearer was not authenticated.
+2019-12-09 00:00:40.4227|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|HandleAuthenticateAsync called
+2019-12-09 00:00:40.4351|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|Token found: eyJhbGciOiJSUzI1NiIsImtpZCI6IjA1OTEzMUM2RjI0QzI4RjM3MEMzMjAxM0ZDODNGQzhDMEQ2NTI3QTAiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJCWkV4eHZKTUtQTnd3eUFUX0lQOGpBMWxKNkEifQ.eyJuYmYiOjE1NzU4NDYwMjYsImV4cCI6MTU3NTg0OTYyNiwiaXNzIjoiaHR0cDovL2lkZW50aXR5c2VydmVyLmFyYW50YXNhci5ob3N0aW5nYXNwLnBsIiwiYXVkIjpbImh0dHA6Ly9pZGVudGl0eXNlcnZlci5hcmFudGFzYXIuaG9zdGluZ2FzcC5wbC9yZXNvdXJjZXMiLCJhcGkxIiwiYXBpMiJdLCJjbGllbnRfaWQiOiJzY2hlZHVsZXItY2xpZW50LXRvcnVuIiwic3ViIjoiMjc3NzlkYzktZWIwYy00NWNjLWFhNGQtNDg2MTBmODQ2MmUxIiwiYXV0aF90aW1lIjoxNTc1ODQ2MDI2LCJpZHAiOiJsb2NhbCIsInJvbGVzIjoiW1wibWFuYWdlclwiXSIsImZpcnN0TmFtZSI6IsWBdWthc3oiLCJsYXN0TmFtZSI6IkRvYnJ6ecWEc2tpIiwidXNlcm5hbWUiOiJsdWthc3pAcmF2ZW5kYi5jb20iLCJzY29wZSI6WyJvcGVuaWQiLCJwcm9maWxlIiwiYXBpMSIsImFwaTIiXSwiYW1yIjpbInB3ZCJdfQ.XN-33k5oJtUheXMXOBU4RVUv8rVRgFOWFIIIwMTx4uHZyDXyBK1ZRMz3fDZRmAd19wUnkhgebOhERD1GMvvU6ijJC3wCKeWEAkUtcDDTdCBMWCN2nzqvltdTi2zOh9KLihL_dfBFssR7RXEK7arp42nqsY_1Y-zMVylwlDrYV4DqZzCwMv5uTLxat1_k7fEJeMr2HwY5hNm3G26Fp06CRckEcm66VIa9vSqJeoGqi4FHREXHmppyfLOVrtsZ5JdSS0NTRnyq3DNmhGeT7askTxhIsQB-cnZE88EamS7PVRDutFF_waKcFFugloqiYy2yx4IQt38EQT6ZRCz2Tm4Pfg
+2019-12-09 00:00:40.4351|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|Token is a JWT and is supported.
+2019-12-09 00:00:40.9531|DEBUG|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|AuthenticationScheme: Bearer was successfully authenticated.
+2019-12-09 00:01:35.4532|ERROR|Scheduler.Api.Startup|System.Net.Http.HttpRequestException: No connection could be made because the target machine actively refused it ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it
+   at System.Net.Http.ConnectHelper.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.ConnectHelper.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)
+   at System.Threading.Tasks.ValueTask`1.get_Result()
+   at System.Net.Http.HttpConnectionPool.CreateConnectionAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Threading.Tasks.ValueTask`1.get_Result()
+   at System.Net.Http.HttpConnectionPool.WaitForCreatedConnectionAsync(ValueTask`1 creationTask)
+   at System.Threading.Tasks.ValueTask`1.get_Result()
+   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.FinishSendAsyncBuffered(Task`1 sendTask, HttpRequestMessage request, CancellationTokenSource cts, Boolean disposeCts)
+   at Client.Torun.Settings.Optimization.DutyRequirements.GetDoctorIds()
+   at Client.Torun.Settings.Optimization.DutyRequirements.<SetDataFromRemoteApi>b__8_0()
+   at Client.Torun.Settings.Optimization.DutyRequirements.SetDataFromRemoteApi()
+   at Scheduler.Api.Controllers.SchedulerController.GetSchedule(ScheduleCreatorDto scheduleCreator) in C:\Projects\Scheduler\Scheduler\Scheduler.Api\Controllers\SchedulerController.cs:line 58
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at System.Threading.Tasks.ValueTask`1.get_Result()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.Invoke(HttpContext context)
+2019-12-09 00:01:57.0641|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|HandleAuthenticateAsync called
+2019-12-09 00:01:57.0924|DEBUG|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|AuthenticationScheme: Bearer was not authenticated.
+2019-12-09 00:02:37.1300|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|HandleAuthenticateAsync called
+2019-12-09 00:02:37.1300|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|Token found: eyJhbGciOiJSUzI1NiIsImtpZCI6IjA1OTEzMUM2RjI0QzI4RjM3MEMzMjAxM0ZDODNGQzhDMEQ2NTI3QTAiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJCWkV4eHZKTUtQTnd3eUFUX0lQOGpBMWxKNkEifQ.eyJuYmYiOjE1NzU4NDYxMzUsImV4cCI6MTU3NTg0OTczNSwiaXNzIjoiaHR0cDovL2lkZW50aXR5c2VydmVyLmFyYW50YXNhci5ob3N0aW5nYXNwLnBsIiwiYXVkIjpbImh0dHA6Ly9pZGVudGl0eXNlcnZlci5hcmFudGFzYXIuaG9zdGluZ2FzcC5wbC9yZXNvdXJjZXMiLCJhcGkxIiwiYXBpMiJdLCJjbGllbnRfaWQiOiJzY2hlZHVsZXItY2xpZW50LXRvcnVuIiwic3ViIjoiMjc3NzlkYzktZWIwYy00NWNjLWFhNGQtNDg2MTBmODQ2MmUxIiwiYXV0aF90aW1lIjoxNTc1ODQ2MTM1LCJpZHAiOiJsb2NhbCIsInJvbGVzIjoiW1wibWFuYWdlclwiXSIsImZpcnN0TmFtZSI6IsWBdWthc3oiLCJsYXN0TmFtZSI6IkRvYnJ6ecWEc2tpIiwidXNlcm5hbWUiOiJsdWthc3pAcmF2ZW5kYi5jb20iLCJzY29wZSI6WyJvcGVuaWQiLCJwcm9maWxlIiwiYXBpMSIsImFwaTIiXSwiYW1yIjpbInB3ZCJdfQ.BqQfitkCVnBVjWkcUkyiOGd8_QVc7wC-3j1IHU-IjITBu4MWPrs1jEoo9HNjXDLVz2acz80IPx68dFHCEgvieRmK6kRmwJRnjTq0ktvmJU82zsn140H6VLTF6b8nTGQpqR75IE8OzQSyd8UxMJZ4VTDrI8Cz479PKgko9NHHcg0myV0OH4IujdIngU-G9WdAmbmfa-k9a0kX-eFstUfjsi1qek92UQ8tG4rAqqfnUcwVpTLLaFu9TmOe4n0z6jssW3Mo-WbOFz9Ycda1kkSAIZJoYchKHfeovFLJ-yGvNiX2_Kp3opqAys4aZXKp5pbPa9zxnFLEm69zW3kmJUNGvA
+2019-12-09 00:02:37.1300|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|Token is a JWT and is supported.
+2019-12-09 00:02:37.5767|DEBUG|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|AuthenticationScheme: Bearer was successfully authenticated.
+2019-12-09 00:02:40.1801|ERROR|Scheduler.Api.Startup|System.Net.Http.HttpRequestException: No connection could be made because the target machine actively refused it ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it
+   at System.Net.Http.ConnectHelper.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.ConnectHelper.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)
+   at System.Threading.Tasks.ValueTask`1.get_Result()
+   at System.Net.Http.HttpConnectionPool.CreateConnectionAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Threading.Tasks.ValueTask`1.get_Result()
+   at System.Net.Http.HttpConnectionPool.WaitForCreatedConnectionAsync(ValueTask`1 creationTask)
+   at System.Threading.Tasks.ValueTask`1.get_Result()
+   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.FinishSendAsyncBuffered(Task`1 sendTask, HttpRequestMessage request, CancellationTokenSource cts, Boolean disposeCts)
+   at Client.Torun.Settings.Optimization.DutyRequirements.GetDoctorIds()
+   at Client.Torun.Settings.Optimization.DutyRequirements.<SetDataFromRemoteApi>b__8_0()
+   at Client.Torun.Settings.Optimization.DutyRequirements.SetDataFromRemoteApi()
+   at Scheduler.Api.Controllers.SchedulerController.GetSchedule(ScheduleCreatorDto scheduleCreator) in C:\Projects\Scheduler\Scheduler\Scheduler.Api\Controllers\SchedulerController.cs:line 58
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at System.Threading.Tasks.ValueTask`1.get_Result()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.Invoke(HttpContext context)

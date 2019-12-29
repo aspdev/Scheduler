@@ -22,10 +22,8 @@ namespace Scheduler.Mailer.MailKit
                
         }
         
-        public void SendMail(string fromName, string emailTo, string subject, string message, string mailBoxPassword)
+        public async void SendMail(string fromName, string emailTo, string subject, string message, string mailBoxPassword)
         {
-            var task = Task.Run(async () =>
-            {
                 var messageToSend = new MimeMessage();
                 messageToSend.From.Add(new MailboxAddress(fromName, mailBoxAddress));
                 messageToSend.To.Add(new MailboxAddress(emailTo));
@@ -40,7 +38,6 @@ namespace Scheduler.Mailer.MailKit
                    await smtpClient.SendAsync(messageToSend).ConfigureAwait(false);
                    await smtpClient.DisconnectAsync(true).ConfigureAwait(false);
                 }
-            });
         }
     }
     

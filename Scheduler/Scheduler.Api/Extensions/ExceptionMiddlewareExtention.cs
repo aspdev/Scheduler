@@ -20,7 +20,7 @@ namespace Scheduler.Api.Extensions
 
             //if (environment.IsDevelopment())
             //{
-            //    app.UseDeveloperExceptionPage();
+            //    app.UseDeveloperExceptionPage();_
             //}
             //else
             //{

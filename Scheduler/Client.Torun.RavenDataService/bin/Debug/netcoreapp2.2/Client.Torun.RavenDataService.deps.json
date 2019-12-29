@@ -26,6 +26,7 @@
         "dependencies": {
           "AutoMapper": "8.1.1",
           "Client.Torun.Shared": "1.0.0",
+          "Common": "1.0.0",
           "IdentityServer4.AccessTokenValidation": "2.7.0",
           "MailKit": "2.2.0",
           "Microsoft.AspNetCore.App": "2.2.0",
@@ -400,6 +401,17 @@
         },
         "compile": {
           "Client.Torun.Shared.dll": {}
+        }
+      },
+      "Common/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Cryptography.KeyDerivation": "2.2.0"
+        },
+        "runtime": {
+          "Common.dll": {}
+        },
+        "compile": {
+          "Common.dll": {}
         }
       },
       "Scheduler.Mailer/1.0.0": {
@@ -3801,6 +3813,11 @@
       "hashPath": "system.threading.threadpool.4.3.0.nupkg.sha512"
     },
     "Client.Torun.Shared/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Common/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
