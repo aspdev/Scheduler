@@ -4,10 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Client.Torun.RavenDataService.DataStore;
 using Client.Torun.RavenDataService.Entities;
+using Client.Torun.RavenDataService.Helpers;
 using Client.Torun.RavenDataService.Models;
+using Common;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
 using Raven.Client.Documents;
 using Raven.Client.Documents.Operations;
 using Raven.Client.Documents.Queries;
@@ -17,11 +18,13 @@ namespace Client.Torun.RavenDataService.Controllers
     [Authorize]
     public class DutyController : Controller
     {
-        private readonly IDocumentStore _store;
+        private readonly IDocumentStore _clientStore;
+        private readonly IDocumentStore _identityServerStore;
 
-        public DutyController(ClientDocumentStoreHolder storeHolder)
+        public DutyController(ClientDocumentStoreHolder clientStoreHolder, IdentityServerDocumentStoreHolder identityStoreHolder)
         {
-            _store = storeHolder.Store ;
+            _clientStore = clientStoreHolder.Store ;
+            _identityServerStore = identityStoreHolder.Store;
         }
 
         [HttpPost("duties")]
@@ -32,10 +35,10 @@ namespace Client.Torun.RavenDataService.Controllers
                 return BadRequest();
             }
 
-            using (var session = _store.OpenAsyncSession())
+            using (var clientSession = _clientStore.OpenAsyncSession())
             {
                 var date = duties.First().Date;
-                var dutyFromDatabase = await session.Query<Duty>().FirstOrDefaultAsync(d => d.Date.Year == date.Year && d.Date.Month == date.Month);
+                var dutyFromDatabase = await clientSession.Query<Duty>().FirstOrDefaultAsync(d => d.Date.Year == date.Year && d.Date.Month == date.Month);
 
                 var message = "";
 
@@ -49,10 +52,10 @@ namespace Client.Torun.RavenDataService.Controllers
                 
                 foreach(var duty in duties)
                 {
-                    await session.StoreAsync(duty);
+                    await clientSession.StoreAsync(duty);
                 }
 
-                await session.SaveChangesAsync();
+                await clientSession.SaveChangesAsync();
                 
 
                 return Ok(new {message});
@@ -72,7 +75,7 @@ namespace Client.Torun.RavenDataService.Controllers
             var startDate = new DateTime(date.Year, date.Month, 1).ToString("yyyy-MM-ddT00:00:00.0000000");
             var endDate = new DateTime(date.Year, date.Month, DateTime.DaysInMonth(date.Year, date.Month)).ToString("yyyy-MM-ddT00:00:00.0000000");
 
-            var operation =  await _store.Operations
+            var operation =  await _clientStore.Operations
                 .SendAsync(new DeleteByQueryOperation(new IndexQuery
                 {
                     Query = $"from Duties where Date >= '{startDate}' and Date <= '{endDate}'"
@@ -80,7 +83,7 @@ namespace Client.Torun.RavenDataService.Controllers
 
             await operation.WaitForCompletionAsync(TimeSpan.FromSeconds(15));
 
-            using (var session = _store.OpenAsyncSession())
+            using (var session = _clientStore.OpenAsyncSession())
             {
                 foreach (var duty in duties)
                 {
@@ -106,15 +109,15 @@ namespace Client.Torun.RavenDataService.Controllers
                 return BadRequest();
             }
 
-            using (var session = _store.OpenAsyncSession())
+            using (var identitySession = _identityServerStore.OpenAsyncSession())
+            using (var clientSession = _clientStore.OpenAsyncSession())
             {
-                var dutiesForCurrentDateLazy = session.Query<Duty>().Where(duty => duty.Date.Year == parsedCurrentDate.Year
-                                                    && duty.Date.Month == parsedCurrentDate.Month).LazilyAsync();
+                var dutiesForCurrentDate = await clientSession.Query<Duty>().Where(duty => duty.Date.Year == parsedCurrentDate.Year
+                                                    && duty.Date.Month == parsedCurrentDate.Month).ToListAsync();
 
-                var usersLazy = session.Query<User>().LazilyAsync();
-
-                var dutiesForCurrentDate = await dutiesForCurrentDateLazy.Value as List<Duty>;
-                var users = await usersLazy.Value as List<User>;
+                var users = await identitySession.Query<IdentityServerUser>()
+                    .Where(u => u.Clients.Contains(ConstNames.TorunClientName))
+                    .ToListAsync();
 
                 if (users is null)
                 {
@@ -138,7 +141,6 @@ namespace Client.Torun.RavenDataService.Controllers
                         Date = duty.Date.ToString("yyyy-MM-dd"),
                         DoctorId = duty.UserId,
                         DutyId = duty.Id,
-                        Color = doctor is null ? "red" : doctor.Color
                     };
 
                     listOfDutiesForMonth.Add(dutyForMonth);
@@ -156,10 +158,10 @@ namespace Client.Torun.RavenDataService.Controllers
                 return BadRequest();
             }
 
-            using (var session = _store.OpenAsyncSession())
+            using (var clientSession = _clientStore.OpenAsyncSession())
             {
-                session.Delete(dutyId);
-                await session.SaveChangesAsync();
+                clientSession.Delete(dutyId);
+                await clientSession.SaveChangesAsync();
 
                 return Ok();
             }
@@ -173,7 +175,7 @@ namespace Client.Torun.RavenDataService.Controllers
                 return BadRequest();
             }
 
-            using (var session = _store.OpenAsyncSession())
+            using (var clientSession = _clientStore.OpenAsyncSession())
             {
                 var result = DateTime.TryParse(dutyToSave.Date, out var date);
 
@@ -188,8 +190,8 @@ namespace Client.Torun.RavenDataService.Controllers
                     UserId = dutyToSave.DoctorId
                 };
 
-                await session.StoreAsync(duty);
-                await session.SaveChangesAsync();
+                await clientSession.StoreAsync(duty);
+                await clientSession.SaveChangesAsync();
 
                 var savedDutyToReturnDto = new SavedDutyToReturnDto
                 {
@@ -210,13 +212,13 @@ namespace Client.Torun.RavenDataService.Controllers
                 return BadRequest();
             }
 
-            using (var session = _store.OpenAsyncSession())
+            using (var clientSession = _clientStore.OpenAsyncSession())
             {
-                var duty = await session.LoadAsync<Duty>(dutyToUpdate.DutyId);
+                var duty = await clientSession.LoadAsync<Duty>(dutyToUpdate.DutyId);
 
                 duty.Date = DateTime.Parse(dutyToUpdate.NewDate);
 
-                await session.SaveChangesAsync();
+                await clientSession.SaveChangesAsync();
 
                 var updatedDutyToReturnDto = new UpdatedDutyToReturnDto()
                 {
@@ -243,20 +245,17 @@ namespace Client.Torun.RavenDataService.Controllers
             {
                 return BadRequest();
             }
-
-            using (var session = _store.OpenAsyncSession())
+            
+            using (var identitySession = _identityServerStore.OpenAsyncSession())
+            using (var clientSession = _clientStore.OpenAsyncSession())
             {
-
-                var dutiesLazy = session.Query<Duty>()
+                var duties = await clientSession.Query<Duty>()
                     .Where(duty => duty.UserId == paramsToGetDutiesForDoctor.DoctorId &&
                                    duty.Date.Year == dateFromParams.Year &&
                                    duty.Date.Month == dateFromParams.Month)
-                    .LazilyAsync();
+                    .ToListAsync();
 
-                var doctorLazy = session.Advanced.Lazily.LoadAsync<User>(paramsToGetDutiesForDoctor.DoctorId);
-
-                var duties = (List<Duty>) await dutiesLazy.Value;
-                var doctor = await doctorLazy.Value;
+                var doctor = await identitySession.LoadAsync<IdentityServerUser>(paramsToGetDutiesForDoctor.DoctorId);
 
                 var dutiesForDoctor = new List<DutyForDoctorDto>();
 

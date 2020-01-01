@@ -148,7 +148,7 @@ namespace Client.Torun.RavenDataService.Controllers
             {
 
                 var users = await identitySession.Query<IdentityServerUser>().Statistics(out QueryStatistics stats)
-                    .Where(u => u.Clients.Contains("scheduler-client-torun"))
+                    .Where(u => u.Clients.Contains(ConstNames.TorunClientName))
                     .Skip(numberToSkip).Take(pageSize).ToListAsync();
 
                 int collectionSize = stats.TotalResults;
@@ -185,7 +185,7 @@ namespace Client.Torun.RavenDataService.Controllers
             using (var identitySession = _identityServerStore.OpenAsyncSession())
             {
                 var allUsers = await identitySession.Query<IdentityServerUser>()
-                    .Where(u => u.Clients.Contains("scheduler-client-torun"))
+                    .Where(u => u.Clients.Contains(ConstNames.TorunClientName))
                     .ToListAsync();
                 var allUsersToReturn = _mapper.Map<IEnumerable<UserToReturnDto>>(allUsers);
 
@@ -231,6 +231,7 @@ namespace Client.Torun.RavenDataService.Controllers
 
         private async Task<string> GetColor()
         {
+            //TODO: Consider a different way to assign colours to Users
             using (var session = _clientStore.OpenAsyncSession())
             {
                 var color = await session.Query<Color>().FirstAsync(c => c.IsInUse == false);

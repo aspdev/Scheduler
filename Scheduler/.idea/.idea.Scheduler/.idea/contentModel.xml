@@ -42,6 +42,7 @@
           <e p="HttpResponseExtention.cs" t="Include" />
         </e>
         <e p="Helpers" t="Include">
+          <e p="ConstNames.cs" t="Include" />
           <e p="RandomPasswordGenerator.cs" t="Include" />
         </e>
         <e p="Mappings" t="Include">
