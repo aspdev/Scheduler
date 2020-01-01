@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,7 +7,6 @@ using Client.Torun.RavenDataService.DataStore;
 using Client.Torun.RavenDataService.Entities;
 using Client.Torun.RavenDataService.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Routing;
 using Raven.Client.Documents;
 using Raven.Client.Documents.Linq;
 
@@ -17,12 +15,13 @@ namespace Client.Torun.RavenDataService.Controllers
     [Route("user")]
     public class UserController : Controller
     {
-        private readonly IDocumentStore _store;
+        private readonly IDocumentStore _clientStore;
         private readonly IMapper _mapper;
 
-        public UserController(ClientDocumentStoreHolder clientDocumentStoreHolder, IMapper mapper)
+        public UserController(ClientDocumentStoreHolder clientDocumentStoreHolder,
+            IMapper mapper)
         {
-            _store = clientDocumentStoreHolder.Store;
+            _clientStore = clientDocumentStoreHolder.Store;
             _mapper = mapper;
         }
 
@@ -35,11 +34,11 @@ namespace Client.Torun.RavenDataService.Controllers
                 return BadRequest();
             }
 
-            using (var session = _store.OpenAsyncSession())
+            using (var clientSession = _clientStore.OpenAsyncSession())
             {
                 var dutyRequirement = _mapper.Map<DutyRequirement>(requirementToSet);
-                await session.StoreAsync(dutyRequirement);
-                await session.SaveChangesAsync();
+                await clientSession.StoreAsync(dutyRequirement);
+                await clientSession.SaveChangesAsync();
                 var requirementToReturn = _mapper.Map<PostCreationRequirementToReturnDto>(dutyRequirement);
 
                 return Ok(requirementToReturn);
@@ -55,14 +54,14 @@ namespace Client.Torun.RavenDataService.Controllers
                 return BadRequest();
             }
 
-            using (var session = _store.OpenAsyncSession())
+            using (var clientSession = _clientStore.OpenAsyncSession())
             {
-                var requirement = await session.LoadAsync<DutyRequirement>(requirementToUpdate.Id);
+                var requirement = await clientSession.LoadAsync<DutyRequirement>(requirementToUpdate.Id);
                 requirement.RequiredTotalDutiesInMonth = requirementToUpdate.RequiredTotalDutiesInMonth;
                 requirement.TotalHolidayDuties = requirementToUpdate.TotalHolidayDuties;
                 requirement.TotalWeekdayDuties = requirementToUpdate.TotalWeekdayDuties;
-                await session.StoreAsync(requirement);
-                await session.SaveChangesAsync();
+                await clientSession.StoreAsync(requirement);
+                await clientSession.SaveChangesAsync();
 
                 return NoContent();
             }
@@ -78,11 +77,11 @@ namespace Client.Torun.RavenDataService.Controllers
                 return BadRequest();
             }
 
-            using (var session = _store.OpenAsyncSession())
+            using (var clientSession = _clientStore.OpenAsyncSession())
             {
-                if (await session.Query<DutyRequirement>().AnyAsync())
+                if (await clientSession.Query<DutyRequirement>().AnyAsync())
                 {
-                    var requirement = await Queryable.Where(session.Query<DutyRequirement>(), userRequirement => userRequirement.UserId == isRequirementSetParams.UserId
+                    var requirement = await Queryable.Where(clientSession.Query<DutyRequirement>(), userRequirement => userRequirement.UserId == isRequirementSetParams.UserId
                                               && userRequirement.Date.Year == isRequirementSetParams.Date.Value.Year
                                               && userRequirement.Date.Month == isRequirementSetParams.Date.Value.Month)
                         .FirstOrDefaultAsync();
@@ -106,11 +105,11 @@ namespace Client.Torun.RavenDataService.Controllers
                 return BadRequest();
             }
 
-            using (var session = _store.OpenAsyncSession())
+            using (var clientSession = _clientStore.OpenAsyncSession())
             {
                var dayOffToSave = _mapper.Map<DayOff>(dayOffToSet);
-               await session.StoreAsync(dayOffToSave);
-               await session.SaveChangesAsync();
+               await clientSession.StoreAsync(dayOffToSave);
+               await clientSession.SaveChangesAsync();
 
                var dayOffToReturn = _mapper.Map<DayOffToReturnDto>(dayOffToSave);
 
@@ -127,9 +126,9 @@ namespace Client.Torun.RavenDataService.Controllers
                 return BadRequest();
             }
 
-            using (var session = _store.OpenAsyncSession())
+            using (var clientSession = _clientStore.OpenAsyncSession())
             {
-                var daysOff = await session.Query<DayOff>()
+                var daysOff = await clientSession.Query<DayOff>()
                     .Where(dayOff => dayOff.Date.Year == currentViewDate.Date.Year
                                      && dayOff.Date.Month == currentViewDate.Date.Month
                                      && dayOff.UserId == userId)
@@ -150,10 +149,10 @@ namespace Client.Torun.RavenDataService.Controllers
                 return BadRequest();
             }
 
-            using (var session = _store.OpenAsyncSession())
+            using (var clientSession = _clientStore.OpenAsyncSession())
             {
-                session.Delete(dayOffId);
-                await session.SaveChangesAsync();
+                clientSession.Delete(dayOffId);
+                await clientSession.SaveChangesAsync();
 
                 return Ok();
             }
