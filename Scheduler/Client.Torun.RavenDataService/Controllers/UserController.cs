@@ -20,9 +20,9 @@ namespace Client.Torun.RavenDataService.Controllers
         private readonly IDocumentStore _store;
         private readonly IMapper _mapper;
 
-        public UserController(IDocumentStoreHolder documentStoreHolder, IMapper mapper)
+        public UserController(ClientDocumentStoreHolder clientDocumentStoreHolder, IMapper mapper)
         {
-            _store = documentStoreHolder.Store;
+            _store = clientDocumentStoreHolder.Store;
             _mapper = mapper;
         }
 

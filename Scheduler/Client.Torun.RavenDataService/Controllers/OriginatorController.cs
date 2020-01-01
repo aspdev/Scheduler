@@ -21,7 +21,7 @@ namespace Client.Torun.RavenDataService.Controllers
         private readonly IDocumentStore _store;
         private readonly IMapper _mapper;
 
-        public OriginatorController(DataServiceConfiguration configuration, IDocumentStoreHolder storeHolder, IMapper mapper)
+        public OriginatorController(DataServiceConfiguration configuration, ClientDocumentStoreHolder storeHolder, IMapper mapper)
         {
             _configuration = configuration;
             _store = storeHolder.Store;

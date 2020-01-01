@@ -20,8 +20,8 @@
           <e p="UserController.cs" t="Include" />
         </e>
         <e p="DataStore" t="Include">
-          <e p="DocumentStoreHolder.cs" t="Include" />
-          <e p="IDocumentStoreHolder.cs" t="Include" />
+          <e p="ClientDocumentStoreHolder.cs" t="Include" />
+          <e p="IdentityServerDocumentStoreHolder.cs" t="Include" />
         </e>
         <e p="Entities" t="Include">
           <e p="AdminSettings.cs" t="Include" />
@@ -127,6 +127,7 @@
       <e p="Common" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="Common.csproj" t="IncludeRecursive" />
+        <e p="IdentityServerUser.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp2.2" t="Include">

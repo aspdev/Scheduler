@@ -19,7 +19,7 @@ namespace Client.Torun.RavenDataService.Controllers
     {
         private readonly IDocumentStore _store;
 
-        public DutyController(IDocumentStoreHolder storeHolder)
+        public DutyController(ClientDocumentStoreHolder storeHolder)
         {
             _store = storeHolder.Store ;
         }

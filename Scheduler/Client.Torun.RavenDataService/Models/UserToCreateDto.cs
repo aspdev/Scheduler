@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Client.Torun.RavenDataService.Models
 {
@@ -18,7 +14,7 @@ namespace Client.Torun.RavenDataService.Models
         [Required]
         [MaxLength(30)]
         public string Email { get; set; }
-        
-        
+        [Required]
+        public string Client { get; set; }
     }
 }

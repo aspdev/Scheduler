@@ -63,7 +63,8 @@ namespace Client.Torun.RavenDataService
                 );
             });
 
-            services.AddSingleton<IDocumentStoreHolder, DocumentStoreHolder>();
+            services.AddSingleton<ClientDocumentStoreHolder>();
+            services.AddSingleton<IdentityServerDocumentStoreHolder>();
             services.AddSingleton(_dataServiceConfiguration);
             services.AddTransient<ISchedulerMailer>(serviceProvider => 
                 new MailKitMailer(_dataServiceConfiguration.MailBoxHost, 

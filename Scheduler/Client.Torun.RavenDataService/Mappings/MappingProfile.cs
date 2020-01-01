@@ -3,6 +3,7 @@ using Client.Torun.RavenDataService.Entities;
 using Client.Torun.RavenDataService.Helpers;
 using Client.Torun.RavenDataService.Models;
 using Client.Torun.Shared.DTOs;
+using Common;
 
 namespace Client.Torun.RavenDataService.Mappings
 {
@@ -10,12 +11,12 @@ namespace Client.Torun.RavenDataService.Mappings
     {
         public MappingProfile()
         {
-            CreateMap<UserToCreateDto, User>()
+            CreateMap<UserToCreateDto, IdentityServerUser>()
                 .AfterMap((s, d) => {
                     d.Id = string.Empty;
-                    d.Clients.Add("scheduler-client-torun");
+                    d.Clients.Add(s.Client);
                 });
-            CreateMap<User, PostCreationUserToReturnDto>();
+            CreateMap<IdentityServerUser, PostCreationUserToReturnDto>();
             CreateMap<User, UserToReturnDto>();
             CreateMap<User, DoctorDto>()
                 .ForMember(d => d.DoctorId, opt => opt.MapFrom(src => src.Id))

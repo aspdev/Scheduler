@@ -11,7 +11,9 @@ namespace Client.Torun.RavenDataService.Config
 
         public string[] Urls { get; set; }
 
-        public string Database { get; set; }
+        public string ClientDatabase { get; set; }
+
+        public string IdentityServerDatabase { get; set; }
 
         public string ClientUrl { get; set; }
 
