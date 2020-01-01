@@ -182,9 +182,11 @@ namespace Client.Torun.RavenDataService.Controllers
         [HttpGet("allusers")]
         public async Task<IActionResult> GetAllUsersWithoutPaging()
         {
-            using (var session = _clientStore.OpenAsyncSession())
+            using (var identitySession = _identityServerStore.OpenAsyncSession())
             {
-                var allUsers = await session.Query<User>().ToListAsync();
+                var allUsers = await identitySession.Query<IdentityServerUser>()
+                    .Where(u => u.Clients.Contains("scheduler-client-torun"))
+                    .ToListAsync();
                 var allUsersToReturn = _mapper.Map<IEnumerable<UserToReturnDto>>(allUsers);
 
                 return Ok(allUsersToReturn);
