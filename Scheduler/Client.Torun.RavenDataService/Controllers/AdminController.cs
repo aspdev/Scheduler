@@ -114,9 +114,9 @@ namespace Client.Torun.RavenDataService.Controllers
                 return BadRequest("The action requires a route parameter");
             }
 
-            using (var session = _clientStore.OpenAsyncSession())
+            using (var identitySession = _identityServerStore.OpenAsyncSession())
             {
-                var user = await session.LoadAsync<User>(userId);
+                var user = await identitySession.LoadAsync<IdentityServerUser>(userId);
 
                 if (user == null)
                 {
@@ -126,7 +126,6 @@ namespace Client.Torun.RavenDataService.Controllers
                 var userToReturnDto = _mapper.Map<PostCreationUserToReturnDto>(user);
 
                 return Ok(userToReturnDto);
-
             }
         }
 
