@@ -144,10 +144,11 @@ namespace Client.Torun.RavenDataService.Controllers
 
             var numberToSkip = (pageNumber - 1) * pageSize;
 
-            using(var session = _clientStore.OpenAsyncSession())
+            using(var identitySession = _identityServerStore.OpenAsyncSession())
             {
 
-                var users = await session.Query<User>().Statistics(out QueryStatistics stats)
+                var users = await identitySession.Query<IdentityServerUser>().Statistics(out QueryStatistics stats)
+                    .Where(u => u.Clients.Contains("scheduler-client-torun"))
                     .Skip(numberToSkip).Take(pageSize).ToListAsync();
 
                 int collectionSize = stats.TotalResults;
@@ -176,7 +177,6 @@ namespace Client.Torun.RavenDataService.Controllers
 
                 return Ok(usersToReturnDto);
             }
-
         }
 
         [HttpGet("allusers")]

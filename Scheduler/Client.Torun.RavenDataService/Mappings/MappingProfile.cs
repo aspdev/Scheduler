@@ -17,7 +17,7 @@ namespace Client.Torun.RavenDataService.Mappings
                     d.Clients.Add(s.Client);
                 });
             CreateMap<IdentityServerUser, PostCreationUserToReturnDto>();
-            CreateMap<User, UserToReturnDto>();
+            CreateMap<IdentityServerUser, UserToReturnDto>();
             CreateMap<User, DoctorDto>()
                 .ForMember(d => d.DoctorId, opt => opt.MapFrom(src => src.Id))
                 .ForMember(d => d.Name, opt => opt.MapFrom(src => $"{src.FirstName} {src.LastName}"))
