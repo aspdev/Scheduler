@@ -150,9 +150,6 @@
           <e p="DocumentStoreHolder.cs" t="Include" />
           <e p="IDocumentStoreHolder.cs" t="Include" />
         </e>
-        <e p="Entities" t="Include">
-          <e p="User.cs" t="Include" />
-        </e>
         <e p="Extentions" t="Include">
           <e p="CustomIdentityServerBuilderExtentions.cs" t="Include" />
           <e p="IdentityServerBuilderExtensions.cs" t="Include" />

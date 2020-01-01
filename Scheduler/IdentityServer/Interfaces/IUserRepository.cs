@@ -1,8 +1,5 @@
-﻿using IdentityServer.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Common;
 
 namespace IdentityServer
 {
@@ -10,8 +7,8 @@ namespace IdentityServer
     {
         Task<bool> ValidateCredentials(string username, string password, string clientName);
 
-        Task<User> FindBySubjectId(string subjectId);
+        Task<IdentityServerUser> FindBySubjectId(string subjectId);
 
-        Task<User> FindByUsername(string username, string clientName);
+        Task<IdentityServerUser> FindByUsername(string username, string clientName);
     }
 }

@@ -1,5 +1,4 @@
 ﻿using IdentityServer.DataStore;
-using IdentityServer.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Raven.Client.Documents;
 using System;
@@ -11,7 +10,7 @@ namespace IdentityServer.Quickstart.Account
     [Route("Account/Change-Password")]
     public class ChangePasswordController : Controller
     {
-        IDocumentStore _store;
+        private readonly IDocumentStore _store;
         public ChangePasswordController(IDocumentStoreHolder storeHolder)
         {
             _store = storeHolder.Store;
@@ -34,7 +33,7 @@ namespace IdentityServer.Quickstart.Account
             {
                 using(var session = _store.OpenAsyncSession())
                 {
-                    var user = await session.Query<User>().FirstAsync(u => u.Email == model.Username);
+                    var user = await session.Query<IdentityServerUser>().FirstAsync(u => u.Email == model.Username);
 
                     var salt = Convert.FromBase64String(user.Salt);
                     var hashedPassword = PasswordHasher.HashPassword(model.NewPassword, salt);
@@ -48,7 +47,6 @@ namespace IdentityServer.Quickstart.Account
 
                     await session.SaveChangesAsync();
                           
-
                     return Redirect(redirectUrl);
                 }
             }
