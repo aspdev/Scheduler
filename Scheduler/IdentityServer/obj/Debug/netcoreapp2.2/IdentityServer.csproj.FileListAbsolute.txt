@@ -32,3 +32,4 @@ C:\Projects\Scheduler\Scheduler\IdentityServer\obj\Debug\netcoreapp2.2\IdentityS
 C:\Projects\Scheduler\Scheduler\IdentityServer\obj\Debug\netcoreapp2.2\IdentityServer.csproj.CopyComplete
 C:\Projects\Scheduler\Scheduler\IdentityServer\obj\Debug\netcoreapp2.2\IdentityServer.dll
 C:\Projects\Scheduler\Scheduler\IdentityServer\obj\Debug\netcoreapp2.2\IdentityServer.pdb
+C:\Projects\Scheduler\Scheduler\IdentityServer\obj\Debug\netcoreapp2.2\Razor\Views\Account\ResetPassword.cshtml.g.cs

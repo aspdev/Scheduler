@@ -189,6 +189,8 @@
             <e p="LogoutInputModel.cs" t="Include" />
             <e p="LogoutViewModel.cs" t="Include" />
             <e p="RedirectViewModel.cs" t="Include" />
+            <e p="ResetPasswordController.cs" t="Include" />
+            <e p="ResetPasswordInputModel.cs" t="Include" />
           </e>
           <e p="Home" t="Include">
             <e p="ErrorViewModel.cs" t="Include" />
@@ -211,6 +213,7 @@
           <e p="Account" t="Include">
             <e p="ChangePassword.cshtml" t="Include" />
             <e p="Login.cshtml" t="Include" />
+            <e p="ResetPassword.cshtml" t="Include" />
           </e>
           <e p="Home" t="Include">
             <e p="Index.cshtml" t="Include" />

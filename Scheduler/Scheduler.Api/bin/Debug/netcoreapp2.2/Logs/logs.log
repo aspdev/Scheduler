@@ -286,3 +286,13 @@
    at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
    at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
    at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.Invoke(HttpContext context)
+2019-12-30 19:18:26.7551|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|HandleAuthenticateAsync called
+2019-12-30 19:18:26.7769|DEBUG|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|AuthenticationScheme: Bearer was not authenticated.
+2019-12-30 19:33:46.5568|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|HandleAuthenticateAsync called
+2019-12-30 19:33:46.6000|DEBUG|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|AuthenticationScheme: Bearer was not authenticated.
+2019-12-30 19:34:18.2223|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|HandleAuthenticateAsync called
+2019-12-30 19:34:18.2598|DEBUG|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|AuthenticationScheme: Bearer was not authenticated.
+2019-12-30 19:37:15.1972|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|HandleAuthenticateAsync called
+2019-12-30 19:37:15.2258|DEBUG|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|AuthenticationScheme: Bearer was not authenticated.
+2019-12-30 19:42:38.8880|TRACE|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|HandleAuthenticateAsync called
+2019-12-30 19:42:38.9136|DEBUG|IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler|AuthenticationScheme: Bearer was not authenticated.

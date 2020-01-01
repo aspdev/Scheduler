@@ -45,19 +45,19 @@ namespace IdentityServer.Repositories
         {
             var user = await FindByUsername(username, clientName);
 
-            var salt = user.Salt;
-            var hashedPassword = PasswordHasher.HashPassword(password, Convert.FromBase64String(salt));
-            
-            if(user != null && user.ChangePassword == false)
-            {
-                return user.Password.Equals(hashedPassword);
-            }
-            else if (user != null && user.ChangePassword == true)
-            {
-                return user.TemporaryPassword.Equals(hashedPassword);
+            if (user is null)
+            { 
+                return false;
             }
 
-            return false;
+            var salt = user.Salt;
+            var hashedPassword = PasswordHasher.HashPassword(password, Convert.FromBase64String(salt));
+
+            var isUserAuthenticated = user.ChangePassword == false
+                ? user.Password.Equals(hashedPassword)
+                : user.TemporaryPassword.Equals(hashedPassword);
+
+            return isUserAuthenticated;
         }
     }
 }
