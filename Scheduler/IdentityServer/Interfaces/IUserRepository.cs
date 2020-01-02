@@ -12,5 +12,7 @@ namespace IdentityServer
         Task<User> FindByUsernameAndClientName(string username, string clientName);
 
         Task<User> FindByUsername(string username);
+
+        Task UpdateUser(User user);
     }
 }

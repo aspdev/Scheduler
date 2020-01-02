@@ -64,5 +64,19 @@ namespace IdentityServer.Repositories
 
             return isUserAuthenticated;
         }
+
+        public async Task UpdateUser(User user)
+        {
+            if (user is null)
+            {
+                throw new ArgumentNullException(nameof(User));
+            }
+
+            using (var session = _store.OpenAsyncSession())
+            {
+                await session.StoreAsync(user);
+                await session.SaveChangesAsync();
+            }
+        }
     }
 }
