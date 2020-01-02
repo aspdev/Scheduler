@@ -156,6 +156,7 @@
         </e>
         <e p="IdentityServer.csproj" t="IncludeRecursive" />
         <e p="identityserver4_log.txt" t="Include" />
+        <e p="IdentityServerConfiguration.cs" t="Include" />
         <e p="Interfaces" t="Include">
           <e p="IUserRepository.cs" t="Include" />
         </e>

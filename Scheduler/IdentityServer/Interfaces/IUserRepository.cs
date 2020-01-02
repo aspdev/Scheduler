@@ -9,6 +9,8 @@ namespace IdentityServer
 
         Task<IdentityServerUser> FindBySubjectId(string subjectId);
 
-        Task<IdentityServerUser> FindByUsername(string username, string clientName);
+        Task<IdentityServerUser> FindByUsernameAndClientName(string username, string clientName);
+
+        Task<IdentityServerUser> FindByUsername(string username);
     }
 }

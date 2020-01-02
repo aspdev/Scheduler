@@ -24,7 +24,7 @@ namespace IdentityServer.Repositories
             }
         }
 
-        public async Task<IdentityServerUser> FindByUsername(string username, string clientName)
+        public async Task<IdentityServerUser> FindByUsernameAndClientName(string username, string clientName)
         {
             using (var session = _store.OpenAsyncSession())
             {
@@ -35,9 +35,20 @@ namespace IdentityServer.Repositories
             }
         }
 
+        public async Task<IdentityServerUser> FindByUsername(string username)
+        {
+            using (var session = _store.OpenAsyncSession())
+            {
+                var user = await session.Query<IdentityServerUser>()
+                    .FirstOrDefaultAsync(u => u.Email.Equals(username));
+
+                return user;
+            }
+        }
+
         public async Task<bool> ValidateCredentials(string username, string password, string clientName)
         {
-            var user = await FindByUsername(username, clientName);
+            var user = await FindByUsernameAndClientName(username, clientName);
 
             if (user is null)
             { 

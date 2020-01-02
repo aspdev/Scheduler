@@ -17,7 +17,7 @@ namespace IdentityServer.Services
         {
             if (await _userRepository.ValidateCredentials(context.UserName, context.Password, context.Request.Client.ClientId))
             {
-                var user = await _userRepository.FindByUsername(context.UserName, context.Request.Client.ClientId);
+                var user = await _userRepository.FindByUsernameAndClientName(context.UserName, context.Request.Client.ClientId);
                 context.Result = new GrantValidationResult(user.Id, OidcConstants.AuthenticationMethods.Password);
             }
                         

@@ -82,11 +82,10 @@ namespace IdentityServer
                 // validate username/password against in-memory store
                 if (await _userRepository.ValidateCredentials(model.Username, model.Password, context.ClientId))
                 {
-                    var user = await _userRepository.FindByUsername(model.Username, context.ClientId);
+                    var user = await _userRepository.FindByUsernameAndClientName(model.Username, context.ClientId);
 
                     if (user.ChangePassword)
                     {
-
                         return RedirectToAction("ChangePassword", "ChangePassword", new { returnUrl = context.RedirectUri, username = model.Username });
                     }
 

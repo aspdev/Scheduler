@@ -12,12 +12,10 @@ namespace IdentityServer.DataStore
     {
         public IDocumentStore Store { get; }
 
-        public DocumentStoreHolder(IConfiguration configuration, IHostingEnvironment environment)
+        public DocumentStoreHolder(IdentityServerConfiguration configuration, IHostingEnvironment environment)
         {
-            var certPassword = configuration.GetSection("Certificates")["Raven.Certificate.Password"];
-            /*var certPath = configuration.GetSection("Certificates")["Raven.Certificate.Path"];*/
-            var certPath = environment.ContentRootPath +
-                           "\\Certificates\\free.scheduler.client.certificate.with.password.pfx"; 
+            var certPassword = configuration.Certificates.RavenCertificatePassword;
+            var certPath = environment.ContentRootPath + configuration.Certificates.RavenCertificatePath;
             
             var secureString = new SecureString();
             certPassword.ToCharArray().ToList().ForEach(secureString.AppendChar);
@@ -27,17 +25,12 @@ namespace IdentityServer.DataStore
             
             var store = new DocumentStore
             {
-                Urls = new [] {"https://a.free.scheduler.ravendb.cloud"},
-                Database = "IdentityServerUsers",
+                Urls = new [] { configuration.DatabaseUrl },
+                Database = configuration.Database,
                 Certificate = new X509Certificate2(bytes, certPassword, X509KeyStorageFlags.MachineKeySet)
             };
 
             Store = store.Initialize();
-            
         }
-       
-        
-
-        
     }
 }

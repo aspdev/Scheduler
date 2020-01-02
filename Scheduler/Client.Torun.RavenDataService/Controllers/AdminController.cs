@@ -68,20 +68,21 @@ namespace Client.Torun.RavenDataService.Controllers
                             && u.Clients.Contains(userToCreteDto.Client))
                         .FirstOrDefaultAsync();
 
-                    if (clientUser is null)
+                    if (clientUser != null)
                     {
-                        user.Clients.Add(userToCreteDto.Client);
-                        await identitySession.StoreAsync(user);
-                        await identitySession.SaveChangesAsync();
-                        
-                        string existingUserMessage = $"<b>Dear {user.FirstName}</b></br><p>You're receiving this message because your Scheduler Account at Torun Client has been created.</p><p>Follow the link below to log in:</p><p><a href={_dataServiceConfiguration.ClientUrl}>Torun SmartScheduler</a></p><p>Best</p><p>Scheduler Team</p>";
-                        _schedulerMailer.SendMail("Scheduler-Notifications", user.Email, "Torun Scheduler Account", existingUserMessage, _dataServiceConfiguration.MailBoxPassword);
-
-                        var userToReturn = _mapper.Map<PostCreationUserToReturnDto>(user);
-                        return CreatedAtRoute("GetUser", new {userId = user.Id}, userToReturn);
+                        return BadRequest(new {error = "The email is already in use."});
                     }
+                    
+                    user.Clients.Add(userToCreteDto.Client);
+                    await identitySession.StoreAsync(user);
+                    await identitySession.SaveChangesAsync();
+                        
+                    string existingUserMessage = $"<b>Dear {user.FirstName}</b></br><p>You're receiving this message because your Scheduler Account at Torun Client has been created.</p><p>Follow the link below to log in:</p><p><a href={_dataServiceConfiguration.ClientUrl}>Torun SmartScheduler</a></p><p>Best</p><p>Scheduler Team</p>";
+                    _schedulerMailer.SendMail("Scheduler-Notifications", user.Email, "Torun Scheduler Account", existingUserMessage, _dataServiceConfiguration.MailBoxPassword);
 
-                    return BadRequest(new {error = "The email is already in use."});
+                    var userToReturn = _mapper.Map<PostCreationUserToReturnDto>(user);
+                    return CreatedAtRoute("GetUser", new {userId = user.Id}, userToReturn);
+
                 }
 
                 var newDbUser = _mapper.Map<IdentityServerUser>(userToCreteDto);

@@ -21,6 +21,9 @@
         "projectReferences": {
           "C:\\Projects\\Scheduler\\Scheduler\\Common\\Common.csproj": {
             "projectPath": "C:\\Projects\\Scheduler\\Scheduler\\Common\\Common.csproj"
+          },
+          "C:\\Projects\\Scheduler\\Scheduler\\Scheduler.Mailer\\Scheduler.Mailer.csproj": {
+            "projectPath": "C:\\Projects\\Scheduler\\Scheduler\\Scheduler.Mailer\\Scheduler.Mailer.csproj"
           }
         }
       }

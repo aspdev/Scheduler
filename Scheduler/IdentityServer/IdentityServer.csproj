@@ -29,5 +29,6 @@
   
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj" />
+    <ProjectReference Include="..\Scheduler.Mailer\Scheduler.Mailer.csproj" />
   </ItemGroup>
 </Project>
