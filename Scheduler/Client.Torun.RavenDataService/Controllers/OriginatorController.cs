@@ -61,7 +61,7 @@ namespace Client.Torun.RavenDataService.Controllers
         {
             using (var identitySession = _identityStore.OpenAsyncSession())
             {
-                int totalNumberOfDoctors = await identitySession.Query<IdentityServerUser>()
+                int totalNumberOfDoctors = await identitySession.Query<User>()
                     .Where(u => u.Clients.Contains(ConstNames.TorunClientName))
                     .CountAsync();
 
@@ -74,7 +74,7 @@ namespace Client.Torun.RavenDataService.Controllers
         {
             using (var identitySession = _identityStore.OpenAsyncSession())
             {
-                var doctorIds = await identitySession.Query<IdentityServerUser>()
+                var doctorIds = await identitySession.Query<User>()
                     .Where(u => u.Clients.Contains(ConstNames.TorunClientName))
                     .Select(u => u.Id).ToListAsync();
 
@@ -255,9 +255,9 @@ namespace Client.Torun.RavenDataService.Controllers
         {
             using (var identitySession = _identityStore.OpenAsyncSession())
             {
-                if (await identitySession.Query<IdentityServerUser>().AnyAsync())
+                if (await identitySession.Query<User>().AnyAsync())
                 {
-                    var users = await identitySession.Query<IdentityServerUser>().ToListAsync();
+                    var users = await identitySession.Query<User>().ToListAsync();
 
                     var doctorDtos = _mapper.Map<List<DoctorDto>>(users);
 

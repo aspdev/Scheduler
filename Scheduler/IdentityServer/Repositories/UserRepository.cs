@@ -14,32 +14,32 @@ namespace IdentityServer.Repositories
         {
             _store = storeHolder.Store;
         }
-        public async Task<IdentityServerUser> FindBySubjectId(string subjectId)
+        public async Task<User> FindBySubjectId(string subjectId)
         {
             using (var session = _store.OpenAsyncSession())
             {
-                var user = await session.Query<IdentityServerUser>().FirstOrDefaultAsync(u => u.Id == subjectId);
+                var user = await session.Query<User>().FirstOrDefaultAsync(u => u.Id == subjectId);
 
                 return user;
             }
         }
 
-        public async Task<IdentityServerUser> FindByUsernameAndClientName(string username, string clientName)
+        public async Task<User> FindByUsernameAndClientName(string username, string clientName)
         {
             using (var session = _store.OpenAsyncSession())
             {
-                var user = await session.Query<IdentityServerUser>()
+                var user = await session.Query<User>()
                     .FirstOrDefaultAsync(u => u.Email.Equals(username) && u.Clients.Contains(clientName));
 
                 return user;
             }
         }
 
-        public async Task<IdentityServerUser> FindByUsername(string username)
+        public async Task<User> FindByUsername(string username)
         {
             using (var session = _store.OpenAsyncSession())
             {
-                var user = await session.Query<IdentityServerUser>()
+                var user = await session.Query<User>()
                     .FirstOrDefaultAsync(u => u.Email.Equals(username));
 
                 return user;

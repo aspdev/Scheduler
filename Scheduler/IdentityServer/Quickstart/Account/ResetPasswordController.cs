@@ -61,6 +61,8 @@ namespace IdentityServer.Quickstart.Account
                             user.Email, "Reset Password", message, _configuration.MailService.MailBoxPassword);
                     }
                 }
+                
+                return View("~/Views/Account/SentEmailToResetPasswordInfo.cshtml");
             }
             
             return View("~/Views/Account/ResetPassword.cshtml", inputModel);

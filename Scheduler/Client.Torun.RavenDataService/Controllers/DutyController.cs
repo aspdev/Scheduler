@@ -115,7 +115,7 @@ namespace Client.Torun.RavenDataService.Controllers
                 var dutiesForCurrentDate = await clientSession.Query<Duty>().Where(duty => duty.Date.Year == parsedCurrentDate.Year
                                                     && duty.Date.Month == parsedCurrentDate.Month).ToListAsync();
 
-                var users = await identitySession.Query<IdentityServerUser>()
+                var users = await identitySession.Query<User>()
                     .Where(u => u.Clients.Contains(ConstNames.TorunClientName))
                     .ToListAsync();
 
@@ -255,7 +255,7 @@ namespace Client.Torun.RavenDataService.Controllers
                                    duty.Date.Month == dateFromParams.Month)
                     .ToListAsync();
 
-                var doctor = await identitySession.LoadAsync<IdentityServerUser>(paramsToGetDutiesForDoctor.DoctorId);
+                var doctor = await identitySession.LoadAsync<User>(paramsToGetDutiesForDoctor.DoctorId);
 
                 var dutiesForDoctor = new List<DutyForDoctorDto>();
 

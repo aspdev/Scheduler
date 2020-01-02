@@ -7,10 +7,10 @@ namespace IdentityServer
     {
         Task<bool> ValidateCredentials(string username, string password, string clientName);
 
-        Task<IdentityServerUser> FindBySubjectId(string subjectId);
+        Task<User> FindBySubjectId(string subjectId);
 
-        Task<IdentityServerUser> FindByUsernameAndClientName(string username, string clientName);
+        Task<User> FindByUsernameAndClientName(string username, string clientName);
 
-        Task<IdentityServerUser> FindByUsername(string username);
+        Task<User> FindByUsername(string username);
     }
 }

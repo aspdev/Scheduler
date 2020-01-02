@@ -56,13 +56,13 @@ namespace Client.Torun.RavenDataService.Controllers
 
             using (var identitySession = _identityServerStore.OpenAsyncSession())
             {
-                var user = await identitySession.Query<IdentityServerUser>()
+                var user = await identitySession.Query<User>()
                     .Where(u => u.Email.Equals(userToCreteDto.Email, StringComparison.InvariantCultureIgnoreCase))
                     .FirstOrDefaultAsync();
 
                 if (user != null)
                 {
-                    var clientUser = await identitySession.Query<IdentityServerUser>()
+                    var clientUser = await identitySession.Query<User>()
                         .Where(u =>
                             u.Email.Equals(userToCreteDto.Email, StringComparison.InvariantCultureIgnoreCase)
                             && u.Clients.Contains(userToCreteDto.Client))
@@ -85,7 +85,7 @@ namespace Client.Torun.RavenDataService.Controllers
 
                 }
 
-                var newDbUser = _mapper.Map<IdentityServerUser>(userToCreteDto);
+                var newDbUser = _mapper.Map<User>(userToCreteDto);
                 var temporaryPassword = RandomPasswordGenerator.GeneratePassword(15);
                 var salt = Convert.ToBase64String(PasswordHasher.GenerateSalt());
                 var hashedPassword = PasswordHasher.HashPassword(temporaryPassword, Convert.FromBase64String(salt));
@@ -117,7 +117,7 @@ namespace Client.Torun.RavenDataService.Controllers
 
             using (var identitySession = _identityServerStore.OpenAsyncSession())
             {
-                var user = await identitySession.LoadAsync<IdentityServerUser>(userId);
+                var user = await identitySession.LoadAsync<User>(userId);
 
                 if (user == null)
                 {
@@ -148,7 +148,7 @@ namespace Client.Torun.RavenDataService.Controllers
             using(var identitySession = _identityServerStore.OpenAsyncSession())
             {
 
-                var users = await identitySession.Query<IdentityServerUser>().Statistics(out QueryStatistics stats)
+                var users = await identitySession.Query<User>().Statistics(out QueryStatistics stats)
                     .Where(u => u.Clients.Contains(ConstNames.TorunClientName))
                     .Skip(numberToSkip).Take(pageSize).ToListAsync();
 
@@ -185,7 +185,7 @@ namespace Client.Torun.RavenDataService.Controllers
         {
             using (var identitySession = _identityServerStore.OpenAsyncSession())
             {
-                var allUsers = await identitySession.Query<IdentityServerUser>()
+                var allUsers = await identitySession.Query<User>()
                     .Where(u => u.Clients.Contains(ConstNames.TorunClientName))
                     .ToListAsync();
                 var allUsersToReturn = _mapper.Map<IEnumerable<UserToReturnDto>>(allUsers);

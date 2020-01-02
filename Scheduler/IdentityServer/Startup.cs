@@ -56,7 +56,7 @@ namespace IdentityServer
                 .LoadSigningCredentialsFrom(certificatePath,
                     _identityServerConfiguration.Certificates.TokenCertificatePassword);
             
-           services.AddSingleton<IdentityServerConfiguration>();
+           services.AddSingleton(_identityServerConfiguration);
            services.AddHttpsRedirection(options =>
            {
                options.RedirectStatusCode = StatusCodes.Status308PermanentRedirect;
