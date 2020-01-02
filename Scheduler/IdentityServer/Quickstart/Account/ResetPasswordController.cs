@@ -2,9 +2,7 @@
 using System.Threading.Tasks;
 using System.Web;
 using Common;
-using IdentityServer.DataStore;
 using Microsoft.AspNetCore.Mvc;
-using Raven.Client.Documents;
 using Scheduler.Mailer.Interfaces;
 
 namespace IdentityServer.Quickstart.Account
@@ -15,17 +13,14 @@ namespace IdentityServer.Quickstart.Account
         private readonly IUserRepository _userRepository;
         private readonly ISchedulerMailer _schedulerMailer;
         private readonly IdentityServerConfiguration _configuration;
-        private readonly IDocumentStore _store;
 
         public ResetPasswordController(IUserRepository userRepository, 
-            IDocumentStoreHolder documentStoreHolder, 
             ISchedulerMailer schedulerMailer,
             IdentityServerConfiguration configuration)
         {
             _userRepository = userRepository;
             _schedulerMailer = schedulerMailer;
             _configuration = configuration;
-            _store = documentStoreHolder.Store;
         }
         
         [HttpGet]
