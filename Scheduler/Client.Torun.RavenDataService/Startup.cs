@@ -3,6 +3,7 @@ using AutoMapper;
 using Client.Torun.RavenDataService.Config;
 using Client.Torun.RavenDataService.DataStore;
 using Client.Torun.RavenDataService.Extentions;
+using Client.Torun.RavenDataService.Helpers;
 using Client.Torun.RavenDataService.Mappings;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -55,14 +56,14 @@ namespace Client.Torun.RavenDataService
                 options.AddPolicy("RavenDataServiceApiPolicy", policy =>
 
                     policy.WithOrigins("https://smartscheduler.pl")
-                    .AllowAnyHeader()
-                    .AllowAnyMethod()
-                    .WithExposedHeaders("X-Pagination")
-                    .AllowCredentials()
-
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .WithExposedHeaders("X-Pagination")
+                        .AllowCredentials()
                 );
             });
-
+            
+            
             services.AddSingleton<ClientDocumentStoreHolder>();
             services.AddSingleton<IdentityServerDocumentStoreHolder>();
             services.AddSingleton(_dataServiceConfiguration);
@@ -70,11 +71,11 @@ namespace Client.Torun.RavenDataService
                 new MailKitMailer(_dataServiceConfiguration.MailBoxHost, 
                 _dataServiceConfiguration.MailBoxPortNumber, _dataServiceConfiguration.MailBoxUseSsl, 
                 _dataServiceConfiguration.MailBoxAddress));
-                
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
-
+            services.AddSingleton<IAsyncInitializer, ColorGenerator>();
+            
             services.AddScoped<IUrlHelper, UrlHelper>(implementationFactory =>
             {
                 var actionContext =
@@ -94,9 +95,8 @@ namespace Client.Torun.RavenDataService
             {
                 options.RedirectStatusCode = StatusCodes.Status308PermanentRedirect;
                 options.HttpsPort = 443; 
-               
             });
-            
+
             services.AddMvc();
         }
 

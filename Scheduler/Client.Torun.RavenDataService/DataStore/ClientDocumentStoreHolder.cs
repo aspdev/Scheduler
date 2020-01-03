@@ -3,7 +3,9 @@ using System.Linq;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
 using Client.Torun.RavenDataService.Config;
+using Client.Torun.RavenDataService.Helpers;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Internal;
 using Raven.Client.Documents;
 
 namespace Client.Torun.RavenDataService.DataStore
@@ -32,7 +34,6 @@ namespace Client.Torun.RavenDataService.DataStore
             };
 
             Store = store.Initialize();
-
         }
     }
 }

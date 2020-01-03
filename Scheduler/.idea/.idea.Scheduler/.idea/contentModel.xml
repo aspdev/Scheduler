@@ -25,7 +25,7 @@
         </e>
         <e p="Entities" t="Include">
           <e p="AdminSettings.cs" t="Include" />
-          <e p="Color.cs" t="Include" />
+          <e p="ClientColor.cs" t="Include" />
           <e p="DayOff.cs" t="Include" />
           <e p="DayOffRequest.cs" t="Include" />
           <e p="Duty.cs" t="Include" />
@@ -39,9 +39,12 @@
           <e p="ExceptionMiddlewareExtention.cs" t="Include" />
           <e p="HttpRequestExtention.cs" t="Include" />
           <e p="HttpResponseExtention.cs" t="Include" />
+          <e p="WebHostExtentions.cs" t="Include" />
         </e>
         <e p="Helpers" t="Include">
+          <e p="ColorGenerator.cs" t="Include" />
           <e p="ConstNames.cs" t="Include" />
+          <e p="IAsyncInitializer.cs" t="Include" />
           <e p="RandomPasswordGenerator.cs" t="Include" />
         </e>
         <e p="Mappings" t="Include">

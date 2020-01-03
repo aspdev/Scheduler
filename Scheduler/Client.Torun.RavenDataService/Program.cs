@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore;
+﻿using System.Threading.Tasks;
+using Client.Torun.RavenDataService.Extentions;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
 using NLog.Extensions.Logging;
@@ -8,9 +10,13 @@ namespace Client.Torun.RavenDataService
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
+            var host = CreateWebHostBuilder(args).Build();
+#if DEBUG
+            await host.InitAsync();
+#endif
+            host.Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -21,7 +27,5 @@ namespace Client.Torun.RavenDataService
                     logging.AddNLog();
                 })
                 .UseStartup<Startup>();
-
-
     }
 }

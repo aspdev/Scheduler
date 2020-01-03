@@ -260,6 +260,8 @@ namespace Client.Torun.RavenDataService.Controllers
                     var users = await identitySession.Query<User>().ToListAsync();
 
                     var doctorDtos = _mapper.Map<List<DoctorDto>>(users);
+                    
+                    
 
                     return Ok(doctorDtos);
                 }
