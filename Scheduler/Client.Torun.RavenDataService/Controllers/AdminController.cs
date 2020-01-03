@@ -229,18 +229,5 @@ namespace Client.Torun.RavenDataService.Controllers
 
             return username;
         }
-
-        private async Task<string> GetColor()
-        {
-            //TODO: Consider a different way to assign colours to Users
-            using (var session = _clientStore.OpenAsyncSession())
-            {
-                var color = await session.Query<Color>().FirstAsync(c => c.IsInUse == false);
-                color.IsInUse = true;
-                await session.SaveChangesAsync();
-
-                return color.Value;
-            }
-        }
     }
 }

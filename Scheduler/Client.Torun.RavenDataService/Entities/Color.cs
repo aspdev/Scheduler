@@ -8,6 +8,6 @@ namespace Client.Torun.RavenDataService.Entities
     public class Color
     {
         public string Value { get; set; }
-        public bool IsInUse{ get; set; }
+        public string UserId { get; set; }
     }
 }
