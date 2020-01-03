@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Client.Torun.RavenDataService.DataStore;
-using Client.Torun.RavenDataService.Entities;
 using Client.Torun.RavenDataService.Enums;
 using Client.Torun.RavenDataService.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -13,6 +12,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Scheduler.Mailer.Interfaces;
 using Client.Torun.RavenDataService.Config;
+using Client.Torun.RavenDataService.Entities;
 using Client.Torun.RavenDataService.Helpers;
 using Common;
 
@@ -74,6 +74,8 @@ namespace Client.Torun.RavenDataService.Controllers
                     }
                     
                     user.Clients.Add(userToCreteDto.Client);
+                    AssignUserIdToClientColor(user.Id);
+                    
                     await identitySession.StoreAsync(user);
                     await identitySession.SaveChangesAsync();
                         
@@ -91,10 +93,12 @@ namespace Client.Torun.RavenDataService.Controllers
                 var hashedPassword = PasswordHasher.HashPassword(temporaryPassword, Convert.FromBase64String(salt));
                 newDbUser.Salt = salt;
                 newDbUser.TemporaryPassword = hashedPassword;
-
+                
                 await identitySession.StoreAsync(newDbUser);
                 await identitySession.SaveChangesAsync();
 
+                AssignUserIdToClientColor(newDbUser.Id);
+                
                 string username = FormatUsername(newDbUser.Email);
                 
                 string message = $"<b>Dear {newDbUser.FirstName}</b></br><p>You're receiving this message because your Scheduler at Torun Client Account has been created.</p><p>Your <b>username</b>: {username}</p><p>Your <b>first-time login password</b>: {temporaryPassword}</p><p>Follow the link below to change your password and log in to Scheduler application:</p><p><a href={_dataServiceConfiguration.ClientUrl}>Torun SmartScheduler</a></p><p>Best</p><p>Scheduler Team</p>";
@@ -228,6 +232,25 @@ namespace Client.Torun.RavenDataService.Controllers
             username = username.Remove(index, 1);
 
             return username;
+        }
+
+        private async void AssignUserIdToClientColor(string userId)
+        {
+            using (var clientSession = _clientStore.OpenAsyncSession())
+            {
+                var colors = await clientSession.Query<ClientColor>()
+                    .Where(color => color.UserId != null)
+                    .ToListAsync();
+                
+                Random randomGenerator = new Random(Guid.NewGuid().GetHashCode());
+                var randomIndex = randomGenerator.Next(0, colors.Count);
+
+                var selectedColor = colors[randomIndex];
+                selectedColor.UserId = userId;
+
+                await clientSession.StoreAsync(selectedColor);
+                await clientSession.SaveChangesAsync();
+            }
         }
     }
 }

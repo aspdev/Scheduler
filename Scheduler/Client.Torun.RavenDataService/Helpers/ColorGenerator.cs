@@ -3,7 +3,6 @@ using System.Drawing;
 using System.Threading.Tasks;
 using Client.Torun.RavenDataService.DataStore;
 using Client.Torun.RavenDataService.Entities;
-using Microsoft.CodeAnalysis.Operations;
 using Raven.Client.Documents;
 
 namespace Client.Torun.RavenDataService.Helpers
@@ -34,8 +33,8 @@ namespace Client.Torun.RavenDataService.Helpers
                 }
                 
                 List<string> knownColors = new List<string>();
-                var lightnessLimit = 240 * 3;
-                var darknessLimit = 20 * 3;
+                var lightnessLimit = 220 * 3;
+                var darknessLimit = 40 * 3;
             
                 for (int i = 28; i < 168; i++)
                 {
@@ -48,15 +47,18 @@ namespace Client.Torun.RavenDataService.Helpers
                     }
                 }
 
-                foreach (var knownColor in knownColors)
+                for (int i = 0; i < knownColors.Count; i++)
                 {
                     var clientColor = new ClientColor
                     {
-                        Value = knownColor
+                        Name = knownColors[i],
+                        Number = i + 1
                     };
 
                     await clientSession.StoreAsync(clientColor);
                 }
+                    
+                
 
                 await clientSession.SaveChangesAsync();  
             }

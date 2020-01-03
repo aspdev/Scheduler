@@ -8,7 +8,8 @@ namespace Client.Torun.RavenDataService.Entities
     public class ClientColor
     {
         public string Id { get; set; }
-        public string Value { get; set; }
+        public int Number { get; set; }
+        public string Name { get; set; }
         public string UserId { get; set; }
     }
 }
