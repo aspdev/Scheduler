@@ -130,6 +130,7 @@ namespace Client.Torun.RavenDataService.Controllers
                 }
                 
                 var listOfDutiesForMonth = new List<DutyForMonthDto>();
+                var colorsForUsers = await ColorRetriever.RetrieveColorsForUsers(_clientStore);
 
                 foreach (var duty in dutiesForCurrentDate)
                 {
@@ -141,6 +142,7 @@ namespace Client.Torun.RavenDataService.Controllers
                         Date = duty.Date.ToString("yyyy-MM-dd"),
                         DoctorId = duty.UserId,
                         DutyId = duty.Id,
+                        Color = doctor is null ? "Black" : colorsForUsers.First(c => c.UserId == doctor.Id).ColorName
                     };
 
                     listOfDutiesForMonth.Add(dutyForMonth);

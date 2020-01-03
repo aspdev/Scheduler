@@ -47,19 +47,16 @@ namespace Client.Torun.RavenDataService.Helpers
                     }
                 }
 
-                for (int i = 0; i < knownColors.Count; i++)
+                foreach (var knownColor in knownColors)
                 {
                     var clientColor = new ClientColor
                     {
-                        Name = knownColors[i],
-                        Number = i + 1
+                        Name = knownColor
                     };
-
+                    
                     await clientSession.StoreAsync(clientColor);
                 }
-                    
                 
-
                 await clientSession.SaveChangesAsync();  
             }
         }

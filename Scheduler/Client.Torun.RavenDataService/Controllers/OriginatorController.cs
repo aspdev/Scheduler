@@ -253,6 +253,8 @@ namespace Client.Torun.RavenDataService.Controllers
         [HttpGet("doctordtos")]
         public async Task<IActionResult> GetDoctorDtos()
         {
+            var colorsForUsers = await ColorRetriever.RetrieveColorsForUsers(_clientStore);
+            
             using (var identitySession = _identityStore.OpenAsyncSession())
             {
                 if (await identitySession.Query<User>().AnyAsync())
@@ -261,6 +263,12 @@ namespace Client.Torun.RavenDataService.Controllers
 
                     var doctorDtos = _mapper.Map<List<DoctorDto>>(users);
 
+                    foreach (var colorForUser in colorsForUsers)
+                    {
+                        var doctor = doctorDtos.First(d => d.DoctorId == colorForUser.UserId);
+                        doctor.Color = colorForUser.ColorName;
+                    }
+                    
                     return Ok(doctorDtos);
                 }
                 

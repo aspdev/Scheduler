@@ -43,6 +43,7 @@
         </e>
         <e p="Helpers" t="Include">
           <e p="ColorGenerator.cs" t="Include" />
+          <e p="ColorRetriever.cs" t="Include" />
           <e p="ConstNames.cs" t="Include" />
           <e p="IAsyncInitializer.cs" t="Include" />
           <e p="RandomPasswordGenerator.cs" t="Include" />
