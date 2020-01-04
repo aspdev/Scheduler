@@ -57,14 +57,14 @@ namespace Client.Torun.RavenDataService.Controllers
             using (var identitySession = _identityServerStore.OpenAsyncSession())
             {
                 var user = await identitySession.Query<User>()
-                    .Where(u => u.Email.Equals(userToCreteDto.Email, StringComparison.InvariantCultureIgnoreCase))
+                    .Where(u => u.Email.Equals(userToCreteDto.Email))
                     .FirstOrDefaultAsync();
 
                 if (user != null)
                 {
                     var clientUser = await identitySession.Query<User>()
                         .Where(u =>
-                            u.Email.Equals(userToCreteDto.Email, StringComparison.InvariantCultureIgnoreCase)
+                            u.Email.Equals(userToCreteDto.Email)
                             && u.Clients.Contains(userToCreteDto.Client))
                         .FirstOrDefaultAsync();
 
@@ -101,7 +101,7 @@ namespace Client.Torun.RavenDataService.Controllers
                 
                 string username = FormatUsername(newDbUser.Email);
                 
-                string message = $"<b>Dear {newDbUser.FirstName}</b></br><p>You're receiving this message because your Scheduler at Torun Client Account has been created.</p><p>Your <b>username</b>: {username}</p><p>Your <b>first-time login password</b>: {temporaryPassword}</p><p>Follow the link below to change your password and log in to Scheduler application:</p><p><a href={_dataServiceConfiguration.ClientUrl}>Torun SmartScheduler</a></p><p>Best</p><p>Scheduler Team</p>";
+                string message = $"<b>Dear {newDbUser.FirstName}</b></br><p>You're receiving this message because your Scheduler Account at Torun Client has been created.</p><p>Your <b>username</b>: {username}</p><p>Your <b>first-time login password</b>: {temporaryPassword}</p><p>Follow the link below to change your password and log in to Scheduler application:</p><p><a href={_dataServiceConfiguration.ClientUrl}>Torun SmartScheduler</a></p><p>Best</p><p>Scheduler Team</p>";
 
                 _schedulerMailer.SendMail("Scheduler-Notifications", newDbUser.Email, "Scheduler Account", message, _dataServiceConfiguration.MailBoxPassword);
                 
@@ -131,6 +131,33 @@ namespace Client.Torun.RavenDataService.Controllers
                 var userToReturnDto = _mapper.Map<PostCreationUserToReturnDto>(user);
 
                 return Ok(userToReturnDto);
+            }
+        }
+
+        [HttpDelete("users/{userId}")]
+        public async Task<IActionResult> DeleteUser([FromRoute] string userId)
+        {
+            if (userId == null)
+            {
+                return BadRequest("The action requires a route parameter");
+            }
+
+            using (var clientSession = _clientStore.OpenAsyncSession())
+            using (var identitySession = _identityServerStore.OpenAsyncSession())
+            {
+                var user = await identitySession.LoadAsync<User>(userId);
+                user.Clients.Remove(ConstNames.TorunClientName);
+                
+                await identitySession.SaveChangesAsync();
+
+                var clientColor = await clientSession.Query<ClientColor>().Where(c => c.UserId == userId)
+                    .FirstAsync();
+
+                clientColor.UserId = null;
+                await clientSession.StoreAsync(clientColor);
+                await clientSession.SaveChangesAsync();
+
+                return Ok();
             }
         }
 
@@ -181,6 +208,22 @@ namespace Client.Torun.RavenDataService.Controllers
                 var usersToReturnDto = _mapper.Map<IEnumerable<UserToReturnDto>>(users);
 
                 return Ok(usersToReturnDto);
+            }
+        }
+
+        [HttpGet("allusers-without-manager")]
+        public async Task<IActionResult> GetAllUsersWithoutManager()
+        {
+            using (var identitySession = _identityServerStore.OpenAsyncSession())
+            {
+                var allUsers = await identitySession.Query<User>()
+                    .Where(u => u.Clients.Contains(ConstNames.TorunClientName)
+                                && u.Roles.Contains(ConstNames.AdminRoleName) == false)
+                    .ToListAsync();
+
+                var allUsersToReturn = _mapper.Map<IEnumerable<UserToReturnDto>>(allUsers);
+
+                return Ok(allUsersToReturn);
             }
         }
 
@@ -239,7 +282,7 @@ namespace Client.Torun.RavenDataService.Controllers
             using (var clientSession = _clientStore.OpenAsyncSession())
             {
                 var colors = await clientSession.Query<ClientColor>()
-                    .Where(color => color.UserId != null)
+                    .Where(color => color.UserId == null)
                     .ToListAsync();
                 
                 Random randomGenerator = new Random(Guid.NewGuid().GetHashCode());

@@ -3,5 +3,6 @@
     public static class ConstNames
     {
         public static string TorunClientName = "scheduler-client-torun";
+        public static string AdminRoleName = "manager";
     }
 }
