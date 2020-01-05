@@ -51,12 +51,12 @@ namespace IdentityServer
                     RequireConsent = false,
                     
                     // the URL of the CLIENT where you get the results
-                    //RedirectUris = { "https://smartscheduler.pl/callback/" },
-                    RedirectUris = { "http://localhost:8081/callback/" },
-                    //PostLogoutRedirectUris = { "https://smartscheduler.pl/" },
-                    PostLogoutRedirectUris = { "http://localhost:8081/" },
-                    //AllowedCorsOrigins =     { "https://smartscheduler.pl" },
-                    AllowedCorsOrigins =     { "http://localhost:8081" },
+                    RedirectUris = { "https://smartscheduler.pl/callback/" },
+                    //RedirectUris = { "http://localhost:8081/callback/" },
+                    PostLogoutRedirectUris = { "https://smartscheduler.pl/" },
+                    //PostLogoutRedirectUris = { "http://localhost:8081/" },
+                    AllowedCorsOrigins =     { "https://smartscheduler.pl" },
+                    //AllowedCorsOrigins =     { "http://localhost:8081" },
                     AllowedScopes =
                     {
                         IdentityServerConstants.StandardScopes.OpenId, // user's unique ID (subject claim in .NET/ subject Identifier)

@@ -32,3 +32,9 @@ C:\Projects\Scheduler\Scheduler\IdentityServer\obj\Release\netcoreapp2.2\Identit
 C:\Projects\Scheduler\Scheduler\IdentityServer\obj\Release\netcoreapp2.2\IdentityServer.csproj.CopyComplete
 C:\Projects\Scheduler\Scheduler\IdentityServer\obj\Release\netcoreapp2.2\IdentityServer.dll
 C:\Projects\Scheduler\Scheduler\IdentityServer\obj\Release\netcoreapp2.2\IdentityServer.pdb
+C:\Projects\Scheduler\Scheduler\IdentityServer\bin\Release\netcoreapp2.2\Scheduler.Mailer.dll
+C:\Projects\Scheduler\Scheduler\IdentityServer\bin\Release\netcoreapp2.2\Scheduler.Mailer.pdb
+C:\Projects\Scheduler\Scheduler\IdentityServer\obj\Release\netcoreapp2.2\Razor\Views\Account\FormToResetPassword.cshtml.g.cs
+C:\Projects\Scheduler\Scheduler\IdentityServer\obj\Release\netcoreapp2.2\Razor\Views\Account\ResetPassword.cshtml.g.cs
+C:\Projects\Scheduler\Scheduler\IdentityServer\obj\Release\netcoreapp2.2\Razor\Views\Account\ResetPasswordSuccess.cshtml.g.cs
+C:\Projects\Scheduler\Scheduler\IdentityServer\obj\Release\netcoreapp2.2\Razor\Views\Account\SentEmailToResetPasswordInfo.cshtml.g.cs
