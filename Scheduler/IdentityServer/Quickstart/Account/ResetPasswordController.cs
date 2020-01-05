@@ -40,6 +40,12 @@ namespace IdentityServer.Quickstart.Account
 
                 if (user != null)
                 {
+
+                    if (user.ChangePassword)
+                    {
+                        return View("~/Views/Account/SentEmailToResetPasswordInfo.cshtml");
+                    }
+                    
                     var tokenToResetPassword = Convert.ToBase64String(PasswordHasher.GenerateSalt());
                     var tokenToResetPasswordValidUntil = DateTime.Now.AddHours(1).ToString("s");
                     user.TokenToResetPassword = tokenToResetPassword;
