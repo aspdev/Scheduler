@@ -28,6 +28,8 @@ namespace Client.Torun.RavenDataService.Mappings
             CreateMap<DayOffToSetDto, DayOff>();
             CreateMap<DayOff, DayOffToReturnDto>()
                 .ForMember(d => d.Date, opt => opt.MapFrom(src => src.Date.Date.ToString("yyyy-MM-dd")));
+            CreateMap<DutyRequirement, RequirementToReturnDto>();
+            CreateMap<DutyRequirement, UpdatedRequirementDto>();
 
         }
     }

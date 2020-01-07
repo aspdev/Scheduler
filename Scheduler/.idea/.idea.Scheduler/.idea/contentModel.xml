@@ -62,10 +62,12 @@
           <e p="ParamsToGetDutiesForDoctorDto.cs" t="Include" />
           <e p="PostCreationRequirementToReturnDto.cs" t="Include" />
           <e p="PostCreationUserToReturnDto.cs" t="Include" />
+          <e p="RequirementToReturnDto.cs" t="Include" />
           <e p="RequirementToSetDto.cs" t="Include" />
           <e p="RequirementToUpdateDto.cs" t="Include" />
           <e p="SavedDutyToReturnDto.cs" t="Include" />
           <e p="UpdatedDutyToReturnDto.cs" t="Include" />
+          <e p="UpdatedRequirementDto.cs" t="Include" />
           <e p="UserToCreateDto.cs" t="Include" />
           <e p="UserToReturnDto.cs" t="Include" />
         </e>

@@ -57,7 +57,7 @@ namespace IdentityServer.Quickstart.Account
                     var urlEncodedUserName = HttpUtility.UrlEncode(user.Email);
                     
                     var link =
-                        $"http://localhost:44349/account/set-new-password?token={urlEncodedToken}&username={urlEncodedUserName}";
+                        $"https://identityserver.arantasar.hostingasp.pl/account/set-new-password?token={urlEncodedToken}&username={urlEncodedUserName}";
                     var message = $"<b>Dear {user.FirstName}</b></br><p>You're receiving this message because you requested resetting your password in Scheduler Account</p><p>Follow the link below to set a new password:</p><p><a href={link}>Reset Password</a></p><p>The link will be valid for 1 hour</p><p>If you didn't request resetting your credentials, ignore this message.</p><p>Best</p><p>Scheduler Team</p>";
 
                     _schedulerMailer.SendMail(_configuration.MailService.FromName,

@@ -1,3 +1,5 @@
 ﻿
 # Default ignored files
 /.idea.Scheduler/.idea/workspace.xml
+# Editor-based HTTP Client requests
+/.idea.Scheduler/.idea/httpRequests/

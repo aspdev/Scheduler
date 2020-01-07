@@ -25,6 +25,46 @@ namespace Client.Torun.RavenDataService.Controllers
             _mapper = mapper;
         }
 
+        [HttpGet]
+        [Route("requirements/{date}/{userId}")]
+        public async Task<IActionResult> GetRequirementsForMonth([FromRoute] DateTime date, string userId)
+        {
+            if (date == default || userId is null)
+            {
+                return BadRequest("The route requires two parameters");
+            }
+
+            using (var clientSession = _clientStore.OpenAsyncSession())
+            {
+                var requirement = await clientSession.Query<DutyRequirement>()
+                    .Where(r => r.Date.Year == date.Date.Year &&
+                                r.Date.Month == date.Date.Month && r.UserId == userId)
+                    .FirstOrDefaultAsync();
+
+                var requirementToReturn = _mapper.Map<RequirementToReturnDto>(requirement); 
+
+                return Ok(requirementToReturn);
+            }
+        }
+
+        [HttpDelete]
+        [Route("requirements/{requirementId}")]
+        public async Task<IActionResult> DeleteRequirements([FromRoute] string requirementId)
+        {
+            if (requirementId is null)
+            {
+                return BadRequest("The route requires a parameter");
+            }
+
+            using (var clientSession = _clientStore.OpenAsyncSession())
+            {
+                clientSession.Delete(requirementId);
+                await clientSession.SaveChangesAsync();
+
+                return Ok();
+            }
+        }
+
         [Route("requirements/set-new-requirement")]
         [HttpPost]
         public async Task<IActionResult> SetNewRequirement([FromBody] RequirementToSetDto requirementToSet)
@@ -63,7 +103,8 @@ namespace Client.Torun.RavenDataService.Controllers
                 await clientSession.StoreAsync(requirement);
                 await clientSession.SaveChangesAsync();
 
-                return NoContent();
+                var updatedRequirement =  _mapper.Map<UpdatedRequirementDto>(requirement);
+                return Ok(updatedRequirement);
             }
         }
         
